@@ -6,10 +6,15 @@
 
 Небольшие JSON всех запусков, на которые опирается отчёт, лежат в `research/results/` (21 октября) и `research/results/runs/<запуск>/` (22–25 октября, включая финальный тест и новую когорту). Графики строятся только из них:
 
+Короткий путь без обучения и без данных (проверка кода и графиков):
+
 ```bash
-python -m pip install matplotlib numpy
+python -m pip install torch -r requirements-windows.txt matplotlib
+python -m unittest discover -s tests
 python scripts/make_report_figures.py
 ```
+
+Тесты идут на CPU за секунды. На macOS для LightGBM нужна библиотека libomp (`brew install libomp`); без неё часть тестов не импортируется, это окружение, а не код. Только графики, без тестов, строятся и с одними `matplotlib` и `numpy`.
 
 `artifacts/` в Git не входит: там checkpoints и полные логи на машине, где шли вычисления.
 
