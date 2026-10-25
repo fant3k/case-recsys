@@ -206,6 +206,8 @@ def main():
     parser.add_argument("--lr", type=float, default=5e-4)
     parser.add_argument("--dropout", type=float, default=0.1)
     parser.add_argument("--weight-decay", type=float, default=0.01)
+    parser.add_argument("--context-size", type=int, default=128,
+                        help="GPT-2 context window (128 reproduces every earlier run; docs/CONTEXT-PLAN.md varies it)")
     parser.add_argument("--target-end", type=int, default=None,
                         help="train only on target groups (and day windows) before this time; catalog stays train-only")
     parser.add_argument("--arms", default="last,full",
@@ -219,7 +221,7 @@ def main():
     proto_hash = hashlib.sha256(proto_path.read_bytes()).hexdigest()
     plan = {"created_utc": datetime.now(timezone.utc).isoformat(), "protocol_sha256": proto_hash,
             "arguments": vars(args), "init_seed": 20261101, "sampling_seed": 20261102,
-            "model": "GPT-2 4 layers, width 256, 4 heads, context 128, tied embeddings, from scratch",
+            "model": f"GPT-2 4 layers, width 256, 4 heads, context {args.context_size}, tied embeddings, from scratch",
             "optimizer": "AdamW, per-arm weight decay (default 0.01), clip 1, fp16 autocast, fp32 CE, time-based warmup 3% then cosine to 10%",
             "difference": "last: one anchor event; full: all anchor-group events + every in-window event from its previous-group position; fullday: full next-item CE (weight .5) + day CE (weight .5) over unique >50% positives in [c+gap, c+gap+horizon) for up to 8 group-boundary sources per context, up to 16 sampled positives each, every source weight 1, day window inside train, separate RNG so contexts match full; +pps: fixed ln(1+c/0.01) prior on logits of items counted in the prefix up to the source position, in training and inference (Abbattista et al. RecSys 2024 PPS, softmax form); +fb: input embeddings of each past event's played-ratio bucket and log2 gap to its previous event; +pos: only targets with played ratio >0.5",
             "loss_weighting": "mean over all CE targets in the batch",
@@ -246,7 +248,7 @@ def main():
         if os.name == "nt":
             keep_awake = bool(ctypes.windll.kernel32.SetThreadExecutionState(ctypes.c_uint32(0x80000001)))
         torch.set_num_threads(4)
-        data, _, _, _, support = load_sequences(ROOT / proto["data"]["sample_path"], proto["time"]["train_end_exclusive"])
+        data, _, _, _, support = load_sequences(ROOT / proto["data"]["sample_path"], proto["time"]["train_end_exclusive"], context_size=args.context_size)
         train_end = proto["time"]["train_end_exclusive"]
         if args.target_end is not None:
             if args.target_end > train_end:
@@ -310,9 +312,9 @@ def main():
             arm_dir.mkdir()
             torch.manual_seed(plan["init_seed"])
             if use_pps or use_fb:
-                model = FeedbackPolicy(len(data.catalog), dropout=dropout, pps=use_pps, feedback=use_fb).cuda()
+                model = FeedbackPolicy(len(data.catalog), context_size=args.context_size, dropout=dropout, pps=use_pps, feedback=use_fb).cuda()
             else:
-                model = Policy(len(data.catalog), dropout=dropout).cuda()
+                model = Policy(len(data.catalog), context_size=args.context_size, dropout=dropout).cuda()
             extended = isinstance(model, FeedbackPolicy)
             optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=weight_decay)
             scaler = torch.amp.GradScaler("cuda")

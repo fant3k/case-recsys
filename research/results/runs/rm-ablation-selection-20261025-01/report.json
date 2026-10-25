@@ -1,0 +1,65 @@
+{
+  "warm_users": 1000,
+  "active_users": 492,
+  "rows": {
+    "reference": {
+      "users": 492,
+      "Recall@10": 0.08709126664702464,
+      "NDCG@10": 0.14727090259847372
+    },
+    "A_full_rm_seed0": {
+      "users": 492,
+      "Recall@10": 0.09432927167937727,
+      "NDCG@10": 0.15689534814814451
+    },
+    "A_rm_without_pairwise_features_seed0": {
+      "users": 492,
+      "Recall@10": 0.08551905986602124,
+      "NDCG@10": 0.14364680751021308
+    },
+    "A_ensemble_seeds01": {
+      "users": 492,
+      "Recall@10": 0.09550390640739606,
+      "NDCG@10": 0.1582555761844212
+    }
+  },
+  "paired_95": {
+    "A_full_seed0_minus_reference": {
+      "mean": 0.009624445549670697,
+      "level": 0.95,
+      "interval": [
+        0.0038953996470155344,
+        0.015514643426733638
+      ],
+      "users": 492
+    },
+    "A_without_features_minus_reference": {
+      "mean": -0.003624095088260793,
+      "level": 0.95,
+      "interval": [
+        -0.0069306082107408705,
+        -0.0004802478663513931
+      ],
+      "users": 492
+    },
+    "A_ensemble_minus_reference": {
+      "mean": 0.010984673585947381,
+      "level": 0.95,
+      "interval": [
+        0.005572649647857729,
+        0.01662710946559635
+      ],
+      "users": 492
+    },
+    "full_seed0_minus_without_features": {
+      "mean": 0.013248540637931492,
+      "level": 0.95,
+      "interval": [
+        0.008460047584812384,
+        0.018308545505724468
+      ],
+      "users": 492
+    }
+  },
+  "elapsed_seconds": 10.99976130000141
+}

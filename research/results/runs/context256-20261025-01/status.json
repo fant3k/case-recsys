@@ -1,0 +1,23 @@
+{
+  "status": "completed",
+  "stage": "done",
+  "pid": 7944,
+  "final_test_scored": false,
+  "confirmation_scored": false,
+  "arm_training_seconds": 600.1162128000251,
+  "arm_steps": 1523,
+  "last_eval": {
+    "training_seconds": 600.1162128000251,
+    "steps": 1523,
+    "ce_targets": 17895999,
+    "NDCG@10": 0.15918036772912697,
+    "Recall@10": 0.09498706613399256,
+    "validation_probe_nll": 8.216486692428589,
+    "recent_train_loss": 7.430571043491364
+  },
+  "best_ndcg": {
+    "full+pps+fb-d0.1-wd0.01": 0.19088123587982495
+  },
+  "elapsed_seconds": 611.5363634000023,
+  "recent_train_loss": 7.477003657817841
+}

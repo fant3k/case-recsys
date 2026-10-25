@@ -1,0 +1,19 @@
+{
+  "plan_document": "docs/INDEPENDENT-JUDGE-PLAN.md",
+  "window": "selection",
+  "pool_contexts": 65536,
+  "seed": 20261401,
+  "protocol_sha256": "c93e7f55c8d32cdedceb350a73407e127406d53cf8878e0f22f8a28111bc8cea",
+  "scope": "selection only; confirmation, final and new cohort are not read",
+  "features": [
+    "log_count",
+    "recency",
+    "seen",
+    "user_track_completion",
+    "length",
+    "popularity",
+    "user_mean_completion",
+    "organic_share",
+    "context_length"
+  ]
+}

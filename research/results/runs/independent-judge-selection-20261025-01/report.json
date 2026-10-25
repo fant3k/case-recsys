@@ -1,0 +1,82 @@
+{
+  "warm_users": 1000,
+  "judge_held_out": {
+    "events": 6554,
+    "mae": 0.28097661393301415,
+    "mae_constant_mean": 0.40173302566647023,
+    "correlation": 0.5735840251181967
+  },
+  "methods": {
+    "reference": {
+      "mean_judge_completion_top10": 0.6776934926834108,
+      "mean_judge_seconds_top10": 134.53310197224903
+    },
+    "A_rm_rerank_top50": {
+      "mean_judge_completion_top10": 0.700146282968616,
+      "mean_judge_seconds_top10": 135.58578938505906,
+      "completion_vs_reference_95": {
+        "mean": 0.022452790285205197,
+        "level": 0.95,
+        "interval": [
+          0.0201686271570571,
+          0.024779553676733557
+        ],
+        "users": 1000
+      },
+      "seconds_vs_reference_95": {
+        "mean": 1.0526874128100645,
+        "level": 0.95,
+        "interval": [
+          0.4231697103837351,
+          1.678408905157129
+        ],
+        "users": 1000
+      }
+    },
+    "B_rl_seconds_beta0.3": {
+      "mean_judge_completion_top10": 0.6740207380532346,
+      "mean_judge_seconds_top10": 143.02371759647147,
+      "completion_vs_reference_95": {
+        "mean": -0.003672754630176178,
+        "level": 0.95,
+        "interval": [
+          -0.004686681551927592,
+          -0.0026766839159367128
+        ],
+        "users": 1000
+      },
+      "seconds_vs_reference_95": {
+        "mean": 8.490615624222471,
+        "level": 0.95,
+        "interval": [
+          7.819956526273599,
+          9.19712621323034
+        ],
+        "users": 1000
+      }
+    },
+    "PersonalFrequency128": {
+      "mean_judge_completion_top10": 0.6894266500633641,
+      "mean_judge_seconds_top10": 137.88863440829783,
+      "completion_vs_reference_95": {
+        "mean": 0.011733157379953296,
+        "level": 0.95,
+        "interval": [
+          0.009042497966028934,
+          0.014449342452093426
+        ],
+        "users": 1000
+      },
+      "seconds_vs_reference_95": {
+        "mean": 3.3555324360488212,
+        "level": 0.95,
+        "interval": [
+          2.211530843727405,
+          4.542551446740265
+        ],
+        "users": 1000
+      }
+    }
+  },
+  "elapsed_seconds": 14.304827899999509
+}

@@ -1,0 +1,18 @@
+{
+  "plan_document": "docs/RM-ABLATION-PLAN.md",
+  "protocol_sha256": "c93e7f55c8d32cdedceb350a73407e127406d53cf8878e0f22f8a28111bc8cea",
+  "window": "selection",
+  "label_window": [
+    25725400,
+    25811800
+  ],
+  "beta": 0.03,
+  "top": 50,
+  "checkpoint_sha256": {
+    "reference": "9521989f08bba17803571aaa262cdff9d7d140d6c0203835125e30d3b8d67d43",
+    "full_seed0": "f1201204fec349cc50353fb179c8ae6b937f92925bcd124f59ba06c73fba8ed3",
+    "full_seed1": "7c472c8f632ca7be34406c9f9e545490f1a28e54f9cbea72938c12c4aa372a27",
+    "no_features_seed0": "f3dd6549408e0cfb95dcc3ea60bd2e25f5dbf45007cd41d4786258ec31663732"
+  },
+  "scope": "selection only; confirmation, final and new cohort are not read"
+}
