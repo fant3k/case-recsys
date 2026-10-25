@@ -133,7 +133,7 @@ python -m recsys.final_test --window final --open-final-test
 
 ### Дополнительные опыты 25 октября (второй проход)
 
-Исследовательские расчёты на selection, кроме N3. Планы с правилами чтения, написанные до запусков: `docs/PRECISION-PLAN.md`, `docs/REPLAY-PLAN.md`, `docs/JOINT-PLAN.md`, `docs/BSEEDS-PLAN.md`, `docs/NEW-COHORT-N3-PLAN.md`, `docs/SFTKL-PLAN.md`.
+Исследовательские расчёты на selection, кроме N3. Планы с правилами чтения, написанные до запусков: `docs/PRECISION-PLAN.md`, `docs/REPLAY-PLAN.md`, `docs/JOINT-PLAN.md`, `docs/BSEEDS-PLAN.md`, `docs/NEW-COHORT-N3-PLAN.md`, `docs/SFTKL-PLAN.md`, `docs/QSEEDS-PLAN.md`.
 
 | # | Команда | Нужно | Время | Результат |
 |---|---|---|---:|---|
@@ -146,6 +146,7 @@ python -m recsys.final_test --window final --open-final-test
 | 24 | `python -m recsys.multiplicity` (по сохранённым строкам, без GPU) | шаги 6, 16, 23 | секунды | все шесть подтверждающих гипотез вместе: нижние границы выше нуля |
 | 25 | `python -m recsys.exploratory --experiment e1 --arms all,joint,sft_kl:0.1,sft_kl:1,sft_kl:10 --seed-offset k --out artifacts/joint-rows-seedk-20261025-01` для k = 0, 1, 2 (`scripts/run-joint-rows-20261025.ps1`) | шаги 1, 4 | ≈12 мин на seed | интервал «совместное обучение − голова» и supervised-контроль с KL; план `docs/SFTKL-PLAN.md` |
 | 26 | `python -m recsys.multistep_fix` (план `docs/MULTISTEP-FIX-PLAN.md`) | шаги 1, 4, 6 | ≈1 мин | пятёрка: без PPS-самоподкрепления дубликатов 0,94 против 0,97; запрет повторов +0,07 NDCG@5 |
+| 27 | `python -m recsys.rl_v2 --out artifacts/rl-v2-qseedk-20261025-01 --rm-dir artifacts/reward-v2-quantile-20261023-01 --rewards completion --betas 0.3 --offline-arms= --tag quantile/ --seed-offset k` для k = 1, 2 (`scripts/run-qseeds-20261025.ps1`, план `docs/QSEEDS-PLAN.md`) | шаги 1, 8 | ≈5 мин на seed | квантильный RL на трёх seed: доля прироста 0,911–0,913, NDCG 0,1477–0,1486 |
 
 Исходная версия `recsys/new_cohort.py` (до режима confirmation) сохранена в `research/code-snapshots/new-cohort-20261024-01/`.
 

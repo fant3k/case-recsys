@@ -1,0 +1,31 @@
+{
+  "created_utc": "2026-10-25T18:59:08.817543+00:00",
+  "protocol_sha256": "c93e7f55c8d32cdedceb350a73407e127406d53cf8878e0f22f8a28111bc8cea",
+  "arguments": {
+    "out": "artifacts/rl-v2-qseed2-20261025-01",
+    "policy": "artifacts/pps-20261022-01/full+pps+fb-d0.1-wd0.01/last.pt",
+    "rm_dir": "artifacts/reward-v2-quantile-20261023-01",
+    "train_contexts": 8192,
+    "rl_steps": 2000,
+    "rl_lr": 5e-05,
+    "rl_batch": 64,
+    "betas": "0.3",
+    "rewards": "completion",
+    "offline_steps": 1500,
+    "offline_lr": 5e-05,
+    "offline_arms": "",
+    "eval_every": 250,
+    "device": "cuda",
+    "tag": "quantile/",
+    "seed_offset": 2
+  },
+  "plan_document": "docs/RL-V2-PLAN.md",
+  "proxy": "mean of RM v2 seeds 0,1",
+  "judge": "RM v2 seed 2, never used in any objective",
+  "seeds": {
+    "contexts": 20263201,
+    "rl_batches": 20263202,
+    "offline": 20263203
+  },
+  "scope": "selection only; confirmation and final test untouched"
+}
