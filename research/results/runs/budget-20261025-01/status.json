@@ -1,0 +1,17 @@
+{
+  "status": "completed",
+  "stage": "done",
+  "pid": 7352,
+  "elapsed_seconds": 1608.1014829000014,
+  "contexts": 57344,
+  "step": 8000,
+  "last": {
+    "step": 8000,
+    "train_loss": 0.04170270636677742,
+    "eval_J": 0.22453618049621582,
+    "eval_expected": 0.24710974097251892,
+    "eval_kl": 0.07524524629116058,
+    "eval_NDCG@10": 0.1486952719310369,
+    "seconds": 682.6701302999973
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "created_utc": "2026-10-25T18:07:21.251799+00:00",
+  "protocol_sha256": "c93e7f55c8d32cdedceb350a73407e127406d53cf8878e0f22f8a28111bc8cea",
+  "arguments": {
+    "out": "artifacts/budget-20261025-01",
+    "policy": "artifacts/pps-20261022-01/full+pps+fb-d0.1-wd0.01/last.pt",
+    "rm_dir": "artifacts/reward-v2-20261022-01",
+    "pool": 65536,
+    "small_pool": 8192,
+    "top_k": 1024,
+    "steps": 8000,
+    "batch": 64,
+    "lr": 0.00015,
+    "settings": "completion:0.03,seconds:0.3",
+    "arms": "reverse:pool",
+    "analytic_k": "20,50,200,1024",
+    "eval_every": 1000,
+    "device": "cuda",
+    "precision": "fp16",
+    "cache_fp32": false,
+    "grad_diagnostic": 0
+  },
+  "plan_document": "docs/RL-V3-PLAN.md",
+  "proxy": "mean RM v2 seeds 0,1 on top-K of pi_ref, neutral tail",
+  "judge": "RM v2 seed 2, full catalog, evaluation only",
+  "seeds": {
+    "pool": 20261301,
+    "batches": 20261302
+  },
+  "scope": "selection only; confirmation and final test untouched; fixed last step reported, curves diagnostic only"
+}
