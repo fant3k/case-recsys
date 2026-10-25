@@ -1,0 +1,27 @@
+{
+  "created_utc": "2026-10-25T09:18:24.346826+00:00",
+  "plan_document": "docs/EXPLORATORY-PLAN.md",
+  "experiment": "E2",
+  "arguments": {
+    "experiment": "e2",
+    "out": "artifacts/exploratory-e2-20261025-01",
+    "pool": 65536,
+    "steps": 1000,
+    "batch": 64,
+    "lr": 1e-05,
+    "beta": 0.1,
+    "horizon": 5,
+    "eval_every": 250
+  },
+  "seeds": {
+    "pool": 20261301,
+    "batches": 20261304,
+    "sampling": 20261305
+  },
+  "simulator": "training RM (mean seeds 0,1) prediction appended as the generated track's listened ratio",
+  "reward": "sum over steps of training RM predictions; REINFORCE with reward-to-go and a leave-one-out batch baseline per step",
+  "kl": "exact KL to the reference on every step, repeats masked in both; -beta*KL of later steps enters the return of each action, the current-step KL gets its exact gradient",
+  "gap": "listened part of the previous track: simulated ratio x capped length",
+  "code_sha256": "14ddc9eaab3777c13a26b254458711abda46d20b75eb658f00470cf8bea0fcae",
+  "scope": "exploratory, selection window already used; final test untouched; fixed last step reported"
+}

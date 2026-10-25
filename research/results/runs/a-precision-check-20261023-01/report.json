@@ -1,0 +1,25 @@
+{
+  "created_utc": "2026-10-23T14:13:50.369286+00:00",
+  "window": "selection",
+  "beta": 0.03,
+  "top_k": 50,
+  "max_abs_reward_difference": 0.0002429485321044922,
+  "mean_abs_reward_difference": 7.2749491664581e-05,
+  "paths": {
+    "fp32_direct_top50": {
+      "users": 492,
+      "Recall@10": 0.09550390640739606,
+      "NDCG@10": 0.1582555761844212
+    },
+    "fp16_cache_gather": {
+      "users": 492,
+      "Recall@10": 0.09558047152602946,
+      "NDCG@10": 0.1585161814974002
+    }
+  },
+  "users_with_different_top10_order": 125,
+  "users_with_different_top10_set": 26,
+  "code_sha256": "989c9935a16a1529b71b77162cd059326b3457b2af1abe439b81a589912a30ee",
+  "elapsed_seconds": 15.666796299999987,
+  "final_test_scored": false
+}

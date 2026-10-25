@@ -1,0 +1,1227 @@
+{
+  "plan": {
+    "created_utc": "2026-10-21T18:17:59.038528+00:00",
+    "protocol_sha256": "c93e7f55c8d32cdedceb350a73407e127406d53cf8878e0f22f8a28111bc8cea",
+    "fit": "Two new RMs, identical initial tensors, shared 5000 train batches of64; history on/off; AdamW lr.001 wd.01, fp32MSE",
+    "seed": 20261028,
+    "training_steps": 5000,
+    "batch": 64,
+    "checkpoint_selection": "fixed last step, no validation earlystop",
+    "target": "clip played_ratio at100 /100 including zero; logged events only",
+    "evaluation": "ALL eligible in-catalog observed events in selection label day once; history strictly before entire event group",
+    "controls": [
+      "constant train mean",
+      "item train mean",
+      "paired neural item-only",
+      "old calibration RM"
+    ],
+    "diagnostics": [
+      "same fitted history RM with zero history branch",
+      "history shuffle permutation among event records"
+    ],
+    "slices": [
+      "recent128/older_only/never_seen",
+      "train popularity quartile",
+      "train median length <=120,120-300,>300 capped600"
+    ],
+    "calibration": "ten fixed prediction bins for conditional mean continuous response; no calibration fitting on selection",
+    "limits": [
+      "No unobserved candidates labeled dislike",
+      "No causal acceptance/retention inference without impressions/propensities",
+      "Permutation may sometimes retain the same user and is OOD; no-history diagnostic differs from separately fitted item-only",
+      "One initialization; confirmation/final untouched"
+    ]
+  },
+  "train_support": {
+    "users": 1000,
+    "eligible_training_users": 999,
+    "train_events": 4787599,
+    "catalog_size": 50000,
+    "in_catalog_train_events": 4109827,
+    "eligible_target_groups": 3305526,
+    "items_with_varying_recorded_length": 0,
+    "target_sampling": "uniform eligible user, then group, then in-catalog event",
+    "context_size": 128
+  },
+  "raw_selection_events": 22228,
+  "evaluated_unique_events": 17669,
+  "evaluated_users": 497,
+  "event_catalog_coverage": 0.7948983264351268,
+  "zero_response_event_fraction": 0.06706661384345464,
+  "models": {
+    "history_RM": {
+      "overall": {
+        "events": 17669,
+        "users": 497,
+        "MAE_event": 0.3453284086762545,
+        "RMSE_event": 0.4091539938434066,
+        "mean_prediction_bias": 0.02361590185879605,
+        "MAE_macro_users": 0.3505881138684061
+      },
+      "calibration": {
+        "bins": [
+          {
+            "lo": 0.0,
+            "hi": 0.1,
+            "n": 9,
+            "mean_prediction": 0.0850096121430397,
+            "mean_observed_response": 0.1611111130979326,
+            "absolute_calibration_gap": 0.0761015009548929
+          },
+          {
+            "lo": 0.1,
+            "hi": 0.2,
+            "n": 93,
+            "mean_prediction": 0.15986850425120322,
+            "mean_observed_response": 0.2540860207330796,
+            "absolute_calibration_gap": 0.0942175164818764
+          },
+          {
+            "lo": 0.2,
+            "hi": 0.3,
+            "n": 313,
+            "mean_prediction": 0.25804798466900286,
+            "mean_observed_response": 0.40578274811490084,
+            "absolute_calibration_gap": 0.14773476344589798
+          },
+          {
+            "lo": 0.3,
+            "hi": 0.4,
+            "n": 702,
+            "mean_prediction": 0.35765980324174607,
+            "mean_observed_response": 0.44025641013509953,
+            "absolute_calibration_gap": 0.08259660689335346
+          },
+          {
+            "lo": 0.4,
+            "hi": 0.5,
+            "n": 1364,
+            "mean_prediction": 0.4553619352909477,
+            "mean_observed_response": 0.4865835776424194,
+            "absolute_calibration_gap": 0.03122164235147168
+          },
+          {
+            "lo": 0.5,
+            "hi": 0.6,
+            "n": 2383,
+            "mean_prediction": 0.5549732001949347,
+            "mean_observed_response": 0.5379941253506657,
+            "absolute_calibration_gap": 0.01697907484426897
+          },
+          {
+            "lo": 0.6,
+            "hi": 0.7,
+            "n": 3377,
+            "mean_prediction": 0.6520671743346913,
+            "mean_observed_response": 0.601228901577536,
+            "absolute_calibration_gap": 0.050838272757155356
+          },
+          {
+            "lo": 0.7,
+            "hi": 0.8,
+            "n": 3749,
+            "mean_prediction": 0.7499889199432929,
+            "mean_observed_response": 0.7066897842948613,
+            "absolute_calibration_gap": 0.043299135648431575
+          },
+          {
+            "lo": 0.8,
+            "hi": 0.9,
+            "n": 3535,
+            "mean_prediction": 0.8498636202899873,
+            "mean_observed_response": 0.811106082756478,
+            "absolute_calibration_gap": 0.0387575375335093
+          },
+          {
+            "lo": 0.9,
+            "hi": 1.0,
+            "n": 2144,
+            "mean_prediction": 0.9341829741901871,
+            "mean_observed_response": 0.9052425383376445,
+            "absolute_calibration_gap": 0.02894043585254269
+          }
+        ],
+        "weighted_absolute_gap": 0.04130306714336406,
+        "note": "Calibration of conditional expected continuous clipped response, not click/acceptance ECE."
+      },
+      "slices": {
+        "recent128": {
+          "events": 4794,
+          "users": 355,
+          "MAE_event": 0.3733535332556287,
+          "RMSE_event": 0.43411631592734234,
+          "mean_prediction_bias": 0.03259558357301483,
+          "MAE_macro_users": 0.3819195425481047
+        },
+        "older_only": {
+          "events": 8910,
+          "users": 413,
+          "MAE_event": 0.3369845528212009,
+          "RMSE_event": 0.40389995886753316,
+          "mean_prediction_bias": 0.023465468136825745,
+          "MAE_macro_users": 0.3528687176135223
+        },
+        "never_seen": {
+          "events": 3965,
+          "users": 355,
+          "MAE_event": 0.3301938080293459,
+          "RMSE_event": 0.38930110089261766,
+          "mean_prediction_bias": 0.013096802319020672,
+          "MAE_macro_users": 0.33996124681806983
+        },
+        "popularity_quartile_1": {
+          "events": 1009,
+          "users": 276,
+          "MAE_event": 0.33465622810737344,
+          "RMSE_event": 0.40331307565716973,
+          "mean_prediction_bias": 0.025459342753390964,
+          "MAE_macro_users": 0.35260108406435603
+        },
+        "popularity_quartile_2": {
+          "events": 1793,
+          "users": 354,
+          "MAE_event": 0.34435521272087455,
+          "RMSE_event": 0.4161236586705014,
+          "mean_prediction_bias": 0.041723866302393296,
+          "MAE_macro_users": 0.35172617465307165
+        },
+        "popularity_quartile_3": {
+          "events": 3081,
+          "users": 398,
+          "MAE_event": 0.34257428765028514,
+          "RMSE_event": 0.4124249443033425,
+          "mean_prediction_bias": 0.0312723359706697,
+          "MAE_macro_users": 0.3483051848368147
+        },
+        "popularity_quartile_4": {
+          "events": 11786,
+          "users": 473,
+          "MAE_event": 0.3471100663568084,
+          "RMSE_event": 0.4077201471268771,
+          "mean_prediction_bias": 0.018701844026732684,
+          "MAE_macro_users": 0.35360061759950506
+        },
+        "length_le120": {
+          "events": 1020,
+          "users": 234,
+          "MAE_event": 0.317352321577788,
+          "RMSE_event": 0.38260573436559875,
+          "mean_prediction_bias": -0.009978744962855297,
+          "MAE_macro_users": 0.3361273486516843
+        },
+        "length_120_300": {
+          "events": 15947,
+          "users": 496,
+          "MAE_event": 0.3451399676253663,
+          "RMSE_event": 0.40898473075874664,
+          "mean_prediction_bias": 0.022443980080880156,
+          "MAE_macro_users": 0.3481101187747022
+        },
+        "length_gt300": {
+          "events": 702,
+          "users": 214,
+          "MAE_event": 0.39025814981435947,
+          "RMSE_event": 0.44843554976503935,
+          "mean_prediction_bias": 0.09905062600482054,
+          "MAE_macro_users": 0.384580234089322
+        }
+      }
+    },
+    "item_only_RM": {
+      "overall": {
+        "events": 17669,
+        "users": 497,
+        "MAE_event": 0.4006617582493836,
+        "RMSE_event": 0.43247063664856644,
+        "mean_prediction_bias": -0.01864692251310212,
+        "MAE_macro_users": 0.39586197460286937
+      },
+      "calibration": {
+        "bins": [
+          {
+            "lo": 0.0,
+            "hi": 0.1,
+            "n": 1,
+            "mean_prediction": 0.0661691278219223,
+            "mean_observed_response": 1.0,
+            "absolute_calibration_gap": 0.9338308721780777
+          },
+          {
+            "lo": 0.1,
+            "hi": 0.2,
+            "n": 1,
+            "mean_prediction": 0.18254192173480988,
+            "mean_observed_response": 1.0,
+            "absolute_calibration_gap": 0.8174580782651901
+          },
+          {
+            "lo": 0.2,
+            "hi": 0.3,
+            "n": 2,
+            "mean_prediction": 0.24996936321258545,
+            "mean_observed_response": 0.5299999993294477,
+            "absolute_calibration_gap": 0.2800306361168623
+          },
+          {
+            "lo": 0.3,
+            "hi": 0.4,
+            "n": 84,
+            "mean_prediction": 0.36217170634440016,
+            "mean_observed_response": 0.542857142276175,
+            "absolute_calibration_gap": 0.18068543593177483
+          },
+          {
+            "lo": 0.4,
+            "hi": 0.5,
+            "n": 600,
+            "mean_prediction": 0.46932808443903923,
+            "mean_observed_response": 0.6101333333489796,
+            "absolute_calibration_gap": 0.14080524890994034
+          },
+          {
+            "lo": 0.5,
+            "hi": 0.6,
+            "n": 3449,
+            "mean_prediction": 0.5618658970321009,
+            "mean_observed_response": 0.623554653723293,
+            "absolute_calibration_gap": 0.061688756691192115
+          },
+          {
+            "lo": 0.6,
+            "hi": 0.7,
+            "n": 8235,
+            "mean_prediction": 0.6520107974843973,
+            "mean_observed_response": 0.6628670313459457,
+            "absolute_calibration_gap": 0.010856233861548437
+          },
+          {
+            "lo": 0.7,
+            "hi": 0.8,
+            "n": 4858,
+            "mean_prediction": 0.7378460461708586,
+            "mean_observed_response": 0.7244606840126324,
+            "absolute_calibration_gap": 0.013385362158226166
+          },
+          {
+            "lo": 0.8,
+            "hi": 0.9,
+            "n": 438,
+            "mean_prediction": 0.8217717745260561,
+            "mean_observed_response": 0.79956621140854,
+            "absolute_calibration_gap": 0.02220556311751609
+          },
+          {
+            "lo": 0.9,
+            "hi": 1.0,
+            "n": 1,
+            "mean_prediction": 0.9030839800834656,
+            "mean_observed_response": 0.9900000095367432,
+            "absolute_calibration_gap": 0.08691602945327759
+          }
+        ],
+        "weighted_absolute_gap": 0.027108309802720658,
+        "note": "Calibration of conditional expected continuous clipped response, not click/acceptance ECE."
+      },
+      "slices": {
+        "recent128": {
+          "events": 4794,
+          "users": 355,
+          "MAE_event": 0.4055958165723829,
+          "RMSE_event": 0.4390255200982495,
+          "mean_prediction_bias": 0.011535590512209452,
+          "MAE_macro_users": 0.40351167407952543
+        },
+        "older_only": {
+          "events": 8910,
+          "users": 413,
+          "MAE_event": 0.39962625984629296,
+          "RMSE_event": 0.43138056116738044,
+          "mean_prediction_bias": -0.029420696704634847,
+          "MAE_macro_users": 0.39791982916001956
+        },
+        "never_seen": {
+          "events": 3965,
+          "users": 355,
+          "MAE_event": 0.3970230231096811,
+          "RMSE_event": 0.4268957575484743,
+          "mean_prediction_bias": -0.030929555400059774,
+          "MAE_macro_users": 0.3923099929328767
+        },
+        "popularity_quartile_1": {
+          "events": 1009,
+          "users": 276,
+          "MAE_event": 0.4037852848707389,
+          "RMSE_event": 0.432743709757735,
+          "mean_prediction_bias": -0.03579764531111221,
+          "MAE_macro_users": 0.4036741250037482
+        },
+        "popularity_quartile_2": {
+          "events": 1793,
+          "users": 354,
+          "MAE_event": 0.40415563123332876,
+          "RMSE_event": 0.4357194335858382,
+          "mean_prediction_bias": -0.009581078055828427,
+          "MAE_macro_users": 0.40251689142992914
+        },
+        "popularity_quartile_3": {
+          "events": 3081,
+          "users": 398,
+          "MAE_event": 0.4024202635312856,
+          "RMSE_event": 0.43279616305689356,
+          "mean_prediction_bias": -0.022390089592364694,
+          "MAE_macro_users": 0.40003664542231265
+        },
+        "popularity_quartile_4": {
+          "events": 11786,
+          "users": 473,
+          "MAE_event": 0.39940313722488835,
+          "RMSE_event": 0.43186560502847743,
+          "mean_prediction_bias": -0.017579323839887424,
+          "MAE_macro_users": 0.39498352293130085
+        },
+        "length_le120": {
+          "events": 1020,
+          "users": 234,
+          "MAE_event": 0.36879769400967394,
+          "RMSE_event": 0.4036350863489816,
+          "mean_prediction_bias": -0.05318129067583119,
+          "MAE_macro_users": 0.384708631764561
+        },
+        "length_120_300": {
+          "events": 15947,
+          "users": 496,
+          "MAE_event": 0.40094109409194223,
+          "RMSE_event": 0.4328174641362754,
+          "mean_prediction_bias": -0.019178204952777198,
+          "MAE_macro_users": 0.39463552218460646
+        },
+        "length_gt300": {
+          "events": 702,
+          "users": 214,
+          "MAE_event": 0.4406144318152272,
+          "RMSE_event": 0.46394449060254095,
+          "mean_prediction_bias": 0.043600109668496326,
+          "MAE_macro_users": 0.42827217536615325
+        }
+      }
+    },
+    "old_history_RM": {
+      "overall": {
+        "events": 17669,
+        "users": 497,
+        "MAE_event": 0.33205944410250593,
+        "RMSE_event": 0.41352420191373734,
+        "mean_prediction_bias": 0.061384871484727266,
+        "MAE_macro_users": 0.34138328579572147
+      },
+      "calibration": {
+        "bins": [
+          {
+            "lo": 0.0,
+            "hi": 0.1,
+            "n": 27,
+            "mean_prediction": 0.0835398899184333,
+            "mean_observed_response": 0.6548148147347901,
+            "absolute_calibration_gap": 0.5712749248163568
+          },
+          {
+            "lo": 0.1,
+            "hi": 0.2,
+            "n": 50,
+            "mean_prediction": 0.1501993153989315,
+            "mean_observed_response": 0.37880000021308663,
+            "absolute_calibration_gap": 0.22860068481415513
+          },
+          {
+            "lo": 0.2,
+            "hi": 0.3,
+            "n": 194,
+            "mean_prediction": 0.2581571398936596,
+            "mean_observed_response": 0.45489690750453277,
+            "absolute_calibration_gap": 0.19673976761087314
+          },
+          {
+            "lo": 0.3,
+            "hi": 0.4,
+            "n": 651,
+            "mean_prediction": 0.3596152480113708,
+            "mean_observed_response": 0.47803379439916205,
+            "absolute_calibration_gap": 0.11841854638779126
+          },
+          {
+            "lo": 0.4,
+            "hi": 0.5,
+            "n": 1239,
+            "mean_prediction": 0.45299328783041437,
+            "mean_observed_response": 0.45740920125752615,
+            "absolute_calibration_gap": 0.004415913427111784
+          },
+          {
+            "lo": 0.5,
+            "hi": 0.6,
+            "n": 2078,
+            "mean_prediction": 0.553006076835691,
+            "mean_observed_response": 0.4965158805369442,
+            "absolute_calibration_gap": 0.05649019629874685
+          },
+          {
+            "lo": 0.6,
+            "hi": 0.7,
+            "n": 2570,
+            "mean_prediction": 0.6500220208084537,
+            "mean_observed_response": 0.5495875487241764,
+            "absolute_calibration_gap": 0.10043447208427736
+          },
+          {
+            "lo": 0.7,
+            "hi": 0.8,
+            "n": 3057,
+            "mean_prediction": 0.7510687759548845,
+            "mean_observed_response": 0.6596728821044698,
+            "absolute_calibration_gap": 0.09139589385041469
+          },
+          {
+            "lo": 0.8,
+            "hi": 0.9,
+            "n": 3905,
+            "mean_prediction": 0.8521448876274685,
+            "mean_observed_response": 0.7685428942655059,
+            "absolute_calibration_gap": 0.08360199336196261
+          },
+          {
+            "lo": 0.9,
+            "hi": 1.0,
+            "n": 3898,
+            "mean_prediction": 0.9442706023992301,
+            "mean_observed_response": 0.8799230384995436,
+            "absolute_calibration_gap": 0.06434756389968654
+          }
+        ],
+        "weighted_absolute_gap": 0.07809026087426854,
+        "note": "Calibration of conditional expected continuous clipped response, not click/acceptance ECE."
+      },
+      "slices": {
+        "recent128": {
+          "events": 4794,
+          "users": 355,
+          "MAE_event": 0.36501850605999425,
+          "RMSE_event": 0.44326542980722033,
+          "mean_prediction_bias": 0.06751896496155037,
+          "MAE_macro_users": 0.3744530020374842
+        },
+        "older_only": {
+          "events": 8910,
+          "users": 413,
+          "MAE_event": 0.32327155698232946,
+          "RMSE_event": 0.40867389469571735,
+          "mean_prediction_bias": 0.06282072306519706,
+          "MAE_macro_users": 0.343565683764899
+        },
+        "never_seen": {
+          "events": 3965,
+          "users": 355,
+          "MAE_event": 0.3119571316728902,
+          "RMSE_event": 0.3862046382276746,
+          "mean_prediction_bias": 0.050741673071139394,
+          "MAE_macro_users": 0.33492435078070953
+        },
+        "popularity_quartile_1": {
+          "events": 1009,
+          "users": 276,
+          "MAE_event": 0.31872701059336467,
+          "RMSE_event": 0.4020545110587491,
+          "mean_prediction_bias": 0.058601632721655667,
+          "MAE_macro_users": 0.34330648944454567
+        },
+        "popularity_quartile_2": {
+          "events": 1793,
+          "users": 354,
+          "MAE_event": 0.3323569651017858,
+          "RMSE_event": 0.4220804875588209,
+          "mean_prediction_bias": 0.06667377550219333,
+          "MAE_macro_users": 0.3424029323516028
+        },
+        "popularity_quartile_3": {
+          "events": 3081,
+          "users": 398,
+          "MAE_event": 0.32571039510439237,
+          "RMSE_event": 0.4109665629410455,
+          "mean_prediction_bias": 0.06744548477503298,
+          "MAE_macro_users": 0.3309967277098955
+        },
+        "popularity_quartile_4": {
+          "events": 11786,
+          "users": 473,
+          "MAE_event": 0.33481528919178155,
+          "RMSE_event": 0.41384378002083017,
+          "mean_prediction_bias": 0.05923422949093723,
+          "MAE_macro_users": 0.34225013226349604
+        },
+        "length_le120": {
+          "events": 1020,
+          "users": 234,
+          "MAE_event": 0.30203154852029446,
+          "RMSE_event": 0.38761003151600415,
+          "mean_prediction_bias": 0.02645290446668571,
+          "MAE_macro_users": 0.33420271614756153
+        },
+        "length_120_300": {
+          "events": 15947,
+          "users": 496,
+          "MAE_event": 0.33168008319663056,
+          "RMSE_event": 0.41343744054543025,
+          "mean_prediction_bias": 0.06081438758614041,
+          "MAE_macro_users": 0.3383188024217573
+        },
+        "length_gt300": {
+          "events": 702,
+          "users": 214,
+          "MAE_event": 0.3843074809399001,
+          "RMSE_event": 0.45033021211970753,
+          "mean_prediction_bias": 0.1251001322955063,
+          "MAE_macro_users": 0.3674289572068962
+        }
+      }
+    },
+    "history_RM_zeroed": {
+      "overall": {
+        "events": 17669,
+        "users": 497,
+        "MAE_event": 0.4364186682244951,
+        "RMSE_event": 0.4492098415573449,
+        "mean_prediction_bias": -0.1237508889346323,
+        "MAE_macro_users": 0.4326728014397812
+      },
+      "calibration": {
+        "bins": [
+          {
+            "lo": 0.3,
+            "hi": 0.4,
+            "n": 3,
+            "mean_prediction": 0.39172565937042236,
+            "mean_observed_response": 0.6699999999254942,
+            "absolute_calibration_gap": 0.27827434055507183
+          },
+          {
+            "lo": 0.4,
+            "hi": 0.5,
+            "n": 1593,
+            "mean_prediction": 0.48265952199267204,
+            "mean_observed_response": 0.6325360954612288,
+            "absolute_calibration_gap": 0.14987657346855676
+          },
+          {
+            "lo": 0.5,
+            "hi": 0.6,
+            "n": 14606,
+            "mean_prediction": 0.549943426459942,
+            "mean_observed_response": 0.6722586612330244,
+            "absolute_calibration_gap": 0.12231523477308237
+          },
+          {
+            "lo": 0.6,
+            "hi": 0.7,
+            "n": 1467,
+            "mean_prediction": 0.6173415598856322,
+            "mean_observed_response": 0.7267007507058781,
+            "absolute_calibration_gap": 0.10935919082024592
+          }
+        ],
+        "weighted_absolute_gap": 0.1237508889346323,
+        "note": "Calibration of conditional expected continuous clipped response, not click/acceptance ECE."
+      },
+      "slices": {
+        "recent128": {
+          "events": 4794,
+          "users": 355,
+          "MAE_event": 0.4324713033570764,
+          "RMSE_event": 0.44768052466254865,
+          "mean_prediction_bias": -0.08931684073466384,
+          "MAE_macro_users": 0.430536518248927
+        },
+        "older_only": {
+          "events": 8910,
+          "users": 413,
+          "MAE_event": 0.4382494342625225,
+          "RMSE_event": 0.4502848634236692,
+          "mean_prediction_bias": -0.135891662625644,
+          "MAE_macro_users": 0.4321218783923607
+        },
+        "never_seen": {
+          "events": 3965,
+          "users": 355,
+          "MAE_event": 0.4370773168438094,
+          "RMSE_event": 0.4486367544588492,
+          "mean_prediction_bias": -0.1381020953618037,
+          "MAE_macro_users": 0.42691096840361203
+        },
+        "popularity_quartile_1": {
+          "events": 1009,
+          "users": 276,
+          "MAE_event": 0.43959726543120514,
+          "RMSE_event": 0.451339664818805,
+          "mean_prediction_bias": -0.14139948286876688,
+          "MAE_macro_users": 0.4340769445364717
+        },
+        "popularity_quartile_2": {
+          "events": 1793,
+          "users": 354,
+          "MAE_event": 0.44109878914064027,
+          "RMSE_event": 0.4528807637412682,
+          "mean_prediction_bias": -0.12004979953535495,
+          "MAE_macro_users": 0.4358517565869483
+        },
+        "popularity_quartile_3": {
+          "events": 3081,
+          "users": 398,
+          "MAE_event": 0.437436484514395,
+          "RMSE_event": 0.44966698823886797,
+          "mean_prediction_bias": -0.1321643612733554,
+          "MAE_macro_users": 0.4354549158926771
+        },
+        "popularity_quartile_4": {
+          "events": 11786,
+          "users": 473,
+          "MAE_event": 0.4351684940030968,
+          "RMSE_event": 0.44834594204359357,
+          "mean_prediction_bias": -0.12060365609378355,
+          "MAE_macro_users": 0.4319800033962798
+        },
+        "length_le120": {
+          "events": 1020,
+          "users": 234,
+          "MAE_event": 0.42276047732060157,
+          "RMSE_event": 0.43485491497977713,
+          "mean_prediction_bias": -0.16643935867640025,
+          "MAE_macro_users": 0.4299584408026145
+        },
+        "length_120_300": {
+          "events": 15947,
+          "users": 496,
+          "MAE_event": 0.4368438584782707,
+          "RMSE_event": 0.44963769803203324,
+          "mean_prediction_bias": -0.12510494082827864,
+          "MAE_macro_users": 0.4324962401727757
+        },
+        "length_gt300": {
+          "events": 702,
+          "users": 214,
+          "MAE_event": 0.4466050581746546,
+          "RMSE_event": 0.45988332061062764,
+          "mean_prediction_bias": -0.03096555462611197,
+          "MAE_macro_users": 0.44297370494189925
+        }
+      }
+    },
+    "history_RM_shuffled": {
+      "overall": {
+        "events": 17669,
+        "users": 497,
+        "MAE_event": 0.3988329924973422,
+        "RMSE_event": 0.46524818723032635,
+        "mean_prediction_bias": 0.02335401801386638,
+        "MAE_macro_users": 0.38982824468655325
+      },
+      "calibration": {
+        "bins": [
+          {
+            "lo": 0.0,
+            "hi": 0.1,
+            "n": 13,
+            "mean_prediction": 0.07036966687211624,
+            "mean_observed_response": 0.6484615411609411,
+            "absolute_calibration_gap": 0.5780918742888249
+          },
+          {
+            "lo": 0.1,
+            "hi": 0.2,
+            "n": 95,
+            "mean_prediction": 0.16166766881942748,
+            "mean_observed_response": 0.6929473690296474,
+            "absolute_calibration_gap": 0.5312797002102199
+          },
+          {
+            "lo": 0.2,
+            "hi": 0.3,
+            "n": 290,
+            "mean_prediction": 0.25847878301965777,
+            "mean_observed_response": 0.7014482759838474,
+            "absolute_calibration_gap": 0.44296949296418964
+          },
+          {
+            "lo": 0.3,
+            "hi": 0.4,
+            "n": 701,
+            "mean_prediction": 0.354938318317865,
+            "mean_observed_response": 0.6737375184335612,
+            "absolute_calibration_gap": 0.31879920011569624
+          },
+          {
+            "lo": 0.4,
+            "hi": 0.5,
+            "n": 1394,
+            "mean_prediction": 0.4565125683287808,
+            "mean_observed_response": 0.6715853661272028,
+            "absolute_calibration_gap": 0.21507279779842198
+          },
+          {
+            "lo": 0.5,
+            "hi": 0.6,
+            "n": 2385,
+            "mean_prediction": 0.5550880620814469,
+            "mean_observed_response": 0.6741048223098869,
+            "absolute_calibration_gap": 0.11901676022843999
+          },
+          {
+            "lo": 0.6,
+            "hi": 0.7,
+            "n": 3295,
+            "mean_prediction": 0.6528504657275036,
+            "mean_observed_response": 0.6598907439696725,
+            "absolute_calibration_gap": 0.007040278242168907
+          },
+          {
+            "lo": 0.7,
+            "hi": 0.8,
+            "n": 3774,
+            "mean_prediction": 0.7488651691161582,
+            "mean_observed_response": 0.666648119016317,
+            "absolute_calibration_gap": 0.08221705009984115
+          },
+          {
+            "lo": 0.8,
+            "hi": 0.9,
+            "n": 3691,
+            "mean_prediction": 0.8493673222816207,
+            "mean_observed_response": 0.6842481716690154,
+            "absolute_calibration_gap": 0.1651191506126053
+          },
+          {
+            "lo": 0.9,
+            "hi": 1.0,
+            "n": 2031,
+            "mean_prediction": 0.9328806211301577,
+            "mean_observed_response": 0.6819251605150428,
+            "absolute_calibration_gap": 0.25095546061511487
+          }
+        ],
+        "weighted_absolute_gap": 0.13844715607603403,
+        "note": "Calibration of conditional expected continuous clipped response, not click/acceptance ECE."
+      },
+      "slices": {
+        "recent128": {
+          "events": 4794,
+          "users": 355,
+          "MAE_event": 0.40751819972618697,
+          "RMSE_event": 0.4751844032817962,
+          "mean_prediction_bias": 0.05710625295551757,
+          "MAE_macro_users": 0.41069976634907635
+        },
+        "older_only": {
+          "events": 8910,
+          "users": 413,
+          "MAE_event": 0.39597308951901433,
+          "RMSE_event": 0.4619199019147478,
+          "mean_prediction_bias": 0.010469945971921973,
+          "MAE_macro_users": 0.38960597942319847
+        },
+        "never_seen": {
+          "events": 3965,
+          "users": 355,
+          "MAE_event": 0.3947585541825427,
+          "RMSE_event": 0.4605347965264639,
+          "mean_prediction_bias": 0.011497490292163695,
+          "MAE_macro_users": 0.39263936883259604
+        },
+        "popularity_quartile_1": {
+          "events": 1009,
+          "users": 276,
+          "MAE_event": 0.38966756596481955,
+          "RMSE_event": 0.4600522699287321,
+          "mean_prediction_bias": 0.02068691863516868,
+          "MAE_macro_users": 0.3893100856420449
+        },
+        "popularity_quartile_2": {
+          "events": 1793,
+          "users": 354,
+          "MAE_event": 0.40496586043983945,
+          "RMSE_event": 0.4735508870155933,
+          "mean_prediction_bias": 0.02970873306640951,
+          "MAE_macro_users": 0.4089521419040348
+        },
+        "popularity_quartile_3": {
+          "events": 3081,
+          "users": 398,
+          "MAE_event": 0.40109357894910636,
+          "RMSE_event": 0.4660050775890859,
+          "mean_prediction_bias": 0.016772397951316964,
+          "MAE_macro_users": 0.3920703354682663
+        },
+        "popularity_quartile_4": {
+          "events": 11786,
+          "users": 473,
+          "MAE_event": 0.3980937099835574,
+          "RMSE_event": 0.4642170050991428,
+          "mean_prediction_bias": 0.024336121407435945,
+          "MAE_macro_users": 0.39083907593225387
+        },
+        "length_le120": {
+          "events": 1020,
+          "users": 234,
+          "MAE_event": 0.3642852221506045,
+          "RMSE_event": 0.43207622596724965,
+          "mean_prediction_bias": -0.023368353058821432,
+          "MAE_macro_users": 0.3841171137939426
+        },
+        "length_120_300": {
+          "events": 15947,
+          "users": 496,
+          "MAE_event": 0.39876813702801556,
+          "RMSE_event": 0.4652251004098596,
+          "mean_prediction_bias": 0.022005570511520935,
+          "MAE_macro_users": 0.38671520970763956
+        },
+        "length_gt300": {
+          "events": 702,
+          "users": 214,
+          "MAE_event": 0.4505038983705971,
+          "RMSE_event": 0.5100917796753984,
+          "mean_prediction_bias": 0.12187326418771872,
+          "MAE_macro_users": 0.42842295173594136
+        }
+      }
+    },
+    "constant_train_mean": {
+      "overall": {
+        "events": 17669,
+        "users": 497,
+        "MAE_event": 0.40577600842011086,
+        "RMSE_event": 0.4326828434569465,
+        "mean_prediction_bias": -0.012971738706545407,
+        "MAE_macro_users": 0.39938235039358544
+      },
+      "calibration": {
+        "bins": [
+          {
+            "lo": 0.6,
+            "hi": 0.7,
+            "n": 17669,
+            "mean_prediction": 0.6602253866160304,
+            "mean_observed_response": 0.6731971253225758,
+            "absolute_calibration_gap": 0.012971738706545444
+          }
+        ],
+        "weighted_absolute_gap": 0.012971738706545444,
+        "note": "Calibration of conditional expected continuous clipped response, not click/acceptance ECE."
+      },
+      "slices": {
+        "recent128": {
+          "events": 4794,
+          "users": 355,
+          "MAE_event": 0.4093525000001271,
+          "RMSE_event": 0.4393139888242932,
+          "mean_prediction_bias": 0.021892052952844878,
+          "MAE_macro_users": 0.406699036030028
+        },
+        "older_only": {
+          "events": 8910,
+          "users": 413,
+          "MAE_event": 0.4051140950023152,
+          "RMSE_event": 0.43130383467505123,
+          "mean_prediction_bias": -0.02612814916085016,
+          "MAE_macro_users": 0.3994144302845645
+        },
+        "never_seen": {
+          "events": 3965,
+          "users": 355,
+          "MAE_event": 0.40293917309046684,
+          "RMSE_event": 0.42766869012819686,
+          "mean_prediction_bias": -0.025560238092992238,
+          "MAE_macro_users": 0.3951623121676088
+        },
+        "popularity_quartile_1": {
+          "events": 1009,
+          "users": 276,
+          "MAE_event": 0.4051845963069245,
+          "RMSE_event": 0.43201958234200594,
+          "mean_prediction_bias": -0.021241412269991364,
+          "MAE_macro_users": 0.4027012778109815
+        },
+        "popularity_quartile_2": {
+          "events": 1793,
+          "users": 354,
+          "MAE_event": 0.41049143281321937,
+          "RMSE_event": 0.4377372827913424,
+          "mean_prediction_bias": -0.006601161360870765,
+          "MAE_macro_users": 0.4060784825708478
+        },
+        "popularity_quartile_3": {
+          "events": 3081,
+          "users": 398,
+          "MAE_event": 0.40561286574857613,
+          "RMSE_event": 0.43193712087475555,
+          "mean_prediction_bias": -0.017116385786953663,
+          "MAE_macro_users": 0.3997288113211014
+        },
+        "popularity_quartile_4": {
+          "events": 11786,
+          "users": 473,
+          "MAE_event": 0.40515193082434975,
+          "RMSE_event": 0.4321606180884073,
+          "mean_prediction_bias": -0.01214946540776209,
+          "MAE_macro_users": 0.3989954101911023
+        },
+        "length_le120": {
+          "events": 1020,
+          "users": 234,
+          "MAE_event": 0.38487866690117584,
+          "RMSE_event": 0.4078961564215085,
+          "mean_prediction_bias": -0.07609814440527889,
+          "MAE_macro_users": 0.39869888519869184
+        },
+        "length_120_300": {
+          "events": 15947,
+          "users": 496,
+          "MAE_event": 0.40555610508661133,
+          "RMSE_event": 0.4323116692403677,
+          "mean_prediction_bias": -0.014575516734691832,
+          "MAE_macro_users": 0.3973925067552507
+        },
+        "length_gt300": {
+          "events": 702,
+          "users": 214,
+          "MAE_event": 0.4411351064381038,
+          "RMSE_event": 0.4741109736530851,
+          "mean_prediction_bias": 0.11518265164610297,
+          "MAE_macro_users": 0.4222976416941287
+        }
+      }
+    },
+    "item_train_mean": {
+      "overall": {
+        "events": 17669,
+        "users": 497,
+        "MAE_event": 0.37165833329221587,
+        "RMSE_event": 0.4182656110348686,
+        "mean_prediction_bias": 7.184097408738968e-05,
+        "MAE_macro_users": 0.37063263952201064
+      },
+      "calibration": {
+        "bins": [
+          {
+            "lo": 0.0,
+            "hi": 0.1,
+            "n": 11,
+            "mean_prediction": 0.08139922469854355,
+            "mean_observed_response": 0.13909090784463016,
+            "absolute_calibration_gap": 0.05769168314608661
+          },
+          {
+            "lo": 0.1,
+            "hi": 0.2,
+            "n": 33,
+            "mean_prediction": 0.16519443690776825,
+            "mean_observed_response": 0.2954545439305631,
+            "absolute_calibration_gap": 0.13026010702279484
+          },
+          {
+            "lo": 0.2,
+            "hi": 0.3,
+            "n": 108,
+            "mean_prediction": 0.2555868625640869,
+            "mean_observed_response": 0.4219444448093849,
+            "absolute_calibration_gap": 0.166357582245298
+          },
+          {
+            "lo": 0.3,
+            "hi": 0.4,
+            "n": 332,
+            "mean_prediction": 0.3578804135322571,
+            "mean_observed_response": 0.4083734938807516,
+            "absolute_calibration_gap": 0.050493080348494535
+          },
+          {
+            "lo": 0.4,
+            "hi": 0.5,
+            "n": 1066,
+            "mean_prediction": 0.4590689241886139,
+            "mean_observed_response": 0.5151688555503652,
+            "absolute_calibration_gap": 0.05609993136175129
+          },
+          {
+            "lo": 0.5,
+            "hi": 0.6,
+            "n": 3288,
+            "mean_prediction": 0.5601115226745605,
+            "mean_observed_response": 0.5789020682901479,
+            "absolute_calibration_gap": 0.01879054561558735
+          },
+          {
+            "lo": 0.6,
+            "hi": 0.7,
+            "n": 5674,
+            "mean_prediction": 0.6522281765937805,
+            "mean_observed_response": 0.64044236903567,
+            "absolute_calibration_gap": 0.01178580755811054
+          },
+          {
+            "lo": 0.7,
+            "hi": 0.8,
+            "n": 4160,
+            "mean_prediction": 0.7441467046737671,
+            "mean_observed_response": 0.7370697120352325,
+            "absolute_calibration_gap": 0.007076992638534563
+          },
+          {
+            "lo": 0.8,
+            "hi": 0.9,
+            "n": 2100,
+            "mean_prediction": 0.8436092734336853,
+            "mean_observed_response": 0.8251476198035691,
+            "absolute_calibration_gap": 0.018461653630116204
+          },
+          {
+            "lo": 0.9,
+            "hi": 1.0,
+            "n": 897,
+            "mean_prediction": 0.9411773681640625,
+            "mean_observed_response": 0.9105908598256616,
+            "absolute_calibration_gap": 0.03058650833840093
+          }
+        ],
+        "weighted_absolute_gap": 0.018324063981212425,
+        "note": "Calibration of conditional expected continuous clipped response, not click/acceptance ECE."
+      },
+      "slices": {
+        "recent128": {
+          "events": 4794,
+          "users": 355,
+          "MAE_event": 0.3834360738828449,
+          "RMSE_event": 0.4276598842722151,
+          "mean_prediction_bias": 0.02020091658110762,
+          "MAE_macro_users": 0.3826135355978448
+        },
+        "older_only": {
+          "events": 8910,
+          "users": 413,
+          "MAE_event": 0.3654063430835318,
+          "RMSE_event": 0.41253464416232627,
+          "mean_prediction_bias": -0.005819936360699761,
+          "MAE_macro_users": 0.3727654719782006
+        },
+        "never_seen": {
+          "events": 3965,
+          "users": 355,
+          "MAE_event": 0.37146734826520444,
+          "RMSE_event": 0.4195677923563821,
+          "mean_prediction_bias": -0.011026028485459007,
+          "MAE_macro_users": 0.37688541155924526
+        },
+        "popularity_quartile_1": {
+          "events": 1009,
+          "users": 276,
+          "MAE_event": 0.3406257066207433,
+          "RMSE_event": 0.4094107169039341,
+          "mean_prediction_bias": -0.011450799926007822,
+          "MAE_macro_users": 0.35706100732571894
+        },
+        "popularity_quartile_2": {
+          "events": 1793,
+          "users": 354,
+          "MAE_event": 0.35021791482688125,
+          "RMSE_event": 0.415204961280042,
+          "mean_prediction_bias": 0.016773833152025158,
+          "MAE_macro_users": 0.3587995708058843
+        },
+        "popularity_quartile_3": {
+          "events": 3081,
+          "users": 398,
+          "MAE_event": 0.36297986766033863,
+          "RMSE_event": 0.4161401161586577,
+          "mean_prediction_bias": 0.0049098467618149625,
+          "MAE_macro_users": 0.3661223606155141
+        },
+        "popularity_quartile_4": {
+          "events": 11786,
+          "users": 473,
+          "MAE_event": 0.3798454148492899,
+          "RMSE_event": 0.42003006268559506,
+          "mean_prediction_bias": -0.0027472853740235044,
+          "MAE_macro_users": 0.37633631223496383
+        },
+        "length_le120": {
+          "events": 1020,
+          "users": 234,
+          "MAE_event": 0.32423717779308264,
+          "RMSE_event": 0.3815540409980337,
+          "mean_prediction_bias": -0.011539791033183243,
+          "MAE_macro_users": 0.34635387585282945
+        },
+        "length_120_300": {
+          "events": 15947,
+          "users": 496,
+          "MAE_event": 0.37336709359037606,
+          "RMSE_event": 0.41949233882323966,
+          "mean_prediction_bias": -0.0010529235967829092,
+          "MAE_macro_users": 0.37012027692996113
+        },
+        "length_gt300": {
+          "events": 702,
+          "users": 214,
+          "MAE_event": 0.4017437722300447,
+          "RMSE_event": 0.44075388329514903,
+          "mean_prediction_bias": 0.04249418464799722,
+          "MAE_macro_users": 0.40279968169131397
+        }
+      }
+    }
+  },
+  "comparisons": {
+    "history_minus_item_only_RM": {
+      "macro_MAE_difference_lower_better": -0.04527386073446328,
+      "paired_user_bootstrap95": [
+        -0.05491242187561493,
+        -0.03573089540927945
+      ],
+      "caution": "Fixed selection window, no multiplicity correction, no training-seed uncertainty"
+    },
+    "history_minus_item_train_mean": {
+      "macro_MAE_difference_lower_better": -0.020044525653604598,
+      "paired_user_bootstrap95": [
+        -0.02934105439223167,
+        -0.010663765571716154
+      ],
+      "caution": "Fixed selection window, no multiplicity correction, no training-seed uncertainty"
+    },
+    "history_minus_old_history_RM": {
+      "macro_MAE_difference_lower_better": 0.009204828072684601,
+      "paired_user_bootstrap95": [
+        0.0026828240351423824,
+        0.01579621574203891
+      ],
+      "caution": "Fixed selection window, no multiplicity correction, no training-seed uncertainty"
+    },
+    "history_minus_history_RM_zeroed": {
+      "macro_MAE_difference_lower_better": -0.08208468757137517,
+      "paired_user_bootstrap95": [
+        -0.09370115063649008,
+        -0.07005245177398091
+      ],
+      "caution": "Fixed selection window, no multiplicity correction, no training-seed uncertainty"
+    },
+    "history_minus_history_RM_shuffled": {
+      "macro_MAE_difference_lower_better": -0.039240130818147236,
+      "paired_user_bootstrap95": [
+        -0.04927970517860872,
+        -0.028228793504096267
+      ],
+      "caution": "Fixed selection window, no multiplicity correction, no training-seed uncertainty"
+    }
+  },
+  "paired_initial_tensors_identical": true,
+  "training_seconds_paired": 46.87909369999943,
+  "elapsed_seconds": 51.536316000001534,
+  "confirmation_scored": false,
+  "final_test_scored": false,
+  "old_RM_checkpoint_sha256": "27ba76fae0ca5799c1a786fbe45b708385ff0b31f2b13ed4b5ff5761a59a8e0b"
+}

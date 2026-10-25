@@ -1,0 +1,503 @@
+{
+  "plan": {
+    "started_utc": "2026-10-21T17:22:26.351226+00:00",
+    "checkpoint": "artifacts/sft-20261021-01/best.pt",
+    "protocol_sha256": "c93e7f55c8d32cdedceb350a73407e127406d53cf8878e0f22f8a28111bc8cea",
+    "scope": "selection_validation only; no confirmation/final scoring",
+    "context_events": 128,
+    "half_lives_seconds": [
+      3600,
+      86400,
+      604800
+    ],
+    "transitions": "adjacent distinct timestamp groups, train only, max gap1800s; row normalized; recent128 sources weighted with half-life86400s",
+    "transition_variants": [
+      "conditional_probability",
+      "divide_candidate_score_by_sqrt_train_count"
+    ],
+    "slices": "seen in recent128 / seen earlier only / never seen in all past; OOV remains in truth",
+    "primary": "unchanged day NDCG@10; next-group recall diagnostic only",
+    "selection_warning": "all new methods exploratory; show full fixed grid, no confirmation tuning"
+  },
+  "data_support": {
+    "users": 1000,
+    "eligible_training_users": 999,
+    "train_events": 4787599,
+    "catalog_size": 50000,
+    "in_catalog_train_events": 4109827,
+    "eligible_target_groups": 3305526,
+    "items_with_varying_recorded_length": 0,
+    "target_sampling": "uniform eligible user, then group, then in-catalog event",
+    "context_size": 128
+  },
+  "transition_support": {
+    "eligible_adjacent_group_pairs": 3588116,
+    "sources": 49998,
+    "edges": 4427743,
+    "max_gap_seconds": 1800
+  },
+  "selection_day": {
+    "MostPop": {
+      "overall": {
+        "users": 492,
+        "Recall@10": 0.007327209512825966,
+        "NDCG@10": 0.018224168022622066
+      },
+      "slices": {
+        "seen_recent128": {
+          "users_with_targets": 298,
+          "target_pairs": 2162,
+          "catalog_target_pairs": 1906,
+          "hits": 28,
+          "macro_recall_when_nonempty": 0.014053183642109819,
+          "ndcg_contribution_all_active_users": 0.006584492695536817,
+          "pooled_recall": 0.012950971322849213
+        },
+        "seen_older_only": {
+          "users_with_targets": 390,
+          "target_pairs": 6735,
+          "catalog_target_pairs": 5795,
+          "hits": 43,
+          "macro_recall_when_nonempty": 0.010679960738878563,
+          "ndcg_contribution_all_active_users": 0.011132840562963407,
+          "pooled_recall": 0.006384558277654046
+        },
+        "never_seen": {
+          "users_with_targets": 355,
+          "target_pairs": 4242,
+          "catalog_target_pairs": 2695,
+          "hits": 3,
+          "macro_recall_when_nonempty": 0.0012206572769953052,
+          "ndcg_contribution_all_active_users": 0.0005068347641218476,
+          "pooled_recall": 0.0007072135785007072
+        }
+      },
+      "recommendation_fraction_on_active_users": {
+        "seen_recent128": 0.06117886178861789,
+        "seen_older_only": 0.47784552845528455,
+        "never_seen": 0.4609756097560976
+      },
+      "unique_recommended_items": 10,
+      "top_item_slot_fraction": 0.1
+    },
+    "PersonalFrequency128": {
+      "overall": {
+        "users": 492,
+        "Recall@10": 0.10581139601895478,
+        "NDCG@10": 0.18052256259971922
+      },
+      "slices": {
+        "seen_recent128": {
+          "users_with_targets": 298,
+          "target_pairs": 2162,
+          "catalog_target_pairs": 1906,
+          "hits": 669,
+          "macro_recall_when_nonempty": 0.3409863919271288,
+          "ndcg_contribution_all_active_users": 0.18052256259971922,
+          "pooled_recall": 0.3094357076780759
+        },
+        "seen_older_only": {
+          "users_with_targets": 390,
+          "target_pairs": 6735,
+          "catalog_target_pairs": 5795,
+          "hits": 0,
+          "macro_recall_when_nonempty": 0.0,
+          "ndcg_contribution_all_active_users": 0.0,
+          "pooled_recall": 0.0
+        },
+        "never_seen": {
+          "users_with_targets": 355,
+          "target_pairs": 4242,
+          "catalog_target_pairs": 2695,
+          "hits": 0,
+          "macro_recall_when_nonempty": 0.0,
+          "ndcg_contribution_all_active_users": 0.0,
+          "pooled_recall": 0.0
+        }
+      },
+      "recommendation_fraction_on_active_users": {
+        "seen_recent128": 0.9957317073170732,
+        "seen_older_only": 0.0006097560975609756,
+        "never_seen": 0.003658536585365854
+      },
+      "unique_recommended_items": 3801,
+      "top_item_slot_fraction": 0.0032520325203252032
+    },
+    "Frequency128_half_life_3600": {
+      "overall": {
+        "users": 492,
+        "Recall@10": 0.08494737286960972,
+        "NDCG@10": 0.14623118643218785
+      },
+      "slices": {
+        "seen_recent128": {
+          "users_with_targets": 298,
+          "target_pairs": 2162,
+          "catalog_target_pairs": 1906,
+          "hits": 556,
+          "macro_recall_when_nonempty": 0.27374441225833074,
+          "ndcg_contribution_all_active_users": 0.14623118643218785,
+          "pooled_recall": 0.25716928769657726
+        },
+        "seen_older_only": {
+          "users_with_targets": 390,
+          "target_pairs": 6735,
+          "catalog_target_pairs": 5795,
+          "hits": 0,
+          "macro_recall_when_nonempty": 0.0,
+          "ndcg_contribution_all_active_users": 0.0,
+          "pooled_recall": 0.0
+        },
+        "never_seen": {
+          "users_with_targets": 355,
+          "target_pairs": 4242,
+          "catalog_target_pairs": 2695,
+          "hits": 0,
+          "macro_recall_when_nonempty": 0.0,
+          "ndcg_contribution_all_active_users": 0.0,
+          "pooled_recall": 0.0
+        }
+      },
+      "recommendation_fraction_on_active_users": {
+        "seen_recent128": 0.9920731707317073,
+        "seen_older_only": 0.0006097560975609756,
+        "never_seen": 0.007317073170731708
+      },
+      "unique_recommended_items": 4075,
+      "top_item_slot_fraction": 0.003048780487804878
+    },
+    "Frequency128_half_life_86400": {
+      "overall": {
+        "users": 492,
+        "Recall@10": 0.10084971597237855,
+        "NDCG@10": 0.1794742990530425
+      },
+      "slices": {
+        "seen_recent128": {
+          "users_with_targets": 298,
+          "target_pairs": 2162,
+          "catalog_target_pairs": 1906,
+          "hits": 669,
+          "macro_recall_when_nonempty": 0.3211974422922711,
+          "ndcg_contribution_all_active_users": 0.1794742990530425,
+          "pooled_recall": 0.3094357076780759
+        },
+        "seen_older_only": {
+          "users_with_targets": 390,
+          "target_pairs": 6735,
+          "catalog_target_pairs": 5795,
+          "hits": 0,
+          "macro_recall_when_nonempty": 0.0,
+          "ndcg_contribution_all_active_users": 0.0,
+          "pooled_recall": 0.0
+        },
+        "never_seen": {
+          "users_with_targets": 355,
+          "target_pairs": 4242,
+          "catalog_target_pairs": 2695,
+          "hits": 0,
+          "macro_recall_when_nonempty": 0.0,
+          "ndcg_contribution_all_active_users": 0.0,
+          "pooled_recall": 0.0
+        }
+      },
+      "recommendation_fraction_on_active_users": {
+        "seen_recent128": 0.9957317073170732,
+        "seen_older_only": 0.0006097560975609756,
+        "never_seen": 0.003658536585365854
+      },
+      "unique_recommended_items": 4033,
+      "top_item_slot_fraction": 0.0026422764227642275
+    },
+    "Frequency128_half_life_604800": {
+      "overall": {
+        "users": 492,
+        "Recall@10": 0.1109195171810884,
+        "NDCG@10": 0.18499845174684237
+      },
+      "slices": {
+        "seen_recent128": {
+          "users_with_targets": 298,
+          "target_pairs": 2162,
+          "catalog_target_pairs": 1906,
+          "hits": 696,
+          "macro_recall_when_nonempty": 0.3578726666843977,
+          "ndcg_contribution_all_active_users": 0.18499845174684237,
+          "pooled_recall": 0.32192414431082333
+        },
+        "seen_older_only": {
+          "users_with_targets": 390,
+          "target_pairs": 6735,
+          "catalog_target_pairs": 5795,
+          "hits": 0,
+          "macro_recall_when_nonempty": 0.0,
+          "ndcg_contribution_all_active_users": 0.0,
+          "pooled_recall": 0.0
+        },
+        "never_seen": {
+          "users_with_targets": 355,
+          "target_pairs": 4242,
+          "catalog_target_pairs": 2695,
+          "hits": 0,
+          "macro_recall_when_nonempty": 0.0,
+          "ndcg_contribution_all_active_users": 0.0,
+          "pooled_recall": 0.0
+        }
+      },
+      "recommendation_fraction_on_active_users": {
+        "seen_recent128": 0.9957317073170732,
+        "seen_older_only": 0.0006097560975609756,
+        "never_seen": 0.003658536585365854
+      },
+      "unique_recommended_items": 4004,
+      "top_item_slot_fraction": 0.003048780487804878
+    },
+    "Transitions128": {
+      "overall": {
+        "users": 492,
+        "Recall@10": 0.082025481130611,
+        "NDCG@10": 0.13284737691216303
+      },
+      "slices": {
+        "seen_recent128": {
+          "users_with_targets": 298,
+          "target_pairs": 2162,
+          "catalog_target_pairs": 1906,
+          "hits": 463,
+          "macro_recall_when_nonempty": 0.21831338695647523,
+          "ndcg_contribution_all_active_users": 0.12001383553424842,
+          "pooled_recall": 0.2141535615171138
+        },
+        "seen_older_only": {
+          "users_with_targets": 390,
+          "target_pairs": 6735,
+          "catalog_target_pairs": 5795,
+          "hits": 46,
+          "macro_recall_when_nonempty": 0.009982983620584272,
+          "ndcg_contribution_all_active_users": 0.009556097572329808,
+          "pooled_recall": 0.006829992576095026
+        },
+        "never_seen": {
+          "users_with_targets": 355,
+          "target_pairs": 4242,
+          "catalog_target_pairs": 2695,
+          "hits": 10,
+          "macro_recall_when_nonempty": 0.006133913035321487,
+          "ndcg_contribution_all_active_users": 0.0032774438055848225,
+          "pooled_recall": 0.0023573785950023575
+        }
+      },
+      "recommendation_fraction_on_active_users": {
+        "seen_recent128": 0.44552845528455287,
+        "seen_older_only": 0.19451219512195123,
+        "never_seen": 0.35995934959349596
+      },
+      "unique_recommended_items": 3597,
+      "top_item_slot_fraction": 0.007317073170731708
+    },
+    "Transitions128_pop_corrected": {
+      "overall": {
+        "users": 492,
+        "Recall@10": 0.07044331510373497,
+        "NDCG@10": 0.1113525519627244
+      },
+      "slices": {
+        "seen_recent128": {
+          "users_with_targets": 298,
+          "target_pairs": 2162,
+          "catalog_target_pairs": 1906,
+          "hits": 391,
+          "macro_recall_when_nonempty": 0.182381710738377,
+          "ndcg_contribution_all_active_users": 0.10084268210439734,
+          "pooled_recall": 0.18085106382978725
+        },
+        "seen_older_only": {
+          "users_with_targets": 390,
+          "target_pairs": 6735,
+          "catalog_target_pairs": 5795,
+          "hits": 32,
+          "macro_recall_when_nonempty": 0.007432190160832298,
+          "ndcg_contribution_all_active_users": 0.006895948120331814,
+          "pooled_recall": 0.004751299183370453
+        },
+        "never_seen": {
+          "users_with_targets": 355,
+          "target_pairs": 4242,
+          "catalog_target_pairs": 2695,
+          "hits": 11,
+          "macro_recall_when_nonempty": 0.006062527084198911,
+          "ndcg_contribution_all_active_users": 0.003613921737995254,
+          "pooled_recall": 0.002593116454502593
+        }
+      },
+      "recommendation_fraction_on_active_users": {
+        "seen_recent128": 0.3733739837398374,
+        "seen_older_only": 0.14939024390243902,
+        "never_seen": 0.4772357723577236
+      },
+      "unique_recommended_items": 4135,
+      "top_item_slot_fraction": 0.003658536585365854
+    },
+    "GPT2_SFT_best": {
+      "overall": {
+        "users": 492,
+        "Recall@10": 0.029467760909896987,
+        "NDCG@10": 0.05965846688606723
+      },
+      "slices": {
+        "seen_recent128": {
+          "users_with_targets": 298,
+          "target_pairs": 2162,
+          "catalog_target_pairs": 1906,
+          "hits": 145,
+          "macro_recall_when_nonempty": 0.06760410461039558,
+          "ndcg_contribution_all_active_users": 0.040188763565311335,
+          "pooled_recall": 0.06706753006475485
+        },
+        "seen_older_only": {
+          "users_with_targets": 390,
+          "target_pairs": 6735,
+          "catalog_target_pairs": 5795,
+          "hits": 88,
+          "macro_recall_when_nonempty": 0.01650197520630834,
+          "ndcg_contribution_all_active_users": 0.01738225534389875,
+          "pooled_recall": 0.013066072754268746
+        },
+        "never_seen": {
+          "users_with_targets": 355,
+          "target_pairs": 4242,
+          "catalog_target_pairs": 2695,
+          "hits": 9,
+          "macro_recall_when_nonempty": 0.002764528993503387,
+          "ndcg_contribution_all_active_users": 0.0020874479768571343,
+          "pooled_recall": 0.0021216407355021216
+        }
+      },
+      "recommendation_fraction_on_active_users": {
+        "seen_recent128": 0.17520325203252032,
+        "seen_older_only": 0.4434959349593496,
+        "never_seen": 0.38130081300813007
+      },
+      "unique_recommended_items": 1819,
+      "top_item_slot_fraction": 0.013414634146341463
+    }
+  },
+  "next_group": {
+    "MostPop": {
+      "users": 512,
+      "Recall@10": 0.011767578125,
+      "NDCG@10": 0.009197926077446952
+    },
+    "PersonalFrequency128": {
+      "users": 512,
+      "Recall@10": 0.1424553853264791,
+      "NDCG@10": 0.10666342117298966
+    },
+    "Frequency128_half_life_3600": {
+      "users": 512,
+      "Recall@10": 0.14164411976911975,
+      "NDCG@10": 0.10318366822940135
+    },
+    "Frequency128_half_life_86400": {
+      "users": 512,
+      "Recall@10": 0.15706936834866525,
+      "NDCG@10": 0.12113080588334593
+    },
+    "Frequency128_half_life_604800": {
+      "users": 512,
+      "Recall@10": 0.1571799890647547,
+      "NDCG@10": 0.11513227109062593
+    },
+    "Transitions128": {
+      "users": 512,
+      "Recall@10": 0.1321564557404401,
+      "NDCG@10": 0.07978240517934655
+    },
+    "Transitions128_pop_corrected": {
+      "users": 512,
+      "Recall@10": 0.09711181288329726,
+      "NDCG@10": 0.06084883398712503
+    },
+    "GPT2_SFT_best": {
+      "users": 512,
+      "Recall@10": 0.05159737723214286,
+      "NDCG@10": 0.03797218067375081
+    }
+  },
+  "comparisons": {
+    "MostPop_minus_PersonalFrequency128": {
+      "mean_ndcg_difference": -0.16229839457709724,
+      "paired_user_bootstrap_95_percentile_interval": [
+        -0.18724255511410823,
+        -0.13671699149914057
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    },
+    "Frequency128_half_life_3600_minus_PersonalFrequency128": {
+      "mean_ndcg_difference": -0.03429137616753145,
+      "paired_user_bootstrap_95_percentile_interval": [
+        -0.052263493721610724,
+        -0.016181319426182325
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    },
+    "Frequency128_half_life_86400_minus_PersonalFrequency128": {
+      "mean_ndcg_difference": -0.001048263546676801,
+      "paired_user_bootstrap_95_percentile_interval": [
+        -0.013865930036335962,
+        0.012590416603346652
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    },
+    "Frequency128_half_life_604800_minus_PersonalFrequency128": {
+      "mean_ndcg_difference": 0.004475889147122983,
+      "paired_user_bootstrap_95_percentile_interval": [
+        -0.0029170691513945523,
+        0.012622258951563681
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    },
+    "Transitions128_minus_PersonalFrequency128": {
+      "mean_ndcg_difference": -0.04767518568755627,
+      "paired_user_bootstrap_95_percentile_interval": [
+        -0.06307658199259197,
+        -0.03163960496100681
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    },
+    "Transitions128_pop_corrected_minus_PersonalFrequency128": {
+      "mean_ndcg_difference": -0.06917001063699488,
+      "paired_user_bootstrap_95_percentile_interval": [
+        -0.08500430550661618,
+        -0.052586914358686135
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    },
+    "GPT2_SFT_best_minus_PersonalFrequency128": {
+      "mean_ndcg_difference": -0.12086409571365209,
+      "paired_user_bootstrap_95_percentile_interval": [
+        -0.1440085454045668,
+        -0.09756081273703153
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    }
+  },
+  "final_test_scored": false,
+  "confirmation_scored": false,
+  "elapsed_seconds": 85.52230510000027,
+  "finished_utc": "2026-10-21T17:23:51.873194+00:00"
+}

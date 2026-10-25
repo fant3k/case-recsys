@@ -1,0 +1,11 @@
+{
+  "seed": 20261024,
+  "all_users": 9238,
+  "original_users": 1000,
+  "remaining_users": 8238,
+  "cohort_users": 1000,
+  "overlap_with_original": 0,
+  "raw_sha256": "c07db8326739b23fd4fb0a25037304e78b2e916320ccf1b01dc904d2b1b376c7",
+  "cohort_sha256": "7178282a9650b5db15fef2e59ca2f35025a0c5456770734e4d5e8f7205d14088",
+  "note": "uid-only selection; no event statistics of the cohort were computed"
+}

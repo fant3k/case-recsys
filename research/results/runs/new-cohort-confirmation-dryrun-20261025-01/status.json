@@ -1,0 +1,11 @@
+{
+  "status": "completed",
+  "stage": "done",
+  "new_cohort_scored": false,
+  "elapsed_seconds": 19.247999399998662,
+  "decision": {
+    "N3a_A_beats_reference_on_new_users_other_day": true,
+    "N3b_E1_head_beats_reference_on_new_users_other_day": true,
+    "meaning": "Offline replication of N1/N2 on the same new users in the confirmation window; not causal user benefit"
+  }
+}

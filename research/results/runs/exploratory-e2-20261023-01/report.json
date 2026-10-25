@@ -1,0 +1,145 @@
+{
+  "plan": {
+    "created_utc": "2026-10-23T15:48:22.555798+00:00",
+    "plan_document": "docs/EXPLORATORY-PLAN.md",
+    "experiment": "E2",
+    "arguments": {
+      "experiment": "e2",
+      "out": "artifacts/exploratory-e2-20261023-01",
+      "pool": 65536,
+      "steps": 1000,
+      "batch": 64,
+      "lr": 1e-05,
+      "beta": 0.1,
+      "horizon": 5,
+      "eval_every": 250
+    },
+    "seeds": {
+      "pool": 20261301,
+      "batches": 20261304,
+      "sampling": 20261305
+    },
+    "simulator": "training RM (mean seeds 0,1) prediction appended as the generated track's listened ratio",
+    "reward": "sum over steps of training RM predictions; REINFORCE with reward-to-go and batch-mean baseline per step",
+    "kl": "exact KL to the reference on every step, repeats masked in both",
+    "code_sha256": "043a2158864d925a242dc595db68bdfff9927a971d01c5a7c56fdb542e628f32",
+    "scope": "exploratory, selection window already used; final test untouched; fixed last step reported"
+  },
+  "pool_contexts": 65536,
+  "eval_users": 1000,
+  "active_users": 492,
+  "reference": {
+    "step1_ndcg@10": 0.14727090259847372,
+    "step1_kl_to_reference": 0.0,
+    "training_simulator": {
+      "return_by_own_simulator": 3.5553805828094482,
+      "judge_on_real_history_return": 3.489086151123047,
+      "slate_ndcg@5_active": 0.14746358618407027,
+      "mean_capped_length_seconds": 200.86000061035156,
+      "familiar_share": 0.9804,
+      "unique_items": 3821
+    },
+    "judge_simulator": {
+      "return_by_own_simulator": 3.4511914253234863
+    }
+  },
+  "curve": [
+    {
+      "step": 250,
+      "train_return": 3.5839602947235107,
+      "train_kl": 0.11846533417701721,
+      "eval": {
+        "step1_ndcg@10": 0.14365099719455027,
+        "step1_kl_to_reference": 0.022892704233527184,
+        "training_simulator": {
+          "return_by_own_simulator": 3.5682554244995117,
+          "judge_on_real_history_return": 3.4963715076446533,
+          "slate_ndcg@5_active": 0.14926058590707053,
+          "mean_capped_length_seconds": 199.96697998046875,
+          "familiar_share": 0.9826,
+          "unique_items": 3681
+        },
+        "judge_simulator": {
+          "return_by_own_simulator": 3.4625113010406494
+        }
+      }
+    },
+    {
+      "step": 500,
+      "train_return": 3.357792854309082,
+      "train_kl": 0.1916188895702362,
+      "eval": {
+        "step1_ndcg@10": 0.14448066959640374,
+        "step1_kl_to_reference": 0.03176005929708481,
+        "training_simulator": {
+          "return_by_own_simulator": 3.5773401260375977,
+          "judge_on_real_history_return": 3.500903844833374,
+          "slate_ndcg@5_active": 0.15047049531073223,
+          "mean_capped_length_seconds": 199.27598571777344,
+          "familiar_share": 0.9818,
+          "unique_items": 3632
+        },
+        "judge_simulator": {
+          "return_by_own_simulator": 3.4730679988861084
+        }
+      }
+    },
+    {
+      "step": 750,
+      "train_return": 3.246739387512207,
+      "train_kl": 0.2701820135116577,
+      "eval": {
+        "step1_ndcg@10": 0.14338101190662705,
+        "step1_kl_to_reference": 0.04578423500061035,
+        "training_simulator": {
+          "return_by_own_simulator": 3.583674430847168,
+          "judge_on_real_history_return": 3.505974292755127,
+          "slate_ndcg@5_active": 0.14862073557028493,
+          "mean_capped_length_seconds": 198.58900451660156,
+          "familiar_share": 0.9802,
+          "unique_items": 3442
+        },
+        "judge_simulator": {
+          "return_by_own_simulator": 3.476710319519043
+        }
+      }
+    },
+    {
+      "step": 1000,
+      "train_return": 3.448115825653076,
+      "train_kl": 0.2405417263507843,
+      "eval": {
+        "step1_ndcg@10": 0.14448613257637144,
+        "step1_kl_to_reference": 0.04433513060212135,
+        "training_simulator": {
+          "return_by_own_simulator": 3.575195074081421,
+          "judge_on_real_history_return": 3.5011305809020996,
+          "slate_ndcg@5_active": 0.14600743744763622,
+          "mean_capped_length_seconds": 198.1379852294922,
+          "familiar_share": 0.9818,
+          "unique_items": 3578
+        },
+        "judge_simulator": {
+          "return_by_own_simulator": 3.4713315963745117
+        }
+      }
+    }
+  ],
+  "final_test_scored": false,
+  "trained": {
+    "step1_ndcg@10": 0.14448613257637144,
+    "step1_kl_to_reference": 0.04433513060212135,
+    "training_simulator": {
+      "return_by_own_simulator": 3.575195074081421,
+      "judge_on_real_history_return": 3.5011305809020996,
+      "slate_ndcg@5_active": 0.14600743744763622,
+      "mean_capped_length_seconds": 198.1379852294922,
+      "familiar_share": 0.9818,
+      "unique_items": 3578
+    },
+    "judge_simulator": {
+      "return_by_own_simulator": 3.4713315963745117
+    }
+  },
+  "elapsed_seconds": 548.9322303999998
+}

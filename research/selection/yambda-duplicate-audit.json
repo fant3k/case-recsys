@@ -1,0 +1,6 @@
+{
+  "all_columns_identical_repeat_rows": 21492,
+  "same_user_time_item_repeat_rows": 62271,
+  "rows": 4862977,
+  "interpretation": "Matching records are not automatically ingestion duplicates: source lacks unique event IDs. Define cleaning explicitly and test sensitivity if needed."
+}

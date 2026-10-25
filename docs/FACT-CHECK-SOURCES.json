@@ -1,0 +1,355 @@
+{
+  "audit_date": "2026-10-25",
+  "repository_head": "a6cbc4d",
+  "scope": "All external sources cited in the final report: existence, attribution and correspondence of stated methods/numbers. Working head a6cbc4d was edited concurrently; corrections are recorded in docs/FACT-CHECK.md.",
+  "unique_report_urls": 30,
+  "unique_papers": 26,
+  "unique_sources": 27,
+  "method": "Read-only primary-source browsing; bibliographic metadata, attributed methods, and quoted table numbers checked. No model/data runs or paper experiment reproduction. REPORT.md was edited concurrently by parent.",
+  "files_at_json_creation": {
+    "report/REPORT.md": "Editorial changes in progress; final artifact hashes are recorded separately."
+  },
+  "sources": [
+    {
+      "id": 1,
+      "bibliographic_reference": "[GPTRec RL — Petrov & Macdonald, 2024](https://arxiv.org/html/2403.04875v1), GenRec workshop at WWW 2024",
+      "primary_urls": [
+        "https://arxiv.org/html/2403.04875v1"
+      ],
+      "report_location": "§10 Petrov & Macdonald; Источники",
+      "checked_claim": "Teacher/student MC или BERT4Rec, затем PPO; NDCG и ILD/negative popularity. Каталоги 3416 и1000; LOO;128 validation users. Accuracy gains2.6%/.4% незначимы; Steam .0908→.0563 при popularity λ6; better trade-off vs greedy reranking в3/4 случаях. Оговорки Next-K и сравнительной причинности выше.",
+      "source_evidence_locator": "Table 2 (datasets); Table 3 (NDCG); §3.3 (training histories); §4.3 (split and 128 validation users); §4.4 (rewards); Appendix B (history/list separator)",
+      "status": "confirmed_with_caveats",
+      "caveats": "Next-K is not identical to local assumed-feedback rollout; source separates observed history from generated list. Cross-study objective explanation is hypothetical. Do not imply RL training on validation/test."
+    },
+    {
+      "id": 2,
+      "bibliographic_reference": "[Session-Level Optimization — Artem Matveev et al., 2026](https://arxiv.org/html/2607.02818v2), 5th End-to-End Customer Journey Optimization workshop at KDD2026",
+      "primary_urls": [
+        "https://arxiv.org/html/2607.02818v2"
+      ],
+      "report_location": "§3; §7; §10 Matveev et al.; Источники",
+      "checked_claim": "Yambda5B, two-tower, off-policy REINFORCE, estimated behavior policy, multi-step importance correction; reward like+ratio/10, gamma.9. DR .6046→.6306; Recall100 .3153→.3086; feedback ratio MAE.1771. TTS only model-based, авторы это оговаривают.",
+      "source_evidence_locator": "§3 Recommendation as RL problem; §3.1 Behavior policy; Tables 1, 2, 3; §4.3 Test-Time Scaling",
+      "status": "confirmed_with_caveats",
+      "caveats": "Only the test-time-scaling experiment uses the same simulator for choice and evaluation; the main paper also evaluates step-IS and DR with an estimated behavior policy. Offline estimates are not real user utility."
+    },
+    {
+      "id": 3,
+      "bibliographic_reference": "[Yambda — Alexander Ploshkin et al., 2025](https://arxiv.org/html/2505.22238v1), препринт",
+      "primary_urls": [
+        "https://arxiv.org/html/2505.22238v1"
+      ],
+      "report_location": "§1 Данные/Временное разбиение/Метрики; Источники",
+      "checked_claim": "GTS, замороженные состояния, сутки целей и30min gap; Listen+ threshold50%. Table6 50M ItemKNN NDCG10.0781,SASRec.0748,MostPop.0186; personalfrequency отсутствует. Локальные cohort/catalog/day и собственные метрики не сопоставимы напрямую с этой таблицей.",
+      "source_evidence_locator": "§4.1 Evaluation Process; §4.3 Results; Table 6 Listen+",
+      "status": "confirmed",
+      "caveats": "Different cohort/catalog/date and aggregation prohibit direct absolute comparison with project results; no personalfrequency row in the paper."
+    },
+    {
+      "id": 4,
+      "bibliographic_reference": "[Yandex/Yambda commit986dce8](https://huggingface.co/datasets/yandex/yambda/commit/986dce89ba37fee726bbaa1de30166483c5f2194)",
+      "primary_urls": [
+        "https://huggingface.co/datasets/yandex/yambda/commit/986dce89ba37fee726bbaa1de30166483c5f2194"
+      ],
+      "report_location": "§1 paragraph Почему наши числа нельзя сравнивать; Источники",
+      "checked_claim": "Официальное признание ошибки NDCG aggregation, old ratio-of-sums vs mean per-user ratios, предупреждение о масштабе метрик. Полную исправность данного патча не подтверждаем: см. замечание7.",
+      "source_evidence_locator": "Commit message; benchmarks/yambda/evaluation/metrics.py diff, new lines 141–144 (aggregation explanation), line167 (ideal_dcg mask caveat)",
+      "status": "confirmed_with_caveats",
+      "caveats": "Patch acknowledges aggregation bug, but this exact commit calls calc_dcg(target_mask) for ideal_dcg; later corrections not audited. Prefer reports an aggregation error rather than claims fully corrected metrics."
+    },
+    {
+      "id": 5,
+      "bibliographic_reference": "[PPS — Davide Abbattista et al., 2024](https://arxiv.org/html/2409.04329v1), RecSys2024 LBR",
+      "primary_urls": [
+        "https://arxiv.org/html/2409.04329v1"
+      ],
+      "report_location": "§2; §7 Петля повторов; §10 Другие связанные работы; Источники",
+      "checked_claim": "Personalized popularity smoothing epsilon.01; additive log prior дляsoftmax. Table2 NDCG10 .1745<.1826 наYandex. При больших cutoffs PPS может обгонять personalfrequency; ограничение «на NDCG10» существенно.",
+      "source_evidence_locator": "§2 Personalized Popularity Awareness, equations 4–7 and epsilon=0.01 paragraph; Table2",
+      "status": "confirmed_with_caveats",
+      "caveats": "Correct formula is log(1+c/0.01) up to softmax constant; Table2 baseline is0.1826, not0.1808. At larger cutoffs some PPS models beat personalfrequency."
+    },
+    {
+      "id": 6,
+      "bibliographic_reference": "[Exp-RSFT — Keertana Chidambaram et al., 2026](https://arxiv.org/html/2603.10279v1), препринт",
+      "primary_urls": [
+        "https://arxiv.org/html/2603.10279v1"
+      ],
+      "report_location": "§3 RM audit; §5 Exp-RSFT; §10 Другие связанные работы; Источники",
+      "checked_claim": "Observed reward exponential-weighted SFT, без RM/propensities; item-mean comparison Table2. Stanford/Meta/Netflix affiliations подтверждены. Не приписывать универсальную слабость RM на каждом датасете, особенно Netflix; не переносить выводы между протоколами как независимое подтверждение нашего результата.",
+      "source_evidence_locator": "Abstract; §3.2 equations5–7 and Observation3.1; §6 Table2 and paragraphs Benchmarking reward model training metrics",
+      "status": "confirmed_with_caveats",
+      "caveats": "Netflix Table2 RM is better than item mean on both MSE and MAE; only a general mostly-weak RM comparison is supported. Local baseline/clipping variant is an adaptation; no exact reproduction or universal theorem for this project claimed."
+    },
+    {
+      "id": 7,
+      "bibliographic_reference": "[AWR — Xue Bin Peng, Aviral Kumar, Grace Zhang, Sergey Levine, 2019](https://arxiv.org/abs/1910.00177), препринт",
+      "primary_urls": [
+        "https://arxiv.org/abs/1910.00177"
+      ],
+      "report_location": "§5 table Проблема v1/Решение v2; Источники",
+      "checked_claim": "Advantage-weighted regression, value/policy supervised updates, offline reuse данных. Поддерживает родство взвешенного SFT; не доказывает эффективность локального варианта.",
+      "source_evidence_locator": "Abstract (advantage-weighted policy regression and offline/static datasets); arXiv author/year metadata",
+      "status": "confirmed",
+      "caveats": "Supports method family; no claim that the local implementation exactly reproduces AWR or inherits its empirical results."
+    },
+    {
+      "id": 8,
+      "bibliographic_reference": "[Reward Model Ensembles — Thomas Coste et al., ICLR2024](https://proceedings.iclr.cc/paper_files/paper/2024/hash/dda7f9378a210c25e470e19304cce85d-Abstract-Conference.html), [arXiv](https://arxiv.org/abs/2310.02743)",
+      "primary_urls": [
+        "https://proceedings.iclr.cc/paper_files/paper/2024/hash/dda7f9378a210c25e470e19304cce85d-Abstract-Conference.html",
+        "https://arxiv.org/abs/2310.02743"
+      ],
+      "report_location": "§5 ensemble; §10 Другие связанные работы; Источники",
+      "checked_claim": "Conservative ensemble objectives WCO/UWO уменьшают overoptimization в BoN/PPO. Поддержана ссылка на механизм; локальный независимый seed judge не является их synthetic gold-standard RM.",
+      "source_evidence_locator": "Abstract (WCO/UWO, BoN/PPO); ICLR2024 proceedings metadata",
+      "status": "confirmed",
+      "caveats": "Source uses ensemble conservative objectives and synthetic gold reward; independent-seed project judge is not a validated true-utility oracle."
+    },
+    {
+      "id": 9,
+      "bibliographic_reference": "[Expected Policy Gradients — Kamil Ciosek & Shimon Whiteson, AAAI2018](https://arxiv.org/abs/1706.05374)",
+      "primary_urls": [
+        "https://arxiv.org/abs/1706.05374"
+      ],
+      "report_location": "§5 exact-gradient method; Источники",
+      "checked_claim": "Интегрирование по действиям для снижения дисперсии градиента. Ссылка на семейство подходов корректна; локальный exact finite-catalog objective проверяется собственным кодом, не фактом существования EPG.",
+      "source_evidence_locator": "Abstract (integration across actions and policy-gradient variance); arXiv comments AAAI18",
+      "status": "confirmed",
+      "caveats": "Citation supports expected-gradient family; exactness of local code must be checked separately."
+    },
+    {
+      "id": 10,
+      "bibliographic_reference": "[Scaling Laws for Reward Model Overoptimization — Leo Gao, John Schulman, Jacob Hilton, ICML2023](https://proceedings.mlr.press/v202/gao23h.html), [arXiv2022](https://arxiv.org/abs/2210.10760)",
+      "primary_urls": [
+        "https://proceedings.mlr.press/v202/gao23h.html",
+        "https://arxiv.org/abs/2210.10760"
+      ],
+      "report_location": "§10 Другие связанные работы; Источники",
+      "checked_claim": "Proxy-vs-gold reward degradation при усилении оптимизации в synthetic setup, RL/BoN. Отличать механизм из статьи от доказательства настоящей пользовательской полезности в нашем judge audit.",
+      "source_evidence_locator": "Abstract (gold/proxy synthetic setup); PMLR ICML2023 bibliographic record",
+      "status": "confirmed",
+      "caveats": "Synthetic gold reward is a surrogate, not direct human ground truth; local judge disagreement is diagnostic, not proof of user harm."
+    },
+    {
+      "id": 11,
+      "bibliographic_reference": "[f-divergence minimization — Dongyoung Go et al., 2023](https://arxiv.org/abs/2302.08215), препринт",
+      "primary_urls": [
+        "https://arxiv.org/abs/2302.08215"
+      ],
+      "report_location": "§10 Другие связанные работы; Источники",
+      "checked_claim": "Alignment как divergence minimization; RLHF reverseKL и GDC forwardKL; общая f-DPG постановка. Ссылка на разные направления/divergences корректна.",
+      "source_evidence_locator": "Abstract (reverse/forward KL and f-DPG)",
+      "status": "confirmed",
+      "caveats": "Different divergence objectives are related methods, not an assertion they must close local optimization gap."
+    },
+    {
+      "id": 12,
+      "bibliographic_reference": "[BOND — Pier Giuseppe Sessa et al., 2024](https://arxiv.org/abs/2407.14622), препринт",
+      "primary_urls": [
+        "https://arxiv.org/abs/2407.14622"
+      ],
+      "report_location": "§10 Другие связанные работы; Источники",
+      "checked_claim": "Best-of-N distribution distillation с Jeffreys divergence; это не тот же target, что Boltzmann-optimal policy. Исправление выше.",
+      "source_evidence_locator": "Abstract (Best-of-N target and Jeffreys divergence)",
+      "status": "confirmed_with_caveats",
+      "caveats": "Best-of-N distribution differs from the project Boltzmann/KL-optimal target."
+    },
+    {
+      "id": 13,
+      "bibliographic_reference": "[Softmax Bottleneck — Zhilin Yang, Zihang Dai, Ruslan Salakhutdinov, William W. Cohen, ICLR2018 Oral](https://arxiv.org/abs/1711.03953)",
+      "primary_urls": [
+        "https://arxiv.org/abs/1711.03953"
+      ],
+      "report_location": "§10 Другие связанные работы; Источники",
+      "checked_claim": "Rank/expressivity ограничение softmax factorization. Само наличие низкоразмерного hidden state не доказывает, что именно этот механизм вызвал E1-gap; текущая оговорка «опыт не изолирует» нужна.",
+      "source_evidence_locator": "Abstract (rank/factorization expressivity); arXiv comments ICLR Oral2018",
+      "status": "confirmed_with_caveats",
+      "caveats": "E1 does not isolate rank bottleneck as cause; the literature supplies a possible mechanism only."
+    },
+    {
+      "id": 14,
+      "bibliographic_reference": "[Reward Hacking — Joar Skalse et al., 2022](https://arxiv.org/abs/2209.13085)",
+      "primary_urls": [
+        "https://arxiv.org/abs/2209.13085"
+      ],
+      "report_location": "§10 Другие связанные работы; Источники",
+      "checked_claim": "Формализация расхождения imperfect proxy и true reward. Поддерживает общий термин specification/reward hacking; не даёт ground truth для нашей музыкальной utility.",
+      "source_evidence_locator": "Abstract (proxy-versus-true reward and unhackability definition)",
+      "status": "confirmed",
+      "caveats": "Formal proxy/true-reward distinction does not establish actual user utility in this project."
+    },
+    {
+      "id": 15,
+      "bibliographic_reference": "[Duration Bias — Ruohan Zhan et al., KDD2022](https://arxiv.org/abs/2206.06003)",
+      "primary_urls": [
+        "https://arxiv.org/abs/2206.06003",
+        "https://researchportal.hkust.edu.hk/en/publications/deconfounding-duration-bias-in-watch-time-prediction-for-video-re/"
+      ],
+      "report_location": "§6 duration bias; §10 Другие связанные работы; Источники",
+      "checked_claim": "D2Q: duration confounding/exposure и quantile prediction, causal adjustment. Venue дополнительно подтверждён [авторским университетским репозиторием](https://researchportal.hkust.edu.hk/en/publications/deconfounding-duration-bias-in-watch-time-prediction-for-video-re/).",
+      "source_evidence_locator": "Abstract (duration confounding and D2Q); HKUST institutional publication record KDD2022 DOI10.1145/3534678.3539092",
+      "status": "confirmed",
+      "caveats": "Project did not implement D2Q or demonstrate causal removal of duration bias."
+    },
+    {
+      "id": 16,
+      "bibliographic_reference": "[Counterfactual Watch Time — Haiyuan Zhao et al., KDD2024](https://arxiv.org/abs/2406.07932)",
+      "primary_urls": [
+        "https://arxiv.org/abs/2406.07932"
+      ],
+      "report_location": "§6 duration bias; Источники",
+      "checked_claim": "Duration truncates latent potential watch time; causal/counterfactual likelihood model. Поддерживает связь duration bias и ограниченность простой нормировки. В проекте этот метод не реализован.",
+      "source_evidence_locator": "Abstract (counterfactual watch time and duration truncation); arXiv comments Accepted by KDD2024",
+      "status": "confirmed",
+      "caveats": "Project did not implement counterfactual watch model; duration-normalized quantiles are not equivalent."
+    },
+    {
+      "id": 17,
+      "bibliographic_reference": "[RLUR — Qingpeng Cai et al., The Web Conference2023 Industry Track](https://arxiv.org/abs/2302.01724)",
+      "primary_urls": [
+        "https://arxiv.org/abs/2302.01724"
+      ],
+      "report_location": "§6 Возврат на следующий день; Источники",
+      "checked_claim": "Retention как long-term цель, accumulated inter-session intervals, Kuaishou deployment. Не выдавать за реализацию нашего next-day-return/censoring протокола.",
+      "source_evidence_locator": "Abstract (infinite-horizon request MDP and accumulated inter-session time); arXiv Journal reference The Web Conference2023 Industry Track",
+      "status": "confirmed_with_caveats",
+      "caveats": "Supports retention/inter-session-time RL, not a completed next-day-return implementation or a specific censoring protocol in project."
+    },
+    {
+      "id": 18,
+      "bibliographic_reference": "[Offline Evaluation for RL-based Recommendation — Romain Deffayet et al., 2023](https://arxiv.org/abs/2301.00993), препринт",
+      "primary_urls": [
+        "https://arxiv.org/abs/2301.00993"
+      ],
+      "report_location": "§10 Другие связанные работы; Источники",
+      "checked_claim": "Next-item evaluation может скрывать достоинства/недостатки RL; альтернативные offline protocols. Общая связь с многошаговой оценкой поддержана.",
+      "source_evidence_locator": "Abstract (limitations of next-item evaluation for RL recommendation)",
+      "status": "confirmed",
+      "caveats": "Methodological warning, not empirical proof about project policy utility."
+    },
+    {
+      "id": 19,
+      "bibliographic_reference": "[Widespread Flaws in Offline Evaluation — Balázs Hidasi & Ádám Tibor Czapp, RecSys2023](https://arxiv.org/abs/2307.14951)",
+      "primary_urls": [
+        "https://arxiv.org/abs/2307.14951"
+      ],
+      "report_location": "Источники (offline evaluation background)",
+      "checked_claim": "Название, авторы, venue и исследование ошибок offline recommender evaluation подтверждены. Не доказывает конкретную ошибку проекта без локальных данных/кода.",
+      "source_evidence_locator": "Abstract and arXiv comments (RecSys2023); DOI10.1145/3604915.3608839",
+      "status": "confirmed",
+      "caveats": "Background citation; no specific numerical cross-paper claim in current text."
+    },
+    {
+      "id": 20,
+      "bibliographic_reference": "[Adaptive Data Analysis/Holdout Reuse — Cynthia Dwork et al., 2015](https://arxiv.org/abs/1506.02629)",
+      "primary_urls": [
+        "https://arxiv.org/abs/1506.02629"
+      ],
+      "report_location": "§11 Ограничения; Источники",
+      "checked_claim": "Adaptive reuse может приводить к переобучению оценке; основание оговорки о repeated selection. Не утверждает, что всякая отдельная оценка обязательно завышена.",
+      "source_evidence_locator": "Abstract (adaptive data analysis and reusable holdout)",
+      "status": "confirmed",
+      "caveats": "Adaptive reuse can bias estimates; not every individual estimate is necessarily optimistic."
+    },
+    {
+      "id": 21,
+      "bibliographic_reference": "[RewardBench — Nathan Lambert et al., 2024](https://arxiv.org/abs/2403.13787)",
+      "primary_urls": [
+        "https://arxiv.org/abs/2403.13787"
+      ],
+      "report_location": "§10 Другие связанные работы; Источники",
+      "checked_claim": "Benchmark chosen/rejected preference comparisons для reward models. Поддерживает pair-ranking как тип оценки; не переносит reliability LLM benchmark на наш RM автоматически.",
+      "source_evidence_locator": "Abstract and dataset description (prompt/chosen/rejected reward-model comparisons)",
+      "status": "confirmed",
+      "caveats": "LLM pair-preference benchmark is methodological context, not independent validation of music RM pairaccuracy."
+    },
+    {
+      "id": 22,
+      "bibliographic_reference": "[Stochastic Primal-Dual Decoding — Dmitrii Moor et al., Spotify, 2026](https://arxiv.org/html/2607.19357v1), препринт",
+      "primary_urls": [
+        "https://arxiv.org/html/2607.19357v1"
+      ],
+      "report_location": "§10 Другие связанные работы; Источники",
+      "checked_claim": "Frozen underlying autoregressive model, inference-time multiobjective constrained decoding; Spotify affiliations. Нет переобучения базовой модели. Родство inference adaptation корректно, но это не тождественно нашей одношаговой Boltzmann формуле.",
+      "source_evidence_locator": "Abstract and §4 Online Optimisation-Based Inference; author affiliations; §5.2 Online A/B Experiment",
+      "status": "confirmed",
+      "caveats": "Stochastic constrained autoregressive decoding is related to but not identical to one-step Boltzmann reweighting; no online gains transferred to project."
+    },
+    {
+      "id": 23,
+      "bibliographic_reference": "[OneRec — Guorui Zhou et al./OneRec Team, 2025](https://arxiv.org/html/2506.13695v4), technical report",
+      "primary_urls": [
+        "https://arxiv.org/html/2506.13695v4"
+      ],
+      "report_location": "Источники (OneRec context)",
+      "checked_claim": "Kuaishou end-to-end generative recommender, reward-based post-training и online tests. В текущем тексте библиографический контекст; прямого переноса их online gains на наш проект нет.",
+      "source_evidence_locator": "Abstract; §2.4 Reward System; §3.3 Post-training; §4.5 Online A/B Test",
+      "status": "confirmed",
+      "caveats": "Technical-report context only; industrial scale and online gains not transferred to project."
+    },
+    {
+      "id": 24,
+      "bibliographic_reference": "[OneRec-V2 — Guorui Zhou et al./OneRec Team, 2025](https://arxiv.org/html/2508.20900v4), technical report",
+      "primary_urls": [
+        "https://arxiv.org/html/2508.20900v4"
+      ],
+      "report_location": "§6 квантильное дослушивание; Источники",
+      "checked_claim": "§3.1.1: user-specific log-duration buckets и percentile played_time; затем discrete advantages и GBPO. Прямая основа идеи quantile normalization; локальный reward лишь адаптация.",
+      "source_evidence_locator": "§3.1.1 Duration-Aware Reward Shaping: F(d)=floor(log_beta(d+epsilon)), P_u,b and percentile q; §3.1.2 GBPO",
+      "status": "confirmed_with_caveats",
+      "caveats": "Log2 is local choice of beta. Article turns percentile into top25% positives/dislike negatives and uses GBPO; continuous RM+KL reward is an adaptation."
+    },
+    {
+      "id": 25,
+      "bibliographic_reference": "[DPO — Rafael Rafailov et al., 2023](https://arxiv.org/html/2305.18290v3)",
+      "primary_urls": [
+        "https://arxiv.org/html/2305.18290v3"
+      ],
+      "report_location": "KL-optimum formula; Источники",
+      "checked_claim": "Eq4/AppendixA KL-regularized optimum proportional to reference×exp(reward/beta); citation математической формулы корректна. Не означает реализацию DPO в проекте.",
+      "source_evidence_locator": "§4 equation4; AppendixA.1 Deriving the Optimum of the KL-Constrained Reward Maximization Objective",
+      "status": "confirmed",
+      "caveats": "Citation supports mathematical optimum; project does not implement DPO training."
+    },
+    {
+      "id": 26,
+      "bibliographic_reference": "[ARGS — Maxim Khanov, Jirayu Burapacheep, Yixuan Li, ICLR2024](https://arxiv.org/abs/2402.01694)",
+      "primary_urls": [
+        "https://arxiv.org/abs/2402.01694"
+      ],
+      "report_location": "§10 Другие связанные работы; Источники",
+      "checked_claim": "Alignment через reward-guided decoding, без policy RL fine-tuning. Корректный пример inference-time adjustment.",
+      "source_evidence_locator": "Abstract (reward-guided search at decoding); arXiv comments ICLR2024",
+      "status": "confirmed",
+      "caveats": "No equivalence with complete ARGS implementation claimed."
+    },
+    {
+      "id": 27,
+      "bibliographic_reference": "[Controlled Decoding — Sidharth Mudgal et al., ICML2024](https://arxiv.org/abs/2310.17022)",
+      "primary_urls": [
+        "https://arxiv.org/abs/2310.17022"
+      ],
+      "report_location": "§10 Другие связанные работы; Источники",
+      "checked_claim": "Frozen base LM и отдельно обучаемый prefix/value scorer, tokenwise KL-regularized control. «Без изменения весов базовой модели» верно; «вообще без обучения» было бы неверно.",
+      "source_evidence_locator": "Abstract (frozen base LM, learned prefix/value scorer and KL tokenwise control); arXiv comments ICML2024",
+      "status": "confirmed",
+      "caveats": "Base model stays frozen, but prefix scorer is trained; do not call the entire technique training-free."
+    }
+  ],
+  "additional_removed_attribution": {
+    "name": "Spotify survival models",
+    "primary_url": "https://research.atspotify.com/2022/11/survival-analysis-meets-reinforcement-learning",
+    "status": "confirmed_general_topic_only",
+    "checked_claim": "Spotify uses survival modeling for future engagement and discusses right-censoring; example Premium conversion. Specific next-day-return reward was not established.",
+    "report_resolution": "Vague attribution removed by parent."
+  },
+  "unavailable_sources": [],
+  "limitations": [
+    "Not a reproduction of external experiments or full proof audit.",
+    "No fact checking of historical reports/research_notes outside stated scope.",
+    "Preprint existence does not establish peer review or truth of empirical claims.",
+    "Review code and local results are outside this source audit."
+  ]
+}

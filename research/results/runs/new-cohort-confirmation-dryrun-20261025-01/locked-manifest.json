@@ -1,0 +1,65 @@
+{
+  "locked_utc": "2026-10-25T15:56:18.911666+00:00",
+  "cohort": "original",
+  "window": "confirmation",
+  "query_cutoff": 25811800,
+  "label_window": [
+    25813600,
+    25900000
+  ],
+  "protocol_sha256": "c93e7f55c8d32cdedceb350a73407e127406d53cf8878e0f22f8a28111bc8cea",
+  "plan_document": "docs/NEW-COHORT-N3-PLAN.md",
+  "checkpoints": {
+    "reference": "artifacts/pps-20261022-01/full+pps+fb-d0.1-wd0.01/last.pt",
+    "B_rl_seconds_beta0.3": "artifacts/rl-v2-20261023-01/rl_seconds_beta0.3.pt",
+    "GPT2_original_next_item_day": "artifacts/day-objective-20261021-01/next_item_plus_day/best.pt",
+    "rm_seed0": "artifacts/reward-v2-20261022-01/v2_seed0.pt",
+    "rm_seed1": "artifacts/reward-v2-20261022-01/v2_seed1.pt",
+    "rm_judge_seed2": "artifacts/reward-v2-20261022-01/v2_seed2.pt",
+    "reranker_booster": "artifacts/reranker-20261022-02/ranker-with_gpt.txt",
+    "reranker_gpt2": "artifacts/fullsft-reg-20261022-01/full-d0.1-wd0.01/best.pt",
+    "E1_head_all_features": "artifacts/exploratory-e1-20261023-01/head_all_features.pt",
+    "E1_head_no_pairwise": "artifacts/exploratory-e1-20261023-01/head_no_pairwise.pt"
+  },
+  "checkpoint_sha256": {
+    "reference": "9521989f08bba17803571aaa262cdff9d7d140d6c0203835125e30d3b8d67d43",
+    "B_rl_seconds_beta0.3": "52995dca0b5746685c998c9464d1a09e04b05890cb1d28194ec13292397bc461",
+    "GPT2_original_next_item_day": "acfec654c0f2e56a20891f8d2062dc7f0bf674b4ad8de16a4ec6c08e8327b061",
+    "rm_seed0": "f1201204fec349cc50353fb179c8ae6b937f92925bcd124f59ba06c73fba8ed3",
+    "rm_seed1": "7c472c8f632ca7be34406c9f9e545490f1a28e54f9cbea72938c12c4aa372a27",
+    "rm_judge_seed2": "777015465bb62b2d9ddbe8be72c3d1e6541af272fbe1aa883e408c722c59c47d",
+    "reranker_booster": "75a484a2683f405b4f2c028ffd05a8a0ecc85e61fa7a1ccf6d0f2f145a9b0a48",
+    "reranker_gpt2": "e7a9d586bce183404e2ca2cacbd5785595728b18710e1f117e2312f1d5ee4d14",
+    "E1_head_all_features": "5b71e3e583a9dbe78cb013572444caa0729972cf8c2132912f662e792d65268d",
+    "E1_head_no_pairwise": "66bb829cc1061aeb554c3ec819a00bb35e798584ccf9d9bfc930da8af73ca044"
+  },
+  "code_sha256": {
+    "recsys/new_cohort.py": "4fb0a1a91b436c6aec6fb6a8c0139d1b0483e1edfaf6be9021d78a3be535f4b2",
+    "recsys/final_test.py": "9cb847220863e3476682f49847440986363382a524ac2056efe7f67f0f3828a7",
+    "recsys/exploratory.py": "ad05957249e6ac503e75c9359b7e729df5275b84224541f7855bbef31497b00e",
+    "recsys/rl_v2.py": "aaa7e35b44b63c92381deb16e5900f3d71f5d27ca883db1d29747b36b17f4742",
+    "recsys/rl_distill.py": "3fdbf2b5d4df1b9ac1a956c19f26fd164ebfefcea98c71670a470eed0d05cede",
+    "recsys/reranker.py": "c498ce7cf2afecfb9a16d30d481c2d450a90c42800ab8098967c81f2593be44e",
+    "recsys/reward_v2.py": "1a4d8f56a2ab9c7f9a8ca2ac2282c91fa34bd2a44f7f430397010fc2c51fb90e",
+    "recsys/data.py": "c2fbf340084820cdef1b2eaa8c2fdd4ee8b4bfac434f7307fd2fa408cff3ee0e",
+    "recsys/models.py": "374d90da7cb8d8b4e9ec0d5c9779c3ddd96e8d6bd5b463992d85030f4d924436",
+    "recsys/metrics.py": "4df36b1c52d152deb19019c24f45711668fe94c5d2e5ad8e174f923071ae31c4",
+    "docs/NEW-COHORT-N3-PLAN.md": "e048e042a30573d6e8ac6f1736044b309c976422855025627eea318150507d31",
+    "research/protocol/case2-v1.json": "c93e7f55c8d32cdedceb350a73407e127406d53cf8878e0f22f8a28111bc8cea",
+    "research/selection/select_new_cohort.py": "60a158ef483ccd3d73498b85848e3af60b876f4cca048a7db40aed1884b30e7c"
+  },
+  "data_sha256": {
+    "original_sample": "df1da9fa9596d11ee04464fd898008ab8cea9d235e48357c369a2c576011ab2b"
+  },
+  "hypotheses": {
+    "N3a": "lower bound of mean(NDCG_A - NDCG_ref) > 0 in the confirmation window",
+    "N3b": "lower bound of mean(NDCG_E1head - NDCG_ref) > 0 in the confirmation window"
+  },
+  "bootstrap": {
+    "draws": 10000,
+    "seed": 20261026,
+    "confirmatory_level": 0.975,
+    "descriptive_level": 0.95
+  },
+  "new_cohort_scored": false
+}

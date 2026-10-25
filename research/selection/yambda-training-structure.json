@@ -1,0 +1,9 @@
+{
+  "scope": "provisional train only,1000 users; not a heldout score",
+  "train_events": 2973054,
+  "unique_user_item_pairs": 880955,
+  "repeat_occurrence_fraction_after_one_per_pair": 0.7036868486075261,
+  "tie_pairs_full_sample": 951965,
+  "tie_pair_fraction_among_adjacent_full_histories": 0.19579792335504673,
+  "policy_note": "Repeated music listening is substantial. Do not blanket-mask every seen item from recommendations unless task explicitly targets discovery. Use same masking policy across all arms."
+}

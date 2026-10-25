@@ -1,0 +1,7 @@
+# PyTorch CUDA is already installed separately; do not replace it with a CPU build.
+numpy==2.2.6
+polars==2.0.0
+transformers==4.57.1
+lightgbm==4.7.0
+scipy==1.17.1
+scikit-learn==1.9.1

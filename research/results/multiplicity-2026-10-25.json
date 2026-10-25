@@ -1,0 +1,167 @@
+{
+  "hypotheses": [
+    "H1",
+    "H2 (two conditions)",
+    "N1",
+    "N2",
+    "N3a",
+    "N3b"
+  ],
+  "m": 6,
+  "level_all_together": 0.9916666666666667,
+  "draws": 10000,
+  "seeds": {
+    "final": 20261025,
+    "new_cohort": 20261026
+  },
+  "tests": {
+    "H1_A_minus_reference_ndcg": {
+      "published_975": {
+        "mean": 0.01058572200500192,
+        "level": 0.975,
+        "interval": [
+          0.0044054501193719975,
+          0.016983164236678366
+        ],
+        "users": 518
+      },
+      "all_six_together": {
+        "mean": 0.01058572200500192,
+        "level": 0.9916666666666667,
+        "interval": [
+          0.0035199193013982616,
+          0.018220173472974915
+        ],
+        "users": 518
+      },
+      "lower_bound_passes": true
+    },
+    "H2_judge_equivalent_seconds_B_minus_reference": {
+      "published_975": {
+        "mean": 9.289348396778106,
+        "level": 0.975,
+        "interval": [
+          8.467565513539315,
+          10.207904553520681
+        ],
+        "users": 1000
+      },
+      "all_six_together": {
+        "mean": 9.289348396778106,
+        "level": 0.9916666666666667,
+        "interval": [
+          8.348041224017738,
+          10.48520663078427
+        ],
+        "users": 1000
+      },
+      "lower_bound_passes": true
+    },
+    "H2_margin_B_minus_0.95_reference_ndcg": {
+      "published_975": {
+        "mean": 0.007851175680210853,
+        "level": 0.975,
+        "interval": [
+          0.004112908295712101,
+          0.01174166530760361
+        ],
+        "users": 518
+      },
+      "all_six_together": {
+        "mean": 0.007851175680210853,
+        "level": 0.9916666666666667,
+        "interval": [
+          0.0034781741722501075,
+          0.012310389340967226
+        ],
+        "users": 518
+      },
+      "lower_bound_passes": true
+    },
+    "N1_A_minus_reference_new_users": {
+      "published_975": {
+        "mean": 0.009091125397345195,
+        "level": 0.975,
+        "interval": [
+          0.0023733796383562165,
+          0.015930760578331232
+        ],
+        "users": 528
+      },
+      "all_six_together": {
+        "mean": 0.009091125397345195,
+        "level": 0.9916666666666667,
+        "interval": [
+          0.0014585465878690967,
+          0.01743813223988094
+        ],
+        "users": 528
+      },
+      "lower_bound_passes": true
+    },
+    "N2_E1_head_minus_reference_new_users": {
+      "published_975": {
+        "mean": 0.014721235424247995,
+        "level": 0.975,
+        "interval": [
+          0.007471398515044505,
+          0.02234046295621191
+        ],
+        "users": 528
+      },
+      "all_six_together": {
+        "mean": 0.014721235424247995,
+        "level": 0.9916666666666667,
+        "interval": [
+          0.006095474802454428,
+          0.023929601539780427
+        ],
+        "users": 528
+      },
+      "lower_bound_passes": true
+    },
+    "N3a_A_minus_reference_other_day": {
+      "published_975": {
+        "mean": 0.014167745735415425,
+        "level": 0.975,
+        "interval": [
+          0.007287117797547525,
+          0.021432088905276588
+        ],
+        "users": 520
+      },
+      "all_six_together": {
+        "mean": 0.014167745735415425,
+        "level": 0.9916666666666667,
+        "interval": [
+          0.0060952546068494375,
+          0.02293365072049017
+        ],
+        "users": 520
+      },
+      "lower_bound_passes": true
+    },
+    "N3b_E1_head_minus_reference_other_day": {
+      "published_975": {
+        "mean": 0.01703803006679897,
+        "level": 0.975,
+        "interval": [
+          0.010537169204852528,
+          0.023888109424762907
+        ],
+        "users": 520
+      },
+      "all_six_together": {
+        "mean": 0.01703803006679897,
+        "level": 0.9916666666666667,
+        "interval": [
+          0.00929721069214778,
+          0.025321370538715672
+        ],
+        "users": 520
+      },
+      "lower_bound_passes": true
+    }
+  },
+  "all_pass": true
+}

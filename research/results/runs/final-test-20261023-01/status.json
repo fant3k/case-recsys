@@ -1,0 +1,14 @@
+{
+  "status": "completed",
+  "stage": "done",
+  "pid": 1892,
+  "final_test_scored": true,
+  "elapsed_seconds": 33.34517320000032,
+  "decision": {
+    "H1_rm_rerank_top50_ndcg_gain_confirmed": true,
+    "H2_judge_seconds_gain_supported": true,
+    "H2_relevance_within_5pct_supported": true,
+    "H2_rl_seconds_confirmed": true,
+    "meaning": "Offline hypotheses on one later period of the same cohort; not causal user benefit"
+  }
+}

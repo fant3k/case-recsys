@@ -1,0 +1,20 @@
+{
+  "created_utc": "2026-10-25T15:59:39.245845+00:00",
+  "plan_document": "docs/REPLAY-PLAN.md",
+  "window": "selection",
+  "query_cutoff": 25723600,
+  "label_window": [
+    25725400,
+    25811800
+  ],
+  "protocol_sha256": "c93e7f55c8d32cdedceb350a73407e127406d53cf8878e0f22f8a28111bc8cea",
+  "checkpoint_sha256": {
+    "reference": "9521989f08bba17803571aaa262cdff9d7d140d6c0203835125e30d3b8d67d43",
+    "B_rl_seconds_beta0.3": "52995dca0b5746685c998c9464d1a09e04b05890cb1d28194ec13292397bc461",
+    "rm_seed0": "f1201204fec349cc50353fb179c8ae6b937f92925bcd124f59ba06c73fba8ed3",
+    "rm_seed1": "7c472c8f632ca7be34406c9f9e545490f1a28e54f9cbea72938c12c4aa372a27"
+  },
+  "extra_policies": {},
+  "likes_sha256": "46ade6c431a11c4a07f651b97514d0f9da5a453cb7dc5df6b2e53169597f66e0",
+  "scope": "selection only; confirmation, final and new cohort are not read"
+}

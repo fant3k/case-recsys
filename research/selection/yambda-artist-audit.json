@@ -1,0 +1,12 @@
+{
+  "source": "https://huggingface.co/datasets/yandex/yambda/resolve/main/artist_item_mapping.parquet",
+  "sha256": "cf1110aa2413ed70008ec9232d395660b2181ffda731002fb74da54e87b6f25d",
+  "file_bytes": 38274621,
+  "source_rows": 9271906,
+  "sample_distinct_items": 261954,
+  "mapped_sample_items": 261398,
+  "sample_item_coverage": 0.997877489940982,
+  "sample_items_with_multiple_artists": 45,
+  "max_artists_per_sample_item": 2,
+  "note": "Static catalog relation assumption must be stated. For many-to-many features, deduplicate event-artist joins; do not multiply raw user counts by collaborator count."
+}

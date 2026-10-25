@@ -1,0 +1,228 @@
+{
+  "locked_manifest": {
+    "locked_utc": "2026-10-24T19:58:06.821045+00:00",
+    "cohort": "original",
+    "window": "selection",
+    "query_cutoff": 25723600,
+    "label_window": [
+      25725400,
+      25811800
+    ],
+    "protocol_sha256": "c93e7f55c8d32cdedceb350a73407e127406d53cf8878e0f22f8a28111bc8cea",
+    "plan_document": "docs/NEW-COHORT-PLAN.md",
+    "checkpoints": {
+      "reference": "artifacts/pps-20261022-01/full+pps+fb-d0.1-wd0.01/last.pt",
+      "B_rl_seconds_beta0.3": "artifacts/rl-v2-20261023-01/rl_seconds_beta0.3.pt",
+      "GPT2_original_next_item_day": "artifacts/day-objective-20261021-01/next_item_plus_day/best.pt",
+      "rm_seed0": "artifacts/reward-v2-20261022-01/v2_seed0.pt",
+      "rm_seed1": "artifacts/reward-v2-20261022-01/v2_seed1.pt",
+      "rm_judge_seed2": "artifacts/reward-v2-20261022-01/v2_seed2.pt",
+      "reranker_booster": "artifacts/reranker-20261022-02/ranker-with_gpt.txt",
+      "reranker_gpt2": "artifacts/fullsft-reg-20261022-01/full-d0.1-wd0.01/best.pt",
+      "E1_head_all_features": "artifacts/exploratory-e1-20261023-01/head_all_features.pt",
+      "E1_head_no_pairwise": "artifacts/exploratory-e1-20261023-01/head_no_pairwise.pt"
+    },
+    "checkpoint_sha256": {
+      "reference": "9521989f08bba17803571aaa262cdff9d7d140d6c0203835125e30d3b8d67d43",
+      "B_rl_seconds_beta0.3": "52995dca0b5746685c998c9464d1a09e04b05890cb1d28194ec13292397bc461",
+      "GPT2_original_next_item_day": "acfec654c0f2e56a20891f8d2062dc7f0bf674b4ad8de16a4ec6c08e8327b061",
+      "rm_seed0": "f1201204fec349cc50353fb179c8ae6b937f92925bcd124f59ba06c73fba8ed3",
+      "rm_seed1": "7c472c8f632ca7be34406c9f9e545490f1a28e54f9cbea72938c12c4aa372a27",
+      "rm_judge_seed2": "777015465bb62b2d9ddbe8be72c3d1e6541af272fbe1aa883e408c722c59c47d",
+      "reranker_booster": "75a484a2683f405b4f2c028ffd05a8a0ecc85e61fa7a1ccf6d0f2f145a9b0a48",
+      "reranker_gpt2": "e7a9d586bce183404e2ca2cacbd5785595728b18710e1f117e2312f1d5ee4d14",
+      "E1_head_all_features": "5b71e3e583a9dbe78cb013572444caa0729972cf8c2132912f662e792d65268d",
+      "E1_head_no_pairwise": "66bb829cc1061aeb554c3ec819a00bb35e798584ccf9d9bfc930da8af73ca044"
+    },
+    "code_sha256": {
+      "recsys/new_cohort.py": "0db49a41c2438bb3195a2d66cd9562685e736f53da510f519ea022cf4ae3a3e5",
+      "recsys/final_test.py": "9cb847220863e3476682f49847440986363382a524ac2056efe7f67f0f3828a7",
+      "recsys/exploratory.py": "19fe3858b2eb88824b317a91c024bb33330b080b52f4689c3f408511e0e5fcda",
+      "recsys/rl_v2.py": "0eee5098b9c37361e4a984e0ed8b55e42e03de10e5bbf14b65653e340c0dee7b",
+      "recsys/rl_distill.py": "083bbae20f81d2e11a098bfa0b407729e6b8efaa4a36115e2e3b29983443b98e",
+      "recsys/reranker.py": "c498ce7cf2afecfb9a16d30d481c2d450a90c42800ab8098967c81f2593be44e",
+      "recsys/reward_v2.py": "1a4d8f56a2ab9c7f9a8ca2ac2282c91fa34bd2a44f7f430397010fc2c51fb90e",
+      "recsys/data.py": "c2fbf340084820cdef1b2eaa8c2fdd4ee8b4bfac434f7307fd2fa408cff3ee0e",
+      "recsys/models.py": "374d90da7cb8d8b4e9ec0d5c9779c3ddd96e8d6bd5b463992d85030f4d924436",
+      "recsys/metrics.py": "4df36b1c52d152deb19019c24f45711668fe94c5d2e5ad8e174f923071ae31c4",
+      "docs/NEW-COHORT-PLAN.md": "4ba6cf0c7f211a5e7adf763f388e4d3e41aba212bad93a1e46b13cb5a0115fd7",
+      "research/protocol/case2-v1.json": "c93e7f55c8d32cdedceb350a73407e127406d53cf8878e0f22f8a28111bc8cea",
+      "research/selection/select_new_cohort.py": "60a158ef483ccd3d73498b85848e3af60b876f4cca048a7db40aed1884b30e7c"
+    },
+    "data_sha256": {
+      "original_sample": "df1da9fa9596d11ee04464fd898008ab8cea9d235e48357c369a2c576011ab2b"
+    },
+    "hypotheses": {
+      "N1": "lower bound of mean(NDCG_A - NDCG_ref) > 0",
+      "N2": "lower bound of mean(NDCG_E1head - NDCG_ref) > 0"
+    },
+    "bootstrap": {
+      "draws": 10000,
+      "seed": 20261026,
+      "confirmatory_level": 0.975,
+      "descriptive_level": 0.95
+    },
+    "new_cohort_scored": false
+  },
+  "warm_users": 1000,
+  "active_positive_users": 492,
+  "rows": {
+    "reference": {
+      "users": 492,
+      "Recall@10": 0.08709126664702464,
+      "NDCG@10": 0.14727090259847372,
+      "HitRate@10": 0.3699186991869919,
+      "Precision@10": 0.11605691056910569,
+      "definition": "conditional on positive next-day truth; hit means at least one matching observed >50% listened track, not acceptance probability"
+    },
+    "A_rm_rerank_top50": {
+      "users": 492,
+      "Recall@10": 0.09550390640739606,
+      "NDCG@10": 0.1582555761844212,
+      "HitRate@10": 0.3983739837398374,
+      "Precision@10": 0.12134146341463414,
+      "definition": "conditional on positive next-day truth; hit means at least one matching observed >50% listened track, not acceptance probability"
+    },
+    "E1_head_all_features": {
+      "users": 492,
+      "Recall@10": 0.09637438939775765,
+      "NDCG@10": 0.16123726520994613,
+      "HitRate@10": 0.3983739837398374,
+      "Precision@10": 0.12317073170731707,
+      "definition": "conditional on positive next-day truth; hit means at least one matching observed >50% listened track, not acceptance probability"
+    },
+    "E1_head_no_pairwise": {
+      "users": 492,
+      "Recall@10": 0.08581130486878162,
+      "NDCG@10": 0.1460117639919022,
+      "HitRate@10": 0.3719512195121951,
+      "Precision@10": 0.11626016260162601,
+      "definition": "conditional on positive next-day truth; hit means at least one matching observed >50% listened track, not acceptance probability"
+    },
+    "B_rl_seconds_beta0.3": {
+      "users": 492,
+      "Recall@10": 0.08714883171645586,
+      "NDCG@10": 0.1463647779687941,
+      "HitRate@10": 0.3821138211382114,
+      "Precision@10": 0.11646341463414633,
+      "definition": "conditional on positive next-day truth; hit means at least one matching observed >50% listened track, not acceptance probability"
+    },
+    "PersonalFrequency128": {
+      "users": 492,
+      "Recall@10": 0.10581139601895478,
+      "NDCG@10": 0.18052256259971922,
+      "HitRate@10": 0.4146341463414634,
+      "Precision@10": 0.13597560975609757,
+      "definition": "conditional on positive next-day truth; hit means at least one matching observed >50% listened track, not acceptance probability"
+    },
+    "Frequency128_recency_tiebreak": {
+      "users": 492,
+      "Recall@10": 0.11303858487542423,
+      "NDCG@10": 0.18741612761510879,
+      "HitRate@10": 0.40853658536585363,
+      "Precision@10": 0.14247967479674797,
+      "definition": "conditional on positive next-day truth; hit means at least one matching observed >50% listened track, not acceptance probability"
+    },
+    "Memory_recent_full_0.5": {
+      "users": 492,
+      "Recall@10": 0.11166510760207617,
+      "NDCG@10": 0.1957938389605741,
+      "HitRate@10": 0.42886178861788615,
+      "Precision@10": 0.15162601626016262,
+      "definition": "conditional on positive next-day truth; hit means at least one matching observed >50% listened track, not acceptance probability"
+    },
+    "Reranker_LightGBM": {
+      "users": 492,
+      "Recall@10": 0.13117323037924114,
+      "NDCG@10": 0.23486883235926911,
+      "HitRate@10": 0.5365853658536586,
+      "Precision@10": 0.18516260162601625,
+      "definition": "conditional on positive next-day truth; hit means at least one matching observed >50% listened track, not acceptance probability"
+    }
+  },
+  "new_cohort_scored": false,
+  "confirmatory": {
+    "N1_A_minus_reference": {
+      "mean": 0.010984673585947381,
+      "level": 0.975,
+      "interval": [
+        0.0048884701393894685,
+        0.01710569543781931
+      ],
+      "users": 492
+    },
+    "N2_E1_head_minus_reference": {
+      "mean": 0.013966362611472336,
+      "level": 0.975,
+      "interval": [
+        0.008609120796175363,
+        0.019863347997789136
+      ],
+      "users": 492
+    }
+  },
+  "decision": {
+    "N1_A_beats_reference_on_new_users": true,
+    "N2_E1_head_beats_reference_on_new_users": true,
+    "meaning": "Offline hypotheses on new users of the same released dataset and day; not causal user benefit"
+  },
+  "descriptive_95": {
+    "E1_head_minus_A": {
+      "mean": 0.002981689025524957,
+      "level": 0.95,
+      "interval": [
+        -0.000996152212128965,
+        0.00697324170202318
+      ],
+      "users": 492
+    },
+    "E1_no_pairwise_minus_reference": {
+      "mean": -0.001259138606571535,
+      "level": 0.95,
+      "interval": [
+        -0.004916280188868394,
+        0.0023468904130807674
+      ],
+      "users": 492
+    },
+    "B_minus_reference": {
+      "mean": -0.0009061246296796993,
+      "level": 0.95,
+      "interval": [
+        -0.004223055239654437,
+        0.002389659114899789
+      ],
+      "users": 492
+    },
+    "reference_minus_PersonalFrequency128": {
+      "mean": -0.03325166000124548,
+      "level": 0.95,
+      "interval": [
+        -0.04772343178303935,
+        -0.019720833088462886
+      ],
+      "users": 492
+    },
+    "Reranker_minus_PersonalFrequency128": {
+      "mean": 0.054346269759549794,
+      "level": 0.95,
+      "interval": [
+        0.04111415338511191,
+        0.06755139303842178
+      ],
+      "users": 492
+    },
+    "E1_head_minus_PersonalFrequency128": {
+      "mean": -0.01928529738977314,
+      "level": 0.95,
+      "interval": [
+        -0.03272396389610336,
+        -0.0064494210859657175
+      ],
+      "users": 492
+    }
+  },
+  "self_comparison_pass": true,
+  "all_frozen_hashes_pass": true,
+  "elapsed_seconds": 16.461249599999974
+}

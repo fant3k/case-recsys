@@ -1,0 +1,569 @@
+{
+  "locked_manifest": {
+    "locked_utc": "2026-10-21T18:45:19.038027+00:00",
+    "kind": "one_time_confirmation",
+    "protocol_sha256": "c93e7f55c8d32cdedceb350a73407e127406d53cf8878e0f22f8a28111bc8cea",
+    "query_cutoff": 25811800,
+    "label_window": [
+      25813600,
+      25900000
+    ],
+    "primary_candidate": "RL capped_seconds beta0.3 fixed last500 updates; single confirmatory candidate",
+    "checkpoints": {
+      "reference": "artifacts/day-objective-20261021-01/next_item_plus_day/best.pt",
+      "candidate": "artifacts/rl-comparison-20261021-01/RL_capped_seconds_beta0.3/last.pt",
+      "continued_SFT": "artifacts/rl-comparison-20261021-01/continued_SFT/last.pt",
+      "primary_RM": "artifacts/reward-audit-20261021-01/history-last.pt",
+      "alternate_RM": "artifacts/calibration-20261021-01/reward-model.pt"
+    },
+    "checkpoint_sha256": {
+      "reference": "acfec654c0f2e56a20891f8d2062dc7f0bf674b4ad8de16a4ec6c08e8327b061",
+      "candidate": "173414f6e34a1645bd7e9bc0d7a3e08ebfd82de98215c1f9e501b2adacd653b4",
+      "continued_SFT": "15838543c448b0bbf270ce7cf349e123b277aa98dea1ceff1d5d9f9088fce19c",
+      "primary_RM": "3e6866450f13601387101518952175f18a138899d926cb784d26aa904e972856",
+      "alternate_RM": "27ba76fae0ca5799c1a786fbe45b708385ff0b31f2b13ed4b5ff5761a59a8e0b"
+    },
+    "code_sha256": {
+      "recsys\\confirmation.py": "5f89749d7ef0da3b967ddf4f63ccd5f9786295bf80b454be2ae50dae166d4f91",
+      "recsys\\rl_comparison.py": "2037899b6dc41243acbbba9d2e50add552de3d76e4db24b663a6183ed7c2b1a2",
+      "recsys\\data.py": "9b188579793516f4a0c1e4c98cb1e96f57ff15be5d9d99b99dc8e016479e7db1",
+      "recsys\\models.py": "a87fee53010af206add7496777b9e387ed1e077a81dd94a15d669635d6698860",
+      "recsys\\metrics.py": "4df36b1c52d152deb19019c24f45711668fe94c5d2e5ad8e174f923071ae31c4",
+      "recsys\\diagnostics.py": "135e602107c89ec336f1ef5aa52614a43c2fa4f076ae55c6b1c91ca5013afc6e",
+      "research\\protocol\\case2-v1.json": "c93e7f55c8d32cdedceb350a73407e127406d53cf8878e0f22f8a28111bc8cea"
+    },
+    "hypothesis": "Predicted normalized capped_seconds improves vs reference AND NDCG remains within5% relative margin",
+    "decision": "Both: reward delta lower two-sided95% bootstrap bound >0, relevance mean(NDCGcandidate-.95*NDCGref) lower bound>=0. No candidate selection on this period.",
+    "bootstrap": {
+      "draws": 2000,
+      "seed": 42,
+      "unit": "paired users"
+    },
+    "controls": [
+      "reference",
+      "continued_SFT",
+      "PersonalFrequency128",
+      "Frequency128_recency_tiebreak",
+      "Memory_recent_full_0.5"
+    ],
+    "reward_scope": "All warm users/full fixed catalog for exact expected rewards, alternateRM sensitivity",
+    "ranking_scope": "Warm users with future played>50% day positives, full catalog; OOV stays misses",
+    "history": "Strictly before new query; earlier selection events can enter history, no fitted weights/stats change",
+    "do_not_change": [
+      "checkpoints",
+      "hyperparameters",
+      "5%margin",
+      "candidate",
+      "primarymetric",
+      "labelwindow"
+    ],
+    "final_test_scored": false,
+    "limitations": [
+      "Same user cohort at a later day, not new users or randomized online A/B",
+      "RM agreement does not establish causal utility",
+      "Single period and user bootstrap omit all training/time uncertainty"
+    ]
+  },
+  "data_support": {
+    "users": 1000,
+    "eligible_training_users": 999,
+    "train_events": 4787599,
+    "catalog_size": 50000,
+    "in_catalog_train_events": 4109827,
+    "eligible_target_groups": 3305526,
+    "items_with_varying_recorded_length": 0,
+    "target_sampling": "uniform eligible user, then group, then in-catalog event",
+    "context_size": 128
+  },
+  "all_warm_users": 1000,
+  "active_positive_users": 498,
+  "models": {
+    "reference": {
+      "ranking": {
+        "users": 498,
+        "Recall@10": 0.022867191184004074,
+        "NDCG@10": 0.046896598655172574,
+        "HitRate@10": 0.22690763052208834,
+        "Precision@10": 0.03975903614457831,
+        "definition": "conditional on positive next-day truth; hit means at least one matching observed >50% listened track, not acceptance probability"
+      },
+      "slices": {
+        "seen_recent128": {
+          "users_with_targets": 315,
+          "target_pairs": 2181,
+          "catalog_target_pairs": 1869,
+          "hits": 109,
+          "macro_recall_when_nonempty": 0.047947114476047104,
+          "ndcg_contribution_all_active_users": 0.02696067326043833,
+          "pooled_recall": 0.04997707473635947
+        },
+        "seen_older_only": {
+          "users_with_targets": 396,
+          "target_pairs": 6868,
+          "catalog_target_pairs": 5906,
+          "hits": 80,
+          "macro_recall_when_nonempty": 0.014260421711350288,
+          "ndcg_contribution_all_active_users": 0.017813229322895658,
+          "pooled_recall": 0.011648223645894
+        },
+        "never_seen": {
+          "users_with_targets": 342,
+          "target_pairs": 4145,
+          "catalog_target_pairs": 2748,
+          "hits": 9,
+          "macro_recall_when_nonempty": 0.0017616017098619062,
+          "ndcg_contribution_all_active_users": 0.002122696071838588,
+          "pooled_recall": 0.0021712907117008443
+        }
+      },
+      "recommendation_fraction_on_active_users": {
+        "seen_recent128": 0.18072289156626506,
+        "seen_older_only": 0.46626506024096387,
+        "never_seen": 0.3530120481927711
+      },
+      "unique_recommended_items": 1717,
+      "top_item_slot_fraction": 0.014859437751004016,
+      "all_warm_reward": {
+        "exact_KL_to_reference": 0.0,
+        "expected_primary_completion": 0.6585220098495483,
+        "expected_alternate_completion": 0.6969084143638611,
+        "expected_primary_capped_seconds": 0.2200084924697876,
+        "expected_alternate_capped_seconds": 0.2325492948293686,
+        "expected_primary_equivalent_seconds": 132.0050811767578,
+        "expected_alternate_equivalent_seconds": 139.52957153320312,
+        "expected_capped_length_seconds": 201.75564575195312,
+        "top10_primary_completion": 0.6634634733200073,
+        "top10_alternate_completion": 0.7018091678619385,
+        "top10_primary_capped_seconds": 0.20966021716594696
+      },
+      "next_group": {
+        "users": 531,
+        "Recall@10": 0.04687696170747018,
+        "NDCG@10": 0.028363462102203998
+      }
+    },
+    "candidate": {
+      "ranking": {
+        "users": 498,
+        "Recall@10": 0.022327232449237976,
+        "NDCG@10": 0.04558036600822185,
+        "HitRate@10": 0.21485943775100402,
+        "Precision@10": 0.03815261044176707,
+        "definition": "conditional on positive next-day truth; hit means at least one matching observed >50% listened track, not acceptance probability"
+      },
+      "slices": {
+        "seen_recent128": {
+          "users_with_targets": 315,
+          "target_pairs": 2181,
+          "catalog_target_pairs": 1869,
+          "hits": 103,
+          "macro_recall_when_nonempty": 0.045124436228777966,
+          "ndcg_contribution_all_active_users": 0.026035336863267408,
+          "pooled_recall": 0.04722604309949564
+        },
+        "seen_older_only": {
+          "users_with_targets": 396,
+          "target_pairs": 6868,
+          "catalog_target_pairs": 5906,
+          "hits": 78,
+          "macro_recall_when_nonempty": 0.014232526975133183,
+          "ndcg_contribution_all_active_users": 0.017221910008257017,
+          "pooled_recall": 0.011357018054746652
+        },
+        "never_seen": {
+          "users_with_targets": 342,
+          "target_pairs": 4145,
+          "catalog_target_pairs": 2748,
+          "hits": 9,
+          "macro_recall_when_nonempty": 0.0017616017098619062,
+          "ndcg_contribution_all_active_users": 0.0023231191366974227,
+          "pooled_recall": 0.0021712907117008443
+        }
+      },
+      "recommendation_fraction_on_active_users": {
+        "seen_recent128": 0.1793172690763052,
+        "seen_older_only": 0.4610441767068273,
+        "never_seen": 0.35963855421686747
+      },
+      "unique_recommended_items": 1754,
+      "top_item_slot_fraction": 0.014859437751004016,
+      "all_warm_reward": {
+        "exact_KL_to_reference": 0.003745040623471141,
+        "expected_primary_completion": 0.6583950519561768,
+        "expected_alternate_completion": 0.6967228055000305,
+        "expected_primary_capped_seconds": 0.22176223993301392,
+        "expected_alternate_capped_seconds": 0.23437552154064178,
+        "expected_primary_equivalent_seconds": 133.0573272705078,
+        "expected_alternate_equivalent_seconds": 140.6253204345703,
+        "expected_capped_length_seconds": 203.3722381591797,
+        "top10_primary_completion": 0.6630849242210388,
+        "top10_alternate_completion": 0.7004985213279724,
+        "top10_primary_capped_seconds": 0.21569806337356567
+      },
+      "next_group": {
+        "users": 531,
+        "Recall@10": 0.048760200878844945,
+        "NDCG@10": 0.02869169992232562
+      }
+    },
+    "continued_SFT": {
+      "ranking": {
+        "users": 498,
+        "Recall@10": 0.02235660409238056,
+        "NDCG@10": 0.04707348655558431,
+        "HitRate@10": 0.2289156626506024,
+        "Precision@10": 0.0395582329317269,
+        "definition": "conditional on positive next-day truth; hit means at least one matching observed >50% listened track, not acceptance probability"
+      },
+      "slices": {
+        "seen_recent128": {
+          "users_with_targets": 315,
+          "target_pairs": 2181,
+          "catalog_target_pairs": 1869,
+          "hits": 107,
+          "macro_recall_when_nonempty": 0.04686206955371287,
+          "ndcg_contribution_all_active_users": 0.02705522428966281,
+          "pooled_recall": 0.049060064190738197
+        },
+        "seen_older_only": {
+          "users_with_targets": 396,
+          "target_pairs": 6868,
+          "catalog_target_pairs": 5906,
+          "hits": 81,
+          "macro_recall_when_nonempty": 0.014468228926744145,
+          "ndcg_contribution_all_active_users": 0.01791696909344041,
+          "pooled_recall": 0.011793826441467677
+        },
+        "never_seen": {
+          "users_with_targets": 342,
+          "target_pairs": 4145,
+          "catalog_target_pairs": 2748,
+          "hits": 9,
+          "macro_recall_when_nonempty": 0.0024502193893262674,
+          "ndcg_contribution_all_active_users": 0.0021012931724810756,
+          "pooled_recall": 0.0021712907117008443
+        }
+      },
+      "recommendation_fraction_on_active_users": {
+        "seen_recent128": 0.18373493975903615,
+        "seen_older_only": 0.4716867469879518,
+        "never_seen": 0.344578313253012
+      },
+      "unique_recommended_items": 1673,
+      "top_item_slot_fraction": 0.015461847389558234,
+      "all_warm_reward": {
+        "exact_KL_to_reference": 0.006513872649520636,
+        "expected_primary_completion": 0.658486545085907,
+        "expected_alternate_completion": 0.6968265175819397,
+        "expected_primary_capped_seconds": 0.22011451423168182,
+        "expected_alternate_capped_seconds": 0.23266035318374634,
+        "expected_primary_equivalent_seconds": 132.0687255859375,
+        "expected_alternate_equivalent_seconds": 139.59620666503906,
+        "expected_capped_length_seconds": 201.8648223876953,
+        "top10_primary_completion": 0.663977861404419,
+        "top10_alternate_completion": 0.7015350461006165,
+        "top10_primary_capped_seconds": 0.20928505063056946
+      },
+      "next_group": {
+        "users": 531,
+        "Recall@10": 0.04216886377903327,
+        "NDCG@10": 0.027433371977773173
+      }
+    },
+    "PersonalFrequency128": {
+      "ranking": {
+        "users": 498,
+        "Recall@10": 0.10690014576245205,
+        "NDCG@10": 0.17439793153913394,
+        "HitRate@10": 0.40160642570281124,
+        "Precision@10": 0.13052208835341367,
+        "definition": "conditional on positive next-day truth; hit means at least one matching observed >50% listened track, not acceptance probability"
+      },
+      "slices": {
+        "seen_recent128": {
+          "users_with_targets": 315,
+          "target_pairs": 2181,
+          "catalog_target_pairs": 1869,
+          "hits": 650,
+          "macro_recall_when_nonempty": 0.32322401027715203,
+          "ndcg_contribution_all_active_users": 0.17439793153913394,
+          "pooled_recall": 0.29802842732691426
+        },
+        "seen_older_only": {
+          "users_with_targets": 396,
+          "target_pairs": 6868,
+          "catalog_target_pairs": 5906,
+          "hits": 0,
+          "macro_recall_when_nonempty": 0.0,
+          "ndcg_contribution_all_active_users": 0.0,
+          "pooled_recall": 0.0
+        },
+        "never_seen": {
+          "users_with_targets": 342,
+          "target_pairs": 4145,
+          "catalog_target_pairs": 2748,
+          "hits": 0,
+          "macro_recall_when_nonempty": 0.0,
+          "ndcg_contribution_all_active_users": 0.0,
+          "pooled_recall": 0.0
+        }
+      },
+      "recommendation_fraction_on_active_users": {
+        "seen_recent128": 0.9993975903614458,
+        "seen_older_only": 0.0,
+        "never_seen": 0.0006024096385542169
+      },
+      "unique_recommended_items": 3850,
+      "top_item_slot_fraction": 0.0030120481927710845
+    },
+    "Frequency128_recency_tiebreak": {
+      "ranking": {
+        "users": 498,
+        "Recall@10": 0.1088909695578585,
+        "NDCG@10": 0.17669544674624046,
+        "HitRate@10": 0.40562248995983935,
+        "Precision@10": 0.13393574297188754,
+        "definition": "conditional on positive next-day truth; hit means at least one matching observed >50% listened track, not acceptance probability"
+      },
+      "slices": {
+        "seen_recent128": {
+          "users_with_targets": 315,
+          "target_pairs": 2181,
+          "catalog_target_pairs": 1869,
+          "hits": 667,
+          "macro_recall_when_nonempty": 0.330369180698072,
+          "ndcg_contribution_all_active_users": 0.17669544674624046,
+          "pooled_recall": 0.3058230169646951
+        },
+        "seen_older_only": {
+          "users_with_targets": 396,
+          "target_pairs": 6868,
+          "catalog_target_pairs": 5906,
+          "hits": 0,
+          "macro_recall_when_nonempty": 0.0,
+          "ndcg_contribution_all_active_users": 0.0,
+          "pooled_recall": 0.0
+        },
+        "never_seen": {
+          "users_with_targets": 342,
+          "target_pairs": 4145,
+          "catalog_target_pairs": 2748,
+          "hits": 0,
+          "macro_recall_when_nonempty": 0.0,
+          "ndcg_contribution_all_active_users": 0.0,
+          "pooled_recall": 0.0
+        }
+      },
+      "recommendation_fraction_on_active_users": {
+        "seen_recent128": 0.9993975903614458,
+        "seen_older_only": 0.0,
+        "never_seen": 0.0006024096385542169
+      },
+      "unique_recommended_items": 4120,
+      "top_item_slot_fraction": 0.0030120481927710845
+    },
+    "Memory_recent_full_0.5": {
+      "ranking": {
+        "users": 498,
+        "Recall@10": 0.10870477087974732,
+        "NDCG@10": 0.17771509604241878,
+        "HitRate@10": 0.40763052208835343,
+        "Precision@10": 0.13514056224899598,
+        "definition": "conditional on positive next-day truth; hit means at least one matching observed >50% listened track, not acceptance probability"
+      },
+      "slices": {
+        "seen_recent128": {
+          "users_with_targets": 315,
+          "target_pairs": 2181,
+          "catalog_target_pairs": 1869,
+          "hits": 668,
+          "macro_recall_when_nonempty": 0.3277132323826575,
+          "ndcg_contribution_all_active_users": 0.1755641310300803,
+          "pooled_recall": 0.3062815222375057
+        },
+        "seen_older_only": {
+          "users_with_targets": 396,
+          "target_pairs": 6868,
+          "catalog_target_pairs": 5906,
+          "hits": 5,
+          "macro_recall_when_nonempty": 0.0033163465692627944,
+          "ndcg_contribution_all_active_users": 0.0021509650123384527,
+          "pooled_recall": 0.000728013977868375
+        },
+        "never_seen": {
+          "users_with_targets": 342,
+          "target_pairs": 4145,
+          "catalog_target_pairs": 2748,
+          "hits": 0,
+          "macro_recall_when_nonempty": 0.0,
+          "ndcg_contribution_all_active_users": 0.0,
+          "pooled_recall": 0.0
+        }
+      },
+      "recommendation_fraction_on_active_users": {
+        "seen_recent128": 0.9851405622489959,
+        "seen_older_only": 0.014457831325301205,
+        "never_seen": 0.00040160642570281126
+      },
+      "unique_recommended_items": 4021,
+      "top_item_slot_fraction": 0.004417670682730923
+    }
+  },
+  "comparisons": {
+    "candidate": {
+      "NDCG_delta": {
+        "mean_ndcg_difference": -0.001316232646950734,
+        "paired_user_bootstrap_95_percentile_interval": [
+          -0.0029591212411687654,
+          0.00028571334310324394
+        ],
+        "draws": 2000,
+        "seed": 42,
+        "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+      },
+      "5percent_relevance_margin": {
+        "mean": 0.0010285972858078967,
+        "paired_user_bootstrap95": [
+          -0.0005922894623085647,
+          0.0026649306308807338
+        ],
+        "caution": "Locked single-candidate confirmation period; paired users, no training-seed/time-generalization uncertainty"
+      },
+      "reward_deltas": {
+        "primary_completion": {
+          "mean": -0.00012701120600104333,
+          "paired_user_bootstrap95": [
+            -0.00023122812686488033,
+            4.6081765461713066e-05
+          ],
+          "caution": "Locked single-candidate confirmation period; paired users, no training-seed/time-generalization uncertainty"
+        },
+        "alternate_completion": {
+          "mean": -0.00018564149737358094,
+          "paired_user_bootstrap95": [
+            -0.00028747430816292765,
+            -3.695743754506115e-05
+          ],
+          "caution": "Locked single-candidate confirmation period; paired users, no training-seed/time-generalization uncertainty"
+        },
+        "primary_capped_seconds": {
+          "mean": 0.0017537457216531037,
+          "paired_user_bootstrap95": [
+            0.0016711608038516715,
+            0.0018530809196177869
+          ],
+          "caution": "Locked single-candidate confirmation period; paired users, no training-seed/time-generalization uncertainty"
+        },
+        "alternate_capped_seconds": {
+          "mean": 0.0018262266479432583,
+          "paired_user_bootstrap95": [
+            0.0017446760133840143,
+            0.0019151976547203957
+          ],
+          "caution": "Locked single-candidate confirmation period; paired users, no training-seed/time-generalization uncertainty"
+        },
+        "kl": {
+          "mean": 0.0037450402273680084,
+          "paired_user_bootstrap95": [
+            0.003577863170746423,
+            0.003943659051628492
+          ],
+          "caution": "Locked single-candidate confirmation period; paired users, no training-seed/time-generalization uncertainty"
+        }
+      }
+    },
+    "continued_SFT": {
+      "NDCG_delta": {
+        "mean_ndcg_difference": 0.00017688790041171508,
+        "paired_user_bootstrap_95_percentile_interval": [
+          -0.0014511966989413832,
+          0.0017982550501958248
+        ],
+        "draws": 2000,
+        "seed": 42,
+        "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+      },
+      "5percent_relevance_margin": {
+        "mean": 0.002521717833170346,
+        "paired_user_bootstrap95": [
+          0.0007711041626035278,
+          0.004190858512044706
+        ],
+        "caution": "Locked single-candidate confirmation period; paired users, no training-seed/time-generalization uncertainty"
+      },
+      "reward_deltas": {
+        "primary_completion": {
+          "mean": -3.551370650529862e-05,
+          "paired_user_bootstrap95": [
+            -8.05768652819097e-05,
+            7.361406367272123e-06
+          ],
+          "caution": "Locked single-candidate confirmation period; paired users, no training-seed/time-generalization uncertainty"
+        },
+        "alternate_completion": {
+          "mean": -8.190980553627014e-05,
+          "paired_user_bootstrap95": [
+            -0.00012642665393650533,
+            -3.478398192673925e-05
+          ],
+          "caution": "Locked single-candidate confirmation period; paired users, no training-seed/time-generalization uncertainty"
+        },
+        "primary_capped_seconds": {
+          "mean": 0.00010604036599397659,
+          "paired_user_bootstrap95": [
+            5.4976932308636607e-05,
+            0.0001592727310955524
+          ],
+          "caution": "Locked single-candidate confirmation period; paired users, no training-seed/time-generalization uncertainty"
+        },
+        "alternate_capped_seconds": {
+          "mean": 0.00011106622405350208,
+          "paired_user_bootstrap95": [
+            5.548676494508982e-05,
+            0.0001664108720142394
+          ],
+          "caution": "Locked single-candidate confirmation period; paired users, no training-seed/time-generalization uncertainty"
+        },
+        "kl": {
+          "mean": 0.006513872119860025,
+          "paired_user_bootstrap95": [
+            0.0062732061750160936,
+            0.006771330505402875
+          ],
+          "caution": "Locked single-candidate confirmation period; paired users, no training-seed/time-generalization uncertainty"
+        }
+      }
+    }
+  },
+  "confirmation_scored": true,
+  "final_test_scored": false,
+  "decision": {
+    "predicted_reward_increase_supported": true,
+    "relevance_within_5percent_supported": false,
+    "joint_confirmation_pass": false,
+    "meaning": "Locked offline proxy and relevance hypotheses only; no causal user benefit claim"
+  },
+  "candidate_minus_continued_SFT": {
+    "NDCG_delta": {
+      "mean_ndcg_difference": -0.0014931205473624493,
+      "paired_user_bootstrap_95_percentile_interval": [
+        -0.003634347634950296,
+        0.000664314108298862
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    },
+    "proxy_capped_seconds_delta": {
+      "mean": 0.0016477053556591273,
+      "paired_user_bootstrap95": [
+        0.0015503713783342392,
+        0.0017622963569127023
+      ],
+      "caution": "Locked single-candidate confirmation period; paired users, no training-seed/time-generalization uncertainty"
+    }
+  },
+  "self_comparison_pass": true,
+  "all_frozen_hashes_pass": true,
+  "elapsed_seconds": 34.53631459999997
+}

@@ -1,0 +1,64 @@
+{
+  "source": "https://huggingface.co/datasets/yandex/yambda",
+  "file": "sequential/50m/listens.parquet",
+  "size_bytes": 426248769,
+  "sha256": "c07db8326739b23fd4fb0a25037304e78b2e916320ccf1b01dc904d2b1b376c7",
+  "schema": {
+    "uid": "UInt32",
+    "timestamp": "List(UInt32)",
+    "item_id": "List(UInt32)",
+    "is_organic": "List(UInt8)",
+    "played_ratio_pct": "List(UInt16)",
+    "track_length_seconds": "List(UInt32)"
+  },
+  "all_listen_users": 9238,
+  "all_listen_events": 46467212,
+  "history_quantiles": {
+    "0.5": 3024.0,
+    "0.75": 7182.0,
+    "0.9": 13043.0,
+    "0.99": 23766.0
+  },
+  "sample_seed": 42,
+  "sample_users": 1000,
+  "complete_sampled_user_histories": true,
+  "sample": {
+    "events": 4862977,
+    "items": 261954,
+    "min_t": 20,
+    "max_t": 26000000,
+    "ratio_min": 0,
+    "ratio_max": 159,
+    "ratio_null": 0,
+    "length_null": 0,
+    "track_length_median": 200.0,
+    "organic_fraction": 0.5229547661854045,
+    "ratio_above_100": 28675,
+    "ratio_zero": 342506
+  },
+  "sequence_checks": {
+    "lists_aligned": true,
+    "histories_with_decreasing_time": 0,
+    "equal_time_adjacent_pairs": 951965
+  },
+  "provisional_train_cutoff_native_timestamp": 18200006,
+  "train_events": 2973054,
+  "train_vocab_coverage": {
+    "20000": {
+      "actual_vocab": 20000,
+      "train_event_fraction": 0.710039239112374,
+      "note": "Train-side only. No validation/test target coverage or quality used for selection here."
+    },
+    "50000": {
+      "actual_vocab": 50000,
+      "train_event_fraction": 0.8795285924843612,
+      "note": "Train-side only. No validation/test target coverage or quality used for selection here."
+    }
+  },
+  "timestamp_note": "Paper section3.3 establishes seconds from a common undisclosed origin, rounded down to multiples of5. Do not multiply by5. Equal timestamps cannot be ordered with hindsight.",
+  "warnings": [
+    "Actual parquet columns use singular item_id and timestamp; README sequential examples use plural names.",
+    "Released listens file has fewer than10,000 users; count actual rows rather than claiming every advertised user has listens.",
+    "No impression logging probabilities: predicted reward is observational and not causal long-term benefit."
+  ]
+}

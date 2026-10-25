@@ -1,0 +1,1007 @@
+{
+  "plan": {
+    "started_utc": "2026-10-21T17:39:31.036881+00:00",
+    "protocol_sha256": "c93e7f55c8d32cdedceb350a73407e127406d53cf8878e0f22f8a28111bc8cea",
+    "steps": 1000,
+    "batch": 64,
+    "seed": 20261024,
+    "evaluation_steps": [
+      0,
+      500,
+      1000
+    ],
+    "checkpoint": "artifacts/sft-20261021-01/best.pt",
+    "features": [
+      "log1p candidate count in same last128 events",
+      "2^(-seconds_since_last_candidate_listen/86400), zero if absent"
+    ],
+    "models": {
+      "GPT2_frequency": "frozenGPT2 logits + w_count*feature_count",
+      "GPT2_frequency_recency": "frozenGPT2 logits + w_count*feature_count + w_recency*feature_recency",
+      "Popularity_frequency_recency": "fixed log train item frequency + same two features"
+    },
+    "fit": "Adam lr.03, initial residual coefficients zero; original train-only user/group/event sampling, CE next-item. One shared sampled batch for all heads. No GPT2/RM/RL weight updates.",
+    "selection": "checkpoint per variant by selection day NDCG; earliest on ties. Show all evaluations.",
+    "scope": "selection only, no confirmation/final evaluation; auxiliary features use same128 context",
+    "limits": "Linear shared candidate bias, not a contextual gate/full memory/production reproduction. No multi-seed claim."
+  },
+  "data_support": {
+    "users": 1000,
+    "eligible_training_users": 999,
+    "train_events": 4787599,
+    "catalog_size": 50000,
+    "in_catalog_train_events": 4109827,
+    "eligible_target_groups": 3305526,
+    "items_with_varying_recorded_length": 0,
+    "target_sampling": "uniform eligible user, then group, then in-catalog event",
+    "context_size": 128
+  },
+  "evaluations": [
+    {
+      "step": 0,
+      "models": {
+        "GPT2_frozen": {
+          "overall": {
+            "users": 492,
+            "Recall@10": 0.029467760909896987,
+            "NDCG@10": 0.05960147405300625
+          },
+          "slices": {
+            "seen_recent128": {
+              "users_with_targets": 298,
+              "target_pairs": 2162,
+              "catalog_target_pairs": 1906,
+              "hits": 145,
+              "macro_recall_when_nonempty": 0.06760410461039558,
+              "ndcg_contribution_all_active_users": 0.040188763565311335,
+              "pooled_recall": 0.06706753006475485
+            },
+            "seen_older_only": {
+              "users_with_targets": 390,
+              "target_pairs": 6735,
+              "catalog_target_pairs": 5795,
+              "hits": 88,
+              "macro_recall_when_nonempty": 0.01650197520630834,
+              "ndcg_contribution_all_active_users": 0.017325262510837762,
+              "pooled_recall": 0.013066072754268746
+            },
+            "never_seen": {
+              "users_with_targets": 355,
+              "target_pairs": 4242,
+              "catalog_target_pairs": 2695,
+              "hits": 9,
+              "macro_recall_when_nonempty": 0.002764528993503387,
+              "ndcg_contribution_all_active_users": 0.0020874479768571343,
+              "pooled_recall": 0.0021216407355021216
+            }
+          },
+          "recommendation_fraction_on_active_users": {
+            "seen_recent128": 0.17540650406504066,
+            "seen_older_only": 0.44390243902439025,
+            "never_seen": 0.3806910569105691
+          },
+          "unique_recommended_items": 1821,
+          "top_item_slot_fraction": 0.013414634146341463,
+          "coefficients": []
+        },
+        "GPT2_frequency": {
+          "overall": {
+            "users": 492,
+            "Recall@10": 0.029467760909896987,
+            "NDCG@10": 0.05960147405300625
+          },
+          "slices": {
+            "seen_recent128": {
+              "users_with_targets": 298,
+              "target_pairs": 2162,
+              "catalog_target_pairs": 1906,
+              "hits": 145,
+              "macro_recall_when_nonempty": 0.06760410461039558,
+              "ndcg_contribution_all_active_users": 0.040188763565311335,
+              "pooled_recall": 0.06706753006475485
+            },
+            "seen_older_only": {
+              "users_with_targets": 390,
+              "target_pairs": 6735,
+              "catalog_target_pairs": 5795,
+              "hits": 88,
+              "macro_recall_when_nonempty": 0.01650197520630834,
+              "ndcg_contribution_all_active_users": 0.017325262510837762,
+              "pooled_recall": 0.013066072754268746
+            },
+            "never_seen": {
+              "users_with_targets": 355,
+              "target_pairs": 4242,
+              "catalog_target_pairs": 2695,
+              "hits": 9,
+              "macro_recall_when_nonempty": 0.002764528993503387,
+              "ndcg_contribution_all_active_users": 0.0020874479768571343,
+              "pooled_recall": 0.0021216407355021216
+            }
+          },
+          "recommendation_fraction_on_active_users": {
+            "seen_recent128": 0.17540650406504066,
+            "seen_older_only": 0.44390243902439025,
+            "never_seen": 0.3806910569105691
+          },
+          "unique_recommended_items": 1821,
+          "top_item_slot_fraction": 0.013414634146341463,
+          "coefficients": [
+            0.0
+          ]
+        },
+        "GPT2_frequency_recency": {
+          "overall": {
+            "users": 492,
+            "Recall@10": 0.029467760909896987,
+            "NDCG@10": 0.05960147405300625
+          },
+          "slices": {
+            "seen_recent128": {
+              "users_with_targets": 298,
+              "target_pairs": 2162,
+              "catalog_target_pairs": 1906,
+              "hits": 145,
+              "macro_recall_when_nonempty": 0.06760410461039558,
+              "ndcg_contribution_all_active_users": 0.040188763565311335,
+              "pooled_recall": 0.06706753006475485
+            },
+            "seen_older_only": {
+              "users_with_targets": 390,
+              "target_pairs": 6735,
+              "catalog_target_pairs": 5795,
+              "hits": 88,
+              "macro_recall_when_nonempty": 0.01650197520630834,
+              "ndcg_contribution_all_active_users": 0.017325262510837762,
+              "pooled_recall": 0.013066072754268746
+            },
+            "never_seen": {
+              "users_with_targets": 355,
+              "target_pairs": 4242,
+              "catalog_target_pairs": 2695,
+              "hits": 9,
+              "macro_recall_when_nonempty": 0.002764528993503387,
+              "ndcg_contribution_all_active_users": 0.0020874479768571343,
+              "pooled_recall": 0.0021216407355021216
+            }
+          },
+          "recommendation_fraction_on_active_users": {
+            "seen_recent128": 0.17540650406504066,
+            "seen_older_only": 0.44390243902439025,
+            "never_seen": 0.3806910569105691
+          },
+          "unique_recommended_items": 1821,
+          "top_item_slot_fraction": 0.013414634146341463,
+          "coefficients": [
+            0.0,
+            0.0
+          ]
+        },
+        "Popularity_frequency_recency": {
+          "overall": {
+            "users": 492,
+            "Recall@10": 0.007327209512825966,
+            "NDCG@10": 0.018224168022622066
+          },
+          "slices": {
+            "seen_recent128": {
+              "users_with_targets": 298,
+              "target_pairs": 2162,
+              "catalog_target_pairs": 1906,
+              "hits": 28,
+              "macro_recall_when_nonempty": 0.014053183642109819,
+              "ndcg_contribution_all_active_users": 0.006584492695536817,
+              "pooled_recall": 0.012950971322849213
+            },
+            "seen_older_only": {
+              "users_with_targets": 390,
+              "target_pairs": 6735,
+              "catalog_target_pairs": 5795,
+              "hits": 43,
+              "macro_recall_when_nonempty": 0.010679960738878563,
+              "ndcg_contribution_all_active_users": 0.011132840562963407,
+              "pooled_recall": 0.006384558277654046
+            },
+            "never_seen": {
+              "users_with_targets": 355,
+              "target_pairs": 4242,
+              "catalog_target_pairs": 2695,
+              "hits": 3,
+              "macro_recall_when_nonempty": 0.0012206572769953052,
+              "ndcg_contribution_all_active_users": 0.0005068347641218476,
+              "pooled_recall": 0.0007072135785007072
+            }
+          },
+          "recommendation_fraction_on_active_users": {
+            "seen_recent128": 0.06117886178861789,
+            "seen_older_only": 0.47784552845528455,
+            "never_seen": 0.4609756097560976
+          },
+          "unique_recommended_items": 10,
+          "top_item_slot_fraction": 0.1,
+          "coefficients": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "step": 500,
+      "models": {
+        "GPT2_frozen": {
+          "overall": {
+            "users": 492,
+            "Recall@10": 0.029467760909896987,
+            "NDCG@10": 0.05960147405300625
+          },
+          "slices": {
+            "seen_recent128": {
+              "users_with_targets": 298,
+              "target_pairs": 2162,
+              "catalog_target_pairs": 1906,
+              "hits": 145,
+              "macro_recall_when_nonempty": 0.06760410461039558,
+              "ndcg_contribution_all_active_users": 0.040188763565311335,
+              "pooled_recall": 0.06706753006475485
+            },
+            "seen_older_only": {
+              "users_with_targets": 390,
+              "target_pairs": 6735,
+              "catalog_target_pairs": 5795,
+              "hits": 88,
+              "macro_recall_when_nonempty": 0.01650197520630834,
+              "ndcg_contribution_all_active_users": 0.017325262510837762,
+              "pooled_recall": 0.013066072754268746
+            },
+            "never_seen": {
+              "users_with_targets": 355,
+              "target_pairs": 4242,
+              "catalog_target_pairs": 2695,
+              "hits": 9,
+              "macro_recall_when_nonempty": 0.002764528993503387,
+              "ndcg_contribution_all_active_users": 0.0020874479768571343,
+              "pooled_recall": 0.0021216407355021216
+            }
+          },
+          "recommendation_fraction_on_active_users": {
+            "seen_recent128": 0.17540650406504066,
+            "seen_older_only": 0.44390243902439025,
+            "never_seen": 0.3806910569105691
+          },
+          "unique_recommended_items": 1821,
+          "top_item_slot_fraction": 0.013414634146341463,
+          "coefficients": []
+        },
+        "GPT2_frequency": {
+          "overall": {
+            "users": 492,
+            "Recall@10": 0.08519800375066465,
+            "NDCG@10": 0.14277935476187212
+          },
+          "slices": {
+            "seen_recent128": {
+              "users_with_targets": 298,
+              "target_pairs": 2162,
+              "catalog_target_pairs": 1906,
+              "hits": 504,
+              "macro_recall_when_nonempty": 0.2598007458128763,
+              "ndcg_contribution_all_active_users": 0.13867814146043825,
+              "pooled_recall": 0.23311748381128586
+            },
+            "seen_older_only": {
+              "users_with_targets": 390,
+              "target_pairs": 6735,
+              "catalog_target_pairs": 5795,
+              "hits": 21,
+              "macro_recall_when_nonempty": 0.0068601272035219716,
+              "ndcg_contribution_all_active_users": 0.003436568347425697,
+              "pooled_recall": 0.0031180400890868597
+            },
+            "never_seen": {
+              "users_with_targets": 355,
+              "target_pairs": 4242,
+              "catalog_target_pairs": 2695,
+              "hits": 4,
+              "macro_recall_when_nonempty": 0.0020827579858234374,
+              "ndcg_contribution_all_active_users": 0.0006646449540081789,
+              "pooled_recall": 0.000942951438000943
+            }
+          },
+          "recommendation_fraction_on_active_users": {
+            "seen_recent128": 0.7585365853658537,
+            "seen_older_only": 0.11727642276422764,
+            "never_seen": 0.1241869918699187
+          },
+          "unique_recommended_items": 2685,
+          "top_item_slot_fraction": 0.010772357723577236,
+          "coefficients": [
+            1.6975637674331665
+          ]
+        },
+        "GPT2_frequency_recency": {
+          "overall": {
+            "users": 492,
+            "Recall@10": 0.08334077494444923,
+            "NDCG@10": 0.13929120334322956
+          },
+          "slices": {
+            "seen_recent128": {
+              "users_with_targets": 298,
+              "target_pairs": 2162,
+              "catalog_target_pairs": 1906,
+              "hits": 494,
+              "macro_recall_when_nonempty": 0.2505341805459872,
+              "ndcg_contribution_all_active_users": 0.1354419054804405,
+              "pooled_recall": 0.22849213691026826
+            },
+            "seen_older_only": {
+              "users_with_targets": 390,
+              "target_pairs": 6735,
+              "catalog_target_pairs": 5795,
+              "hits": 20,
+              "macro_recall_when_nonempty": 0.00557807592147069,
+              "ndcg_contribution_all_active_users": 0.003188129538422393,
+              "pooled_recall": 0.002969561989606533
+            },
+            "never_seen": {
+              "users_with_targets": 355,
+              "target_pairs": 4242,
+              "catalog_target_pairs": 2695,
+              "hits": 4,
+              "macro_recall_when_nonempty": 0.0020827579858234374,
+              "ndcg_contribution_all_active_users": 0.0006611683243666538,
+              "pooled_recall": 0.000942951438000943
+            }
+          },
+          "recommendation_fraction_on_active_users": {
+            "seen_recent128": 0.75,
+            "seen_older_only": 0.11869918699186992,
+            "never_seen": 0.13130081300813007
+          },
+          "unique_recommended_items": 2668,
+          "top_item_slot_fraction": 0.01056910569105691,
+          "coefficients": [
+            1.4479014873504639,
+            0.434753954410553
+          ]
+        },
+        "Popularity_frequency_recency": {
+          "overall": {
+            "users": 492,
+            "Recall@10": 0.087184277180737,
+            "NDCG@10": 0.15290435799854746
+          },
+          "slices": {
+            "seen_recent128": {
+              "users_with_targets": 298,
+              "target_pairs": 2162,
+              "catalog_target_pairs": 1906,
+              "hits": 602,
+              "macro_recall_when_nonempty": 0.2916709347799929,
+              "ndcg_contribution_all_active_users": 0.15290435799854746,
+              "pooled_recall": 0.2784458834412581
+            },
+            "seen_older_only": {
+              "users_with_targets": 390,
+              "target_pairs": 6735,
+              "catalog_target_pairs": 5795,
+              "hits": 0,
+              "macro_recall_when_nonempty": 0.0,
+              "ndcg_contribution_all_active_users": 0.0,
+              "pooled_recall": 0.0
+            },
+            "never_seen": {
+              "users_with_targets": 355,
+              "target_pairs": 4242,
+              "catalog_target_pairs": 2695,
+              "hits": 0,
+              "macro_recall_when_nonempty": 0.0,
+              "ndcg_contribution_all_active_users": 0.0,
+              "pooled_recall": 0.0
+            }
+          },
+          "recommendation_fraction_on_active_users": {
+            "seen_recent128": 0.9083333333333333,
+            "seen_older_only": 0.022764227642276424,
+            "never_seen": 0.06890243902439025
+          },
+          "unique_recommended_items": 2060,
+          "top_item_slot_fraction": 0.030894308943089432,
+          "coefficients": [
+            2.5560333728790283,
+            1.8410431146621704
+          ]
+        }
+      }
+    },
+    {
+      "step": 1000,
+      "models": {
+        "GPT2_frozen": {
+          "overall": {
+            "users": 492,
+            "Recall@10": 0.029467760909896987,
+            "NDCG@10": 0.05960147405300625
+          },
+          "slices": {
+            "seen_recent128": {
+              "users_with_targets": 298,
+              "target_pairs": 2162,
+              "catalog_target_pairs": 1906,
+              "hits": 145,
+              "macro_recall_when_nonempty": 0.06760410461039558,
+              "ndcg_contribution_all_active_users": 0.040188763565311335,
+              "pooled_recall": 0.06706753006475485
+            },
+            "seen_older_only": {
+              "users_with_targets": 390,
+              "target_pairs": 6735,
+              "catalog_target_pairs": 5795,
+              "hits": 88,
+              "macro_recall_when_nonempty": 0.01650197520630834,
+              "ndcg_contribution_all_active_users": 0.017325262510837762,
+              "pooled_recall": 0.013066072754268746
+            },
+            "never_seen": {
+              "users_with_targets": 355,
+              "target_pairs": 4242,
+              "catalog_target_pairs": 2695,
+              "hits": 9,
+              "macro_recall_when_nonempty": 0.002764528993503387,
+              "ndcg_contribution_all_active_users": 0.0020874479768571343,
+              "pooled_recall": 0.0021216407355021216
+            }
+          },
+          "recommendation_fraction_on_active_users": {
+            "seen_recent128": 0.17540650406504066,
+            "seen_older_only": 0.44390243902439025,
+            "never_seen": 0.3806910569105691
+          },
+          "unique_recommended_items": 1821,
+          "top_item_slot_fraction": 0.013414634146341463,
+          "coefficients": []
+        },
+        "GPT2_frequency": {
+          "overall": {
+            "users": 492,
+            "Recall@10": 0.08516574152328046,
+            "NDCG@10": 0.14259147397137728
+          },
+          "slices": {
+            "seen_recent128": {
+              "users_with_targets": 298,
+              "target_pairs": 2162,
+              "catalog_target_pairs": 1906,
+              "hits": 503,
+              "macro_recall_when_nonempty": 0.259561052620163,
+              "ndcg_contribution_all_active_users": 0.13849026066994335,
+              "pooled_recall": 0.2326549491211841
+            },
+            "seen_older_only": {
+              "users_with_targets": 390,
+              "target_pairs": 6735,
+              "catalog_target_pairs": 5795,
+              "hits": 21,
+              "macro_recall_when_nonempty": 0.0068601272035219716,
+              "ndcg_contribution_all_active_users": 0.003436568347425697,
+              "pooled_recall": 0.0031180400890868597
+            },
+            "never_seen": {
+              "users_with_targets": 355,
+              "target_pairs": 4242,
+              "catalog_target_pairs": 2695,
+              "hits": 4,
+              "macro_recall_when_nonempty": 0.0020827579858234374,
+              "ndcg_contribution_all_active_users": 0.0006646449540081789,
+              "pooled_recall": 0.000942951438000943
+            }
+          },
+          "recommendation_fraction_on_active_users": {
+            "seen_recent128": 0.7573170731707317,
+            "seen_older_only": 0.11768292682926829,
+            "never_seen": 0.125
+          },
+          "unique_recommended_items": 2685,
+          "top_item_slot_fraction": 0.010772357723577236,
+          "coefficients": [
+            1.696202278137207
+          ]
+        },
+        "GPT2_frequency_recency": {
+          "overall": {
+            "users": 492,
+            "Recall@10": 0.08426588639666457,
+            "NDCG@10": 0.1414074712518053
+          },
+          "slices": {
+            "seen_recent128": {
+              "users_with_targets": 298,
+              "target_pairs": 2162,
+              "catalog_target_pairs": 1906,
+              "hits": 504,
+              "macro_recall_when_nonempty": 0.25452547039936935,
+              "ndcg_contribution_all_active_users": 0.13776627664488045,
+              "pooled_recall": 0.23311748381128586
+            },
+            "seen_older_only": {
+              "users_with_targets": 390,
+              "target_pairs": 6735,
+              "catalog_target_pairs": 5795,
+              "hits": 19,
+              "macro_recall_when_nonempty": 0.005417819511214279,
+              "ndcg_contribution_all_active_users": 0.002980026282558227,
+              "pooled_recall": 0.0028210838901262065
+            },
+            "never_seen": {
+              "users_with_targets": 355,
+              "target_pairs": 4242,
+              "catalog_target_pairs": 2695,
+              "hits": 4,
+              "macro_recall_when_nonempty": 0.0020827579858234374,
+              "ndcg_contribution_all_active_users": 0.0006611683243666538,
+              "pooled_recall": 0.000942951438000943
+            }
+          },
+          "recommendation_fraction_on_active_users": {
+            "seen_recent128": 0.7634146341463415,
+            "seen_older_only": 0.10975609756097561,
+            "never_seen": 0.12682926829268293
+          },
+          "unique_recommended_items": 2702,
+          "top_item_slot_fraction": 0.009959349593495936,
+          "coefficients": [
+            1.433457851409912,
+            0.5678660273551941
+          ]
+        },
+        "Popularity_frequency_recency": {
+          "overall": {
+            "users": 492,
+            "Recall@10": 0.08678841895312456,
+            "NDCG@10": 0.15224453619890368
+          },
+          "slices": {
+            "seen_recent128": {
+              "users_with_targets": 298,
+              "target_pairs": 2162,
+              "catalog_target_pairs": 1906,
+              "hits": 601,
+              "macro_recall_when_nonempty": 0.2887593112307855,
+              "ndcg_contribution_all_active_users": 0.15224453619890368,
+              "pooled_recall": 0.2779833487511563
+            },
+            "seen_older_only": {
+              "users_with_targets": 390,
+              "target_pairs": 6735,
+              "catalog_target_pairs": 5795,
+              "hits": 0,
+              "macro_recall_when_nonempty": 0.0,
+              "ndcg_contribution_all_active_users": 0.0,
+              "pooled_recall": 0.0
+            },
+            "never_seen": {
+              "users_with_targets": 355,
+              "target_pairs": 4242,
+              "catalog_target_pairs": 2695,
+              "hits": 0,
+              "macro_recall_when_nonempty": 0.0,
+              "ndcg_contribution_all_active_users": 0.0,
+              "pooled_recall": 0.0
+            }
+          },
+          "recommendation_fraction_on_active_users": {
+            "seen_recent128": 0.906910569105691,
+            "seen_older_only": 0.022560975609756097,
+            "never_seen": 0.07052845528455284
+          },
+          "unique_recommended_items": 2064,
+          "top_item_slot_fraction": 0.030691056910569104,
+          "coefficients": [
+            2.5029795169830322,
+            1.9556747674942017
+          ]
+        }
+      }
+    }
+  ],
+  "selected": {
+    "GPT2_frozen": {
+      "step": 0,
+      "metrics": {
+        "overall": {
+          "users": 492,
+          "Recall@10": 0.029467760909896987,
+          "NDCG@10": 0.05960147405300625
+        },
+        "slices": {
+          "seen_recent128": {
+            "users_with_targets": 298,
+            "target_pairs": 2162,
+            "catalog_target_pairs": 1906,
+            "hits": 145,
+            "macro_recall_when_nonempty": 0.06760410461039558,
+            "ndcg_contribution_all_active_users": 0.040188763565311335,
+            "pooled_recall": 0.06706753006475485
+          },
+          "seen_older_only": {
+            "users_with_targets": 390,
+            "target_pairs": 6735,
+            "catalog_target_pairs": 5795,
+            "hits": 88,
+            "macro_recall_when_nonempty": 0.01650197520630834,
+            "ndcg_contribution_all_active_users": 0.017325262510837762,
+            "pooled_recall": 0.013066072754268746
+          },
+          "never_seen": {
+            "users_with_targets": 355,
+            "target_pairs": 4242,
+            "catalog_target_pairs": 2695,
+            "hits": 9,
+            "macro_recall_when_nonempty": 0.002764528993503387,
+            "ndcg_contribution_all_active_users": 0.0020874479768571343,
+            "pooled_recall": 0.0021216407355021216
+          }
+        },
+        "recommendation_fraction_on_active_users": {
+          "seen_recent128": 0.17540650406504066,
+          "seen_older_only": 0.44390243902439025,
+          "never_seen": 0.3806910569105691
+        },
+        "unique_recommended_items": 1821,
+        "top_item_slot_fraction": 0.013414634146341463,
+        "coefficients": []
+      }
+    },
+    "GPT2_frequency": {
+      "step": 500,
+      "metrics": {
+        "overall": {
+          "users": 492,
+          "Recall@10": 0.08519800375066465,
+          "NDCG@10": 0.14277935476187212
+        },
+        "slices": {
+          "seen_recent128": {
+            "users_with_targets": 298,
+            "target_pairs": 2162,
+            "catalog_target_pairs": 1906,
+            "hits": 504,
+            "macro_recall_when_nonempty": 0.2598007458128763,
+            "ndcg_contribution_all_active_users": 0.13867814146043825,
+            "pooled_recall": 0.23311748381128586
+          },
+          "seen_older_only": {
+            "users_with_targets": 390,
+            "target_pairs": 6735,
+            "catalog_target_pairs": 5795,
+            "hits": 21,
+            "macro_recall_when_nonempty": 0.0068601272035219716,
+            "ndcg_contribution_all_active_users": 0.003436568347425697,
+            "pooled_recall": 0.0031180400890868597
+          },
+          "never_seen": {
+            "users_with_targets": 355,
+            "target_pairs": 4242,
+            "catalog_target_pairs": 2695,
+            "hits": 4,
+            "macro_recall_when_nonempty": 0.0020827579858234374,
+            "ndcg_contribution_all_active_users": 0.0006646449540081789,
+            "pooled_recall": 0.000942951438000943
+          }
+        },
+        "recommendation_fraction_on_active_users": {
+          "seen_recent128": 0.7585365853658537,
+          "seen_older_only": 0.11727642276422764,
+          "never_seen": 0.1241869918699187
+        },
+        "unique_recommended_items": 2685,
+        "top_item_slot_fraction": 0.010772357723577236,
+        "coefficients": [
+          1.6975637674331665
+        ]
+      }
+    },
+    "GPT2_frequency_recency": {
+      "step": 1000,
+      "metrics": {
+        "overall": {
+          "users": 492,
+          "Recall@10": 0.08426588639666457,
+          "NDCG@10": 0.1414074712518053
+        },
+        "slices": {
+          "seen_recent128": {
+            "users_with_targets": 298,
+            "target_pairs": 2162,
+            "catalog_target_pairs": 1906,
+            "hits": 504,
+            "macro_recall_when_nonempty": 0.25452547039936935,
+            "ndcg_contribution_all_active_users": 0.13776627664488045,
+            "pooled_recall": 0.23311748381128586
+          },
+          "seen_older_only": {
+            "users_with_targets": 390,
+            "target_pairs": 6735,
+            "catalog_target_pairs": 5795,
+            "hits": 19,
+            "macro_recall_when_nonempty": 0.005417819511214279,
+            "ndcg_contribution_all_active_users": 0.002980026282558227,
+            "pooled_recall": 0.0028210838901262065
+          },
+          "never_seen": {
+            "users_with_targets": 355,
+            "target_pairs": 4242,
+            "catalog_target_pairs": 2695,
+            "hits": 4,
+            "macro_recall_when_nonempty": 0.0020827579858234374,
+            "ndcg_contribution_all_active_users": 0.0006611683243666538,
+            "pooled_recall": 0.000942951438000943
+          }
+        },
+        "recommendation_fraction_on_active_users": {
+          "seen_recent128": 0.7634146341463415,
+          "seen_older_only": 0.10975609756097561,
+          "never_seen": 0.12682926829268293
+        },
+        "unique_recommended_items": 2702,
+        "top_item_slot_fraction": 0.009959349593495936,
+        "coefficients": [
+          1.433457851409912,
+          0.5678660273551941
+        ]
+      }
+    },
+    "Popularity_frequency_recency": {
+      "step": 500,
+      "metrics": {
+        "overall": {
+          "users": 492,
+          "Recall@10": 0.087184277180737,
+          "NDCG@10": 0.15290435799854746
+        },
+        "slices": {
+          "seen_recent128": {
+            "users_with_targets": 298,
+            "target_pairs": 2162,
+            "catalog_target_pairs": 1906,
+            "hits": 602,
+            "macro_recall_when_nonempty": 0.2916709347799929,
+            "ndcg_contribution_all_active_users": 0.15290435799854746,
+            "pooled_recall": 0.2784458834412581
+          },
+          "seen_older_only": {
+            "users_with_targets": 390,
+            "target_pairs": 6735,
+            "catalog_target_pairs": 5795,
+            "hits": 0,
+            "macro_recall_when_nonempty": 0.0,
+            "ndcg_contribution_all_active_users": 0.0,
+            "pooled_recall": 0.0
+          },
+          "never_seen": {
+            "users_with_targets": 355,
+            "target_pairs": 4242,
+            "catalog_target_pairs": 2695,
+            "hits": 0,
+            "macro_recall_when_nonempty": 0.0,
+            "ndcg_contribution_all_active_users": 0.0,
+            "pooled_recall": 0.0
+          }
+        },
+        "recommendation_fraction_on_active_users": {
+          "seen_recent128": 0.9083333333333333,
+          "seen_older_only": 0.022764227642276424,
+          "never_seen": 0.06890243902439025
+        },
+        "unique_recommended_items": 2060,
+        "top_item_slot_fraction": 0.030894308943089432,
+        "coefficients": [
+          2.5560333728790283,
+          1.8410431146621704
+        ]
+      }
+    }
+  },
+  "controls": {
+    "PersonalFrequency128_original": {
+      "users": 492,
+      "Recall@10": 0.10581139601895478,
+      "NDCG@10": 0.18052256259971922
+    },
+    "PersonalFrequency128_recency_tiebreak": {
+      "users": 492,
+      "Recall@10": 0.11303858487542423,
+      "NDCG@10": 0.18741612761510879
+    },
+    "Memory_full_weight_0.5": {
+      "users": 492,
+      "Recall@10": 0.11166510760207617,
+      "NDCG@10": 0.1957938389605741
+    }
+  },
+  "comparisons": {
+    "GPT2_frozen_minus_frozenGPT2": {
+      "mean_ndcg_difference": 0.0,
+      "paired_user_bootstrap_95_percentile_interval": [
+        0.0,
+        0.0
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    },
+    "GPT2_frozen_minus_PersonalFrequency128_original": {
+      "mean_ndcg_difference": -0.12092108854671306,
+      "paired_user_bootstrap_95_percentile_interval": [
+        -0.14400637750101922,
+        -0.09758606234651157
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    },
+    "GPT2_frozen_minus_PersonalFrequency128_recency_tiebreak": {
+      "mean_ndcg_difference": -0.12781465356210245,
+      "paired_user_bootstrap_95_percentile_interval": [
+        -0.15241275713481484,
+        -0.10420833006687477
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    },
+    "GPT2_frozen_minus_Memory_full_weight_0.5": {
+      "mean_ndcg_difference": -0.13619236490756784,
+      "paired_user_bootstrap_95_percentile_interval": [
+        -0.15957802375292646,
+        -0.11127985106468301
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    },
+    "GPT2_frequency_minus_frozenGPT2": {
+      "mean_ndcg_difference": 0.08317788070886582,
+      "paired_user_bootstrap_95_percentile_interval": [
+        0.06529645341651084,
+        0.09981401426374462
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    },
+    "GPT2_frequency_minus_PersonalFrequency128_original": {
+      "mean_ndcg_difference": -0.03774320783784722,
+      "paired_user_bootstrap_95_percentile_interval": [
+        -0.05209731674208039,
+        -0.02303903366535388
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    },
+    "GPT2_frequency_minus_PersonalFrequency128_recency_tiebreak": {
+      "mean_ndcg_difference": -0.044636772853236605,
+      "paired_user_bootstrap_95_percentile_interval": [
+        -0.060395455092319,
+        -0.029620306305435856
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    },
+    "GPT2_frequency_minus_Memory_full_weight_0.5": {
+      "mean_ndcg_difference": -0.053014484198702014,
+      "paired_user_bootstrap_95_percentile_interval": [
+        -0.06810563708397088,
+        -0.03760271001169851
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    },
+    "GPT2_frequency_recency_minus_frozenGPT2": {
+      "mean_ndcg_difference": 0.08180599719879916,
+      "paired_user_bootstrap_95_percentile_interval": [
+        0.06381771282505942,
+        0.09861803819738518
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    },
+    "GPT2_frequency_recency_minus_PersonalFrequency128_original": {
+      "mean_ndcg_difference": -0.03911509134791392,
+      "paired_user_bootstrap_95_percentile_interval": [
+        -0.05349028595120502,
+        -0.024123777404157318
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    },
+    "GPT2_frequency_recency_minus_PersonalFrequency128_recency_tiebreak": {
+      "mean_ndcg_difference": -0.04600865636330329,
+      "paired_user_bootstrap_95_percentile_interval": [
+        -0.061539732848821256,
+        -0.0307721945957435
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    },
+    "GPT2_frequency_recency_minus_Memory_full_weight_0.5": {
+      "mean_ndcg_difference": -0.054386367708768694,
+      "paired_user_bootstrap_95_percentile_interval": [
+        -0.06955726874020039,
+        -0.03910999159674203
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    },
+    "Popularity_frequency_recency_minus_frozenGPT2": {
+      "mean_ndcg_difference": 0.09330288394554112,
+      "paired_user_bootstrap_95_percentile_interval": [
+        0.07257658515272827,
+        0.11397708120339267
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    },
+    "Popularity_frequency_recency_minus_PersonalFrequency128_original": {
+      "mean_ndcg_difference": -0.02761820460117194,
+      "paired_user_bootstrap_95_percentile_interval": [
+        -0.03970926166775803,
+        -0.015773632561454903
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    },
+    "Popularity_frequency_recency_minus_PersonalFrequency128_recency_tiebreak": {
+      "mean_ndcg_difference": -0.034511769616561314,
+      "paired_user_bootstrap_95_percentile_interval": [
+        -0.04752353445217545,
+        -0.022506202076759397
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    },
+    "Popularity_frequency_recency_minus_Memory_full_weight_0.5": {
+      "mean_ndcg_difference": -0.042889480962026716,
+      "paired_user_bootstrap_95_percentile_interval": [
+        -0.055948792700841105,
+        -0.030150200607271783
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    },
+    "combined_minus_frequency_only": {
+      "mean_ndcg_difference": -0.001371883510066688,
+      "paired_user_bootstrap_95_percentile_interval": [
+        -0.0034418167139901564,
+        0.0006782104056587644
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    }
+  },
+  "frozen_GPT2_hash_unchanged": true,
+  "no_GPT2_gradients": true,
+  "checkpoint_sha256": "cf97b01b94c269d246dad794f5b25a370bc3eb323315d4554d935d2c2522813e",
+  "elapsed_seconds": 98.03979719999916,
+  "confirmation_scored": false,
+  "final_test_scored": false,
+  "cautions": [
+    "Exploratory selection only with checkpoint selection, no multiplicity correction.",
+    "Frozen linear residual ablation, not end-to-end retraining or learned user gate.",
+    "Full-memory control has more context; added features use same128 events.",
+    "Train next-item CE differs from selection day ranking, report both honestly."
+  ]
+}

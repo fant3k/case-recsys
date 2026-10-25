@@ -1,0 +1,143 @@
+{
+  "scope": "AST-extracted exact project functions on synthetic fixtures, and aggregation of already saved JSON only. No model training, raw-data evaluation or opening an evaluation window.",
+  "checks": {
+    "quantile_zero_plateau": {
+      "ratios": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "length_seconds": 200,
+      "labels": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        1.0
+      ],
+      "interpretation": "Inclusive empirical CDF uses <=. The latest zero is at percentile 1 when all five prior values equal zero."
+    },
+    "quantile_cold_bucket": {
+      "all_skipped_first_five": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "all_fully_played_first_five": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "interpretation": "With fewer than five prior events, response does not affect the quantile label."
+    },
+    "quantile_cross_bucket_inversion": {
+      "last_two_ratios": [
+        0,
+        0.75
+      ],
+      "last_two_lengths": [
+        100,
+        200
+      ],
+      "last_two_played_seconds": [
+        0,
+        150
+      ],
+      "last_two_quantile_labels": [
+        1.0,
+        0.0
+      ],
+      "interpretation": "Relative CDF values across duration buckets can favour a zero response over a >50% positive response with 150 seconds played."
+    },
+    "continuation_censoring": {
+      "times": [
+        0,
+        10,
+        20,
+        30
+      ],
+      "ratios": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "cap": 20,
+      "label_at_t10_before_cap": 0.0,
+      "same_event_full_session_label": 0.20000000298023224,
+      "interpretation": "Zeros past cap are removed from counts; there is no censoring mask. Remaining complete-session and observed-period continuation are different estimands."
+    },
+    "same_time_truncation": {
+      "group_at_t10": [
+        1,
+        8,
+        9
+      ],
+      "context_size": 2,
+      "history_before_t20": [
+        8,
+        9
+      ],
+      "dropped_from_group": 1,
+      "interpretation": "lexsort by (timestamp,item_id), followed by last-L truncation, keeps the larger raw IDs when a tied group crosses the context boundary."
+    },
+    "query_age_invisible": {
+      "cutoffs": [
+        300,
+        3000
+      ],
+      "last_event": 20,
+      "elapsed_seconds": [
+        280,
+        2980
+      ],
+      "all_six_policy_RM_input_arrays_equal": true,
+      "interpretation": "Gap embeddings encode gaps between observed events. Elapsed time from the last event to the query is absent; recency feature uses event positions."
+    },
+    "metric_support": {
+      "warm_users": 1000,
+      "all_logged_in_catalog_events": 17669,
+      "events_in_top50": 3094,
+      "top50_pair_accuracy": {
+        "users_with_pairs": 172,
+        "pairs": 12836,
+        "macro_pair_accuracy": 0.6196703138203653,
+        "pooled_pair_accuracy": 0.6251168588345279,
+        "margin": 0.5
+      },
+      "top50_distinct_track_pair_accuracy": {
+        "users_with_pairs": 165,
+        "pairs": 11907,
+        "macro_pair_accuracy": 0.631298476683242
+      },
+      "max_macro_pairacc_boundary_change": 0.0005269394498814695,
+      "boundary_change_row": "item_in_reference_top50/cutoff_context/flag0/ensemble3",
+      "logged_event_users": 497,
+      "all_event_pairs_users": 399
+    },
+    "auc_is_already_within_user": {
+      "rm": {
+        "users": 261,
+        "macro_auc": 0.6425100897483983
+      },
+      "interpretation": "Rejected pooled-AUC suspicion: implementation computes per-user AUC and averages over eligible users. It still covers only 261 users with both labels."
+    }
+  },
+  "source_sha256": {
+    "recsys/targets.py": "cd2577a14e9630d01f64f79a40c1e1779cf3984dc34c9bd825070c0b64df5a34",
+    "recsys/data.py": "c2fbf340084820cdef1b2eaa8c2fdd4ee8b4bfac434f7307fd2fa408cff3ee0e",
+    "recsys/models.py": "374d90da7cb8d8b4e9ec0d5c9779c3ddd96e8d6bd5b463992d85030f4d924436",
+    "recsys/full_sft.py": "790a05ff6acf8e98bbb6da08260e850934e1129957e91e1221113166c0ff4b1b",
+    "recsys/reward_v2.py": "1a4d8f56a2ab9c7f9a8ca2ac2282c91fa34bd2a44f7f430397010fc2c51fb90e",
+    "recsys/review_checks.py": "05003f531a2f732073bbdb5432085ddf1a7d007c086ee265a5bd0bcf9873b26e",
+    "recsys/multistep.py": "38ac06de61ab67cb328688430474bcf2c3a84883efdfeb303a3eb1f0a1489445"
+  }
+}

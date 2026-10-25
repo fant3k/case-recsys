@@ -1,0 +1,289 @@
+{
+  "plan": {
+    "alpha": 0.5,
+    "minimum_age_seconds": 1,
+    "variants": [
+      "recent128",
+      "fullprefix"
+    ],
+    "source": "https://arxiv.org/abs/2408.16578",
+    "scope": "selection only; fixed activation baseline, not full PISA; no training/grid; same truth/catalog; ties raw item ID; train-popularity fallback"
+  },
+  "models": {
+    "ACTR_recent128": {
+      "overall": {
+        "users": 492,
+        "Recall@10": 0.10788735861954311,
+        "NDCG@10": 0.18245300395800018,
+        "HitRate@10": 0.3861788617886179,
+        "Precision@10": 0.13780487804878047,
+        "definition": "conditional on positive next-day truth; hit means at least one matching observed >50% listened track, not acceptance probability"
+      },
+      "slices": {
+        "seen_recent128": {
+          "users_with_targets": 298,
+          "target_pairs": 2162,
+          "catalog_target_pairs": 1906,
+          "hits": 678,
+          "macro_recall_when_nonempty": 0.33817726294212547,
+          "ndcg_contribution_all_active_users": 0.18245300395800018,
+          "pooled_recall": 0.3135985198889917
+        },
+        "seen_older_only": {
+          "users_with_targets": 390,
+          "target_pairs": 6735,
+          "catalog_target_pairs": 5795,
+          "hits": 0,
+          "macro_recall_when_nonempty": 0.0,
+          "ndcg_contribution_all_active_users": 0.0,
+          "pooled_recall": 0.0
+        },
+        "never_seen": {
+          "users_with_targets": 355,
+          "target_pairs": 4242,
+          "catalog_target_pairs": 2695,
+          "hits": 0,
+          "macro_recall_when_nonempty": 0.0,
+          "ndcg_contribution_all_active_users": 0.0,
+          "pooled_recall": 0.0
+        }
+      },
+      "recommendation_fraction_on_active_users": {
+        "seen_recent128": 0.9957317073170732,
+        "seen_older_only": 0.0006097560975609756,
+        "never_seen": 0.003658536585365854
+      },
+      "unique_recommended_items": 4004,
+      "top_item_slot_fraction": 0.0032520325203252032
+    },
+    "ACTR_fullprefix": {
+      "overall": {
+        "users": 492,
+        "Recall@10": 0.10588813966972073,
+        "NDCG@10": 0.1789167596301355,
+        "HitRate@10": 0.4451219512195122,
+        "Precision@10": 0.1445121951219512,
+        "definition": "conditional on positive next-day truth; hit means at least one matching observed >50% listened track, not acceptance probability"
+      },
+      "slices": {
+        "seen_recent128": {
+          "users_with_targets": 298,
+          "target_pairs": 2162,
+          "catalog_target_pairs": 1906,
+          "hits": 604,
+          "macro_recall_when_nonempty": 0.32599426981541374,
+          "ndcg_contribution_all_active_users": 0.15774715019973615,
+          "pooled_recall": 0.2793709528214616
+        },
+        "seen_older_only": {
+          "users_with_targets": 390,
+          "target_pairs": 6735,
+          "catalog_target_pairs": 5795,
+          "hits": 107,
+          "macro_recall_when_nonempty": 0.024134087991086507,
+          "ndcg_contribution_all_active_users": 0.021169609430399333,
+          "pooled_recall": 0.01588715664439495
+        },
+        "never_seen": {
+          "users_with_targets": 355,
+          "target_pairs": 4242,
+          "catalog_target_pairs": 2695,
+          "hits": 0,
+          "macro_recall_when_nonempty": 0.0,
+          "ndcg_contribution_all_active_users": 0.0,
+          "pooled_recall": 0.0
+        }
+      },
+      "recommendation_fraction_on_active_users": {
+        "seen_recent128": 0.7544715447154472,
+        "seen_older_only": 0.24410569105691057,
+        "never_seen": 0.0014227642276422765
+      },
+      "unique_recommended_items": 3958,
+      "top_item_slot_fraction": 0.00426829268292683
+    },
+    "PersonalFrequency128_original": {
+      "overall": {
+        "users": 492,
+        "Recall@10": 0.10581139601895478,
+        "NDCG@10": 0.18052256259971922,
+        "HitRate@10": 0.4146341463414634,
+        "Precision@10": 0.13597560975609757,
+        "definition": "conditional on positive next-day truth; hit means at least one matching observed >50% listened track, not acceptance probability"
+      },
+      "slices": {
+        "seen_recent128": {
+          "users_with_targets": 298,
+          "target_pairs": 2162,
+          "catalog_target_pairs": 1906,
+          "hits": 669,
+          "macro_recall_when_nonempty": 0.3409863919271288,
+          "ndcg_contribution_all_active_users": 0.18052256259971922,
+          "pooled_recall": 0.3094357076780759
+        },
+        "seen_older_only": {
+          "users_with_targets": 390,
+          "target_pairs": 6735,
+          "catalog_target_pairs": 5795,
+          "hits": 0,
+          "macro_recall_when_nonempty": 0.0,
+          "ndcg_contribution_all_active_users": 0.0,
+          "pooled_recall": 0.0
+        },
+        "never_seen": {
+          "users_with_targets": 355,
+          "target_pairs": 4242,
+          "catalog_target_pairs": 2695,
+          "hits": 0,
+          "macro_recall_when_nonempty": 0.0,
+          "ndcg_contribution_all_active_users": 0.0,
+          "pooled_recall": 0.0
+        }
+      },
+      "recommendation_fraction_on_active_users": {
+        "seen_recent128": 0.9957317073170732,
+        "seen_older_only": 0.0006097560975609756,
+        "never_seen": 0.003658536585365854
+      },
+      "unique_recommended_items": 3801,
+      "top_item_slot_fraction": 0.0032520325203252032
+    },
+    "PersonalFrequency128_recency_tiebreak": {
+      "overall": {
+        "users": 492,
+        "Recall@10": 0.11303858487542423,
+        "NDCG@10": 0.18741612761510879,
+        "HitRate@10": 0.40853658536585363,
+        "Precision@10": 0.14247967479674797,
+        "definition": "conditional on positive next-day truth; hit means at least one matching observed >50% listened track, not acceptance probability"
+      },
+      "slices": {
+        "seen_recent128": {
+          "users_with_targets": 298,
+          "target_pairs": 2162,
+          "catalog_target_pairs": 1906,
+          "hits": 701,
+          "macro_recall_when_nonempty": 0.36104263517710605,
+          "ndcg_contribution_all_active_users": 0.18741612761510879,
+          "pooled_recall": 0.3242368177613321
+        },
+        "seen_older_only": {
+          "users_with_targets": 390,
+          "target_pairs": 6735,
+          "catalog_target_pairs": 5795,
+          "hits": 0,
+          "macro_recall_when_nonempty": 0.0,
+          "ndcg_contribution_all_active_users": 0.0,
+          "pooled_recall": 0.0
+        },
+        "never_seen": {
+          "users_with_targets": 355,
+          "target_pairs": 4242,
+          "catalog_target_pairs": 2695,
+          "hits": 0,
+          "macro_recall_when_nonempty": 0.0,
+          "ndcg_contribution_all_active_users": 0.0,
+          "pooled_recall": 0.0
+        }
+      },
+      "recommendation_fraction_on_active_users": {
+        "seen_recent128": 0.9957317073170732,
+        "seen_older_only": 0.0006097560975609756,
+        "never_seen": 0.003658536585365854
+      },
+      "unique_recommended_items": 4011,
+      "top_item_slot_fraction": 0.002845528455284553
+    },
+    "Memory_full_weight_0.5": {
+      "overall": {
+        "users": 492,
+        "Recall@10": 0.11166510760207617,
+        "NDCG@10": 0.1957938389605741,
+        "HitRate@10": 0.42886178861788615,
+        "Precision@10": 0.15162601626016262,
+        "definition": "conditional on positive next-day truth; hit means at least one matching observed >50% listened track, not acceptance probability"
+      },
+      "slices": {
+        "seen_recent128": {
+          "users_with_targets": 298,
+          "target_pairs": 2162,
+          "catalog_target_pairs": 1906,
+          "hits": 723,
+          "macro_recall_when_nonempty": 0.3771662346122065,
+          "ndcg_contribution_all_active_users": 0.1906806394467664,
+          "pooled_recall": 0.3344125809435708
+        },
+        "seen_older_only": {
+          "users_with_targets": 390,
+          "target_pairs": 6735,
+          "catalog_target_pairs": 5795,
+          "hits": 23,
+          "macro_recall_when_nonempty": 0.0041756798082183775,
+          "ndcg_contribution_all_active_users": 0.005113199513807692,
+          "pooled_recall": 0.003414996288047513
+        },
+        "never_seen": {
+          "users_with_targets": 355,
+          "target_pairs": 4242,
+          "catalog_target_pairs": 2695,
+          "hits": 0,
+          "macro_recall_when_nonempty": 0.0,
+          "ndcg_contribution_all_active_users": 0.0,
+          "pooled_recall": 0.0
+        }
+      },
+      "recommendation_fraction_on_active_users": {
+        "seen_recent128": 0.9758130081300813,
+        "seen_older_only": 0.022764227642276424,
+        "never_seen": 0.0014227642276422765
+      },
+      "unique_recommended_items": 4008,
+      "top_item_slot_fraction": 0.0034552845528455283
+    }
+  },
+  "comparisons": {
+    "ACTR_recent128_minus_PersonalFrequency128_recency_tiebreak": {
+      "mean_ndcg_difference": -0.004963123657108604,
+      "paired_user_bootstrap_95_percentile_interval": [
+        -0.0123490838646752,
+        0.002256553427763546
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    },
+    "ACTR_recent128_minus_Memory_full_weight_0.5": {
+      "mean_ndcg_difference": -0.013340835002574002,
+      "paired_user_bootstrap_95_percentile_interval": [
+        -0.02575681462608584,
+        -0.0006563132896556872
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    },
+    "ACTR_fullprefix_minus_PersonalFrequency128_recency_tiebreak": {
+      "mean_ndcg_difference": -0.008499367984973116,
+      "paired_user_bootstrap_95_percentile_interval": [
+        -0.023587333375631993,
+        0.0068532377349910835
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    },
+    "ACTR_fullprefix_minus_Memory_full_weight_0.5": {
+      "mean_ndcg_difference": -0.016877079330438517,
+      "paired_user_bootstrap_95_percentile_interval": [
+        -0.02968000641149195,
+        -0.003910065176062053
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    }
+  },
+  "elapsed_seconds": 5.319133999999394,
+  "confirmation_scored": false,
+  "final_test_scored": false
+}

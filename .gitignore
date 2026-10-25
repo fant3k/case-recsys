@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+data/raw/
+data/processed/
+research/selection/*live.log
+research/selection/*tty.log
+artifacts/
+.cache/
+.transfer/
+transfer-manifest.json
+.DS_Store
+research/reviews/*/project-code.zip
+.submission-build

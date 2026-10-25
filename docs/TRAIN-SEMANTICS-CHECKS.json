@@ -1,0 +1,51 @@
+{
+  "scope": "Training events timestamp < train_end_exclusive only, before any semantic statistics. No selection/final labels, model predictions or training. Original target functions on the train prefix; uniform eligible user/group/known-event weighting matches the RM sampler.",
+  "train_end_exclusive": 25723600,
+  "train_events": 4787599,
+  "train_users": 1000,
+  "catalog_size": 50000,
+  "counts": {
+    "eligible_known_events": 4108216,
+    "default_quantile_events": 16321,
+    "zero_response_events": 293309,
+    "zero_response_high_quantile_events": 1057,
+    "zero_response_quantile_one_events": 60,
+    "positive_response_low_quantile_events": 125617,
+    "possibly_censored_unsaturated_continuation_events": 570,
+    "eligible_groups": 3305526,
+    "partially_cut_history_groups": 508759
+  },
+  "event_weighted_fraction": {
+    "default_quantile_events": 0.003972770662496811,
+    "zero_response_high_quantile_events": 0.00025728929540218916,
+    "zero_response_quantile_one_events": 1.4604879587636092e-05,
+    "positive_response_low_quantile_events": 0.03057701931933472,
+    "possibly_censored_unsaturated_continuation_events": 0.00013874635608254288
+  },
+  "uniform_user_group_event_fraction": {
+    "default_quantile": 0.03727662234771048,
+    "zero_high_quantile": 0.0016915784509778015,
+    "zero_quantile_one": 0.00037665059034564863,
+    "positive_low_quantile": 0.029863323778662205,
+    "possibly_censored_continuation": 0.00036579516600780855,
+    "partial_group": 0.14705581441049762
+  },
+  "zero_high_quantile_fraction_among_zero_events": 0.0036037080348710745,
+  "train_cutoff_queries": {
+    "warm_users": 1000,
+    "history128_partially_cuts_timestamp_group": 179,
+    "elapsed_since_last_event_seconds_quantiles": {
+      "min": 5.0,
+      "25pct": 10966.25,
+      "median": 82457.5,
+      "75pct": 282818.75,
+      "max": 23009755.0
+    },
+    "more_than_1hour": 879,
+    "more_than_1day": 492
+  },
+  "caution": "Possible continuation censoring is a train-only flag, not evidence of actual unseen continuation. Quantile counts refer to labels, not what the learned policy chooses. Partial-group counts do not quantify a performance loss.",
+  "elapsed_seconds": 15.302556250011548,
+  "source_data_sha256": "df1da9fa9596d11ee04464fd898008ab8cea9d235e48357c369a2c576011ab2b",
+  "protocol_sha256": "c93e7f55c8d32cdedceb350a73407e127406d53cf8878e0f22f8a28111bc8cea"
+}

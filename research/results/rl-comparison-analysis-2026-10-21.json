@@ -1,0 +1,171 @@
+{
+  "matched_SFT_comparisons": {
+    "RL_completion_beta0.03": {
+      "NDCG_delta": {
+        "mean": -0.0007487036532947144,
+        "paired_user_bootstrap95": [
+          -0.0032849066709027142,
+          0.0017901332089100034
+        ],
+        "draws": 2000,
+        "seed": 42,
+        "rng": "Python random, post-run reporting only"
+      },
+      "optimized_proxy_delta": {
+        "mean": 0.00036780638620257375,
+        "paired_user_bootstrap95": [
+          0.0002408934246748686,
+          0.0005137233719229695
+        ],
+        "draws": 2000,
+        "seed": 42,
+        "rng": "Python random, post-run reporting only"
+      }
+    },
+    "RL_completion_beta0.3": {
+      "NDCG_delta": {
+        "mean": -0.0001368931705313306,
+        "paired_user_bootstrap95": [
+          -0.002475696924678559,
+          0.002241877121234287
+        ],
+        "draws": 2000,
+        "seed": 42,
+        "rng": "Python random, post-run reporting only"
+      },
+      "optimized_proxy_delta": {
+        "mean": 0.0002686732038855553,
+        "paired_user_bootstrap95": [
+          0.00014055257309228183,
+          0.0004468147656880318
+        ],
+        "draws": 2000,
+        "seed": 42,
+        "rng": "Python random, post-run reporting only"
+      }
+    },
+    "RL_capped_seconds_beta0.03": {
+      "NDCG_delta": {
+        "mean": -0.006085660223639376,
+        "paired_user_bootstrap95": [
+          -0.01121705722559255,
+          -0.0010205297100217903
+        ],
+        "draws": 2000,
+        "seed": 42,
+        "rng": "Python random, post-run reporting only"
+      },
+      "optimized_proxy_delta": {
+        "mean": 0.009389661662280559,
+        "paired_user_bootstrap95": [
+          0.009059903357760048,
+          0.009748732973402367
+        ],
+        "draws": 2000,
+        "seed": 42,
+        "rng": "Python random, post-run reporting only"
+      }
+    },
+    "RL_capped_seconds_beta0.3": {
+      "NDCG_delta": {
+        "mean": -0.0010329842097393787,
+        "paired_user_bootstrap95": [
+          -0.003261381498936092,
+          0.0011101335989225198
+        ],
+        "draws": 2000,
+        "seed": 42,
+        "rng": "Python random, post-run reporting only"
+      },
+      "optimized_proxy_delta": {
+        "mean": 0.0016291881538927555,
+        "paired_user_bootstrap95": [
+          0.0015256275525782257,
+          0.0017433549682144074
+        ],
+        "draws": 2000,
+        "seed": 42,
+        "rng": "Python random, post-run reporting only"
+      }
+    },
+    "RL_completion_beta0.03_seed2": {
+      "NDCG_delta": {
+        "mean": -0.0009481555358924112,
+        "paired_user_bootstrap95": [
+          -0.0032443150201769675,
+          0.0014559679983491172
+        ],
+        "draws": 2000,
+        "seed": 42,
+        "rng": "Python random, post-run reporting only"
+      },
+      "optimized_proxy_delta": {
+        "mean": 0.0005125405928120017,
+        "paired_user_bootstrap95": [
+          0.0004330447382526472,
+          0.0006005133700557053
+        ],
+        "draws": 2000,
+        "seed": 42,
+        "rng": "Python random, post-run reporting only"
+      }
+    }
+  },
+  "regularized_objective_delta_vs_reference": {
+    "RL_completion_beta0.03": {
+      "mean": -6.455797909153856e-06,
+      "paired_user_bootstrap95": [
+        -0.00010688084040739306,
+        0.0001029750735340728
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "rng": "Python random, post-run reporting only"
+    },
+    "RL_completion_beta0.3": {
+      "mean": -0.000557847340822688,
+      "paired_user_bootstrap95": [
+        -0.0006587097957345077,
+        -0.0004388176997449492
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "rng": "Python random, post-run reporting only"
+    },
+    "RL_capped_seconds_beta0.03": {
+      "mean": 0.005674762451109558,
+      "paired_user_bootstrap95": [
+        0.005410201068301123,
+        0.0059592273980146986
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "rng": "Python random, post-run reporting only"
+    },
+    "RL_capped_seconds_beta0.3": {
+      "mean": 0.0006331010884153633,
+      "paired_user_bootstrap95": [
+        0.0005558917484353738,
+        0.0007092565568447074
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "rng": "Python random, post-run reporting only"
+    },
+    "RL_completion_beta0.03_seed2": {
+      "mean": 0.00018688926955815383,
+      "paired_user_bootstrap95": [
+        0.00011961210115153088,
+        0.00026247912867986
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "rng": "Python random, post-run reporting only"
+    }
+  },
+  "nominal_selection_by_predeclared_rule": {
+    "completion": "RL_completion_beta0.03",
+    "capped_seconds": "RL_capped_seconds_beta0.3"
+  },
+  "note": "Report-only analyses of fixed run; no extra training/tuning/confirmation"
+}

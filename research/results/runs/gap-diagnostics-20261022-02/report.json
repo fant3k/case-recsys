@@ -1,0 +1,230 @@
+{
+  "created_utc": "2026-10-22T14:30:11.381953+00:00",
+  "checkpoint": "artifacts/fullsft-reg-20261022-01/full-d0.1-wd0.01/best.pt",
+  "checkpoint_sha256": "e7a9d586bce183404e2ca2cacbd5785595728b18710e1f117e2312f1d5ee4d14",
+  "protocol_sha256": "c93e7f55c8d32cdedceb350a73407e127406d53cf8878e0f22f8a28111bc8cea",
+  "training": false,
+  "confirmation_scored": false,
+  "final_test_scored": false,
+  "in_sample_train_days": {
+    "cutoff_25635400": {
+      "users": 480,
+      "GPT2_NDCG@10": 0.14578352712607137,
+      "Frequency128_NDCG@10": 0.19946507028188112,
+      "GPT2_Recall@10": 0.08043993965685113,
+      "Frequency128_Recall@10": 0.11656538621486952,
+      "gpt_minus_frequency": {
+        "mean_ndcg_difference": -0.053681543155809766,
+        "paired_user_bootstrap_95_percentile_interval": [
+          -0.07278511011050527,
+          -0.03368553590063426
+        ],
+        "draws": 2000,
+        "seed": 42,
+        "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+      },
+      "days_before_train_end": 0
+    },
+    "cutoff_25376200": {
+      "users": 485,
+      "GPT2_NDCG@10": 0.15851033302184547,
+      "Frequency128_NDCG@10": 0.20092633510965557,
+      "GPT2_Recall@10": 0.08714394338476505,
+      "Frequency128_Recall@10": 0.11432742858408942,
+      "gpt_minus_frequency": {
+        "mean_ndcg_difference": -0.04241600208781018,
+        "paired_user_bootstrap_95_percentile_interval": [
+          -0.06332983738055814,
+          -0.021246890804601855
+        ],
+        "draws": 2000,
+        "seed": 42,
+        "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+      },
+      "days_before_train_end": 3
+    },
+    "cutoff_25030600": {
+      "users": 472,
+      "GPT2_NDCG@10": 0.17614581379512795,
+      "Frequency128_NDCG@10": 0.22588592714942335,
+      "GPT2_Recall@10": 0.10938355902363045,
+      "Frequency128_Recall@10": 0.12624260975369525,
+      "gpt_minus_frequency": {
+        "mean_ndcg_difference": -0.04974011335429526,
+        "paired_user_bootstrap_95_percentile_interval": [
+          -0.0727397160403332,
+          -0.02702590444207859
+        ],
+        "draws": 2000,
+        "seed": 42,
+        "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+      },
+      "days_before_train_end": 7
+    },
+    "cutoff_24425800": {
+      "users": 494,
+      "GPT2_NDCG@10": 0.18387382157525783,
+      "Frequency128_NDCG@10": 0.22059043667763897,
+      "GPT2_Recall@10": 0.11026513029481945,
+      "Frequency128_Recall@10": 0.12473192896995551,
+      "gpt_minus_frequency": {
+        "mean_ndcg_difference": -0.03671661510238132,
+        "paired_user_bootstrap_95_percentile_interval": [
+          -0.059360438911165686,
+          -0.015318749877077724
+        ],
+        "draws": 2000,
+        "seed": 42,
+        "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+      },
+      "days_before_train_end": 14
+    }
+  },
+  "selection": {
+    "users": 492,
+    "GPT2_NDCG@10": 0.13096135539382925,
+    "Frequency128_NDCG@10": 0.18052256259971922,
+    "GPT2_Recall@10": 0.08027409281801844,
+    "Frequency128_Recall@10": 0.10581139601895478,
+    "gpt_minus_frequency": {
+      "mean_ndcg_difference": -0.04956120720589006,
+      "paired_user_bootstrap_95_percentile_interval": [
+        -0.06874979992839707,
+        -0.029217134493108664
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    }
+  },
+  "ordering_within_recent128": {
+    "GPT2_order_NDCG@10": 0.14277499651889108,
+    "Frequency_order_NDCG@10": 0.183673438468796,
+    "gpt_order_minus_frequency_order": {
+      "mean_ndcg_difference": -0.04089844194990494,
+      "paired_user_bootstrap_95_percentile_interval": [
+        -0.05723381033301524,
+        -0.024734413988338786
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    },
+    "full_GPT2_minus_GPT2_order_within_history": {
+      "mean_ndcg_difference": -0.011813641125061908,
+      "paired_user_bootstrap_95_percentile_interval": [
+        -0.02125954769344976,
+        -0.0025922496279709543
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    },
+    "note": "Both rank only items present in the last 128 events, then fill with GPT-2 top non-history items."
+  },
+  "repeat_mass": {
+    "mean_gpt_probability_on_recent128_items": 0.23639413463027498,
+    "mean_observed_share_of_tomorrow_targets_in_recent128": 0.22237227763991163,
+    "mean_gpt_top10_slots_on_recent128_items": 0.4276422764227642,
+    "frequency_top10_slots_on_recent128_items": "1.0 whenever >=10 distinct recent items"
+  },
+  "gap_by_user_tercile": {
+    "history_len": [
+      {
+        "tercile": 0,
+        "users": 164,
+        "range": [
+          46.0,
+          128.0
+        ],
+        "mean_gpt_minus_frequency": -0.01634220954194501,
+        "mean_frequency_ndcg": 0.17152239620252352
+      },
+      {
+        "tercile": 1,
+        "users": 164,
+        "range": [
+          128.0,
+          128.0
+        ],
+        "mean_gpt_minus_frequency": -0.06306370385349684,
+        "mean_frequency_ndcg": 0.16366390422218535
+      },
+      {
+        "tercile": 2,
+        "users": 164,
+        "range": [
+          128.0,
+          128.0
+        ],
+        "mean_gpt_minus_frequency": -0.06927770822222831,
+        "mean_frequency_ndcg": 0.206381387374449
+      }
+    ],
+    "unique_recent_fraction": [
+      {
+        "tercile": 0,
+        "users": 164,
+        "range": [
+          0.015625,
+          0.7107438016528925
+        ],
+        "mean_gpt_minus_frequency": -0.11570324360730415,
+        "mean_frequency_ndcg": 0.36159958049917434
+      },
+      {
+        "tercile": 1,
+        "users": 164,
+        "range": [
+          0.711864406779661,
+          0.9043478260869565
+        ],
+        "mean_gpt_minus_frequency": -0.052989419402509494,
+        "mean_frequency_ndcg": 0.14216830398733132
+      },
+      {
+        "tercile": 2,
+        "users": 164,
+        "range": [
+          0.9043478260869565,
+          1.0
+        ],
+        "mean_gpt_minus_frequency": 0.020009041392143437,
+        "mean_frequency_ndcg": 0.03779980331265211
+      }
+    ],
+    "target_recent_share": [
+      {
+        "tercile": 0,
+        "users": 164,
+        "range": [
+          0.0,
+          0.0
+        ],
+        "mean_gpt_minus_frequency": 0.02872421749180372,
+        "mean_frequency_ndcg": 0.0
+      },
+      {
+        "tercile": 1,
+        "users": 164,
+        "range": [
+          0.0,
+          0.21428571428571427
+        ],
+        "mean_gpt_minus_frequency": -0.012793028725456497,
+        "mean_frequency_ndcg": 0.10785979018470487
+      },
+      {
+        "tercile": 2,
+        "users": 164,
+        "range": [
+          0.21428571428571427,
+          1.0
+        ],
+        "mean_gpt_minus_frequency": -0.1646148103840174,
+        "mean_frequency_ndcg": 0.433707897614453
+      }
+    ]
+  },
+  "elapsed_seconds": 23.805098600000008
+}

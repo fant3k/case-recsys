@@ -1,0 +1,13 @@
+{
+  "status": "completed",
+  "stage": "done",
+  "elapsed_seconds": 466.78809940000065,
+  "step": 3000,
+  "last": {
+    "step": 3000,
+    "train_loss": 0.03579578548669815,
+    "eval_NDCG@10": 0.1603024413469003,
+    "eval_share": 0.6957774059850185,
+    "eval_kl": 0.18710483610630035
+  }
+}

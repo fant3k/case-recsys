@@ -1,0 +1,230 @@
+{
+  "date": "2026-10-21",
+  "scope": "Windows technical pilot and short calibration; selection validation only; not final assignment results",
+  "correctness_checks_passed": 9,
+  "run_id": "calibration-20261021-01",
+  "protocol_id": "case2-v1-2026-10-21",
+  "protocol_sha256": "c93e7f55c8d32cdedceb350a73407e127406d53cf8878e0f22f8a28111bc8cea",
+  "status": "completed",
+  "elapsed_seconds": 145.58894559999953,
+  "environment": {
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "torch": "2.14.1+cu126",
+    "transformers": "4.57.1",
+    "numpy": "2.2.6",
+    "cuda_build": "12.6",
+    "gpu": "NVIDIA GeForce RTX 3060",
+    "vram_bytes": 12884377600
+  },
+  "data": {
+    "users": 1000,
+    "eligible_training_users": 999,
+    "train_events": 4787599,
+    "catalog_size": 50000,
+    "in_catalog_train_events": 4109827,
+    "eligible_target_groups": 3305526,
+    "items_with_varying_recorded_length": 0,
+    "target_sampling": "uniform eligible user, then group, then in-catalog event",
+    "context_size": 128,
+    "preparation_seconds": 3.8445103000003655
+  },
+  "training": {
+    "sft": {
+      "steps_attempted": 4000,
+      "optimizer_steps_skipped_by_scaler": 0,
+      "optimizer_updates": 4000,
+      "seconds": 87.35093549999146,
+      "median_step_seconds_excluding_first_five": 0.021764000000075612,
+      "first_ten_mean_loss": 10.810873699188232,
+      "last_ten_mean_loss": 9.835512256622314,
+      "peak_allocated_bytes": 501556736,
+      "peak_reserved_bytes": 603979776
+    },
+    "reward_model": {
+      "steps_attempted": 5000,
+      "optimizer_steps_skipped_by_scaler": 0,
+      "optimizer_updates": 5000,
+      "seconds": 38.57434240001112,
+      "median_step_seconds_excluding_first_five": 0.007723300000179734,
+      "first_ten_mean_loss": 0.19502565115690232,
+      "last_ten_mean_loss": 0.12566642239689826,
+      "peak_allocated_bytes": 216255488,
+      "peak_reserved_bytes": 734003200
+    },
+    "continued_sft": {
+      "steps_attempted": 200,
+      "optimizer_steps_skipped_by_scaler": 0,
+      "optimizer_updates": 200,
+      "seconds": 4.406738000000587,
+      "median_step_seconds_excluding_first_five": 0.02100940000036644,
+      "first_ten_mean_loss": 9.469510650634765,
+      "last_ten_mean_loss": 9.559463405609131,
+      "peak_allocated_bytes": 712370688,
+      "peak_reserved_bytes": 880803840
+    },
+    "rl_completion_beta003": {
+      "steps_attempted": 200,
+      "optimizer_steps_skipped_by_scaler": 0,
+      "optimizer_updates": 200,
+      "seconds": 6.8681792000052155,
+      "median_step_seconds_excluding_first_five": 0.03197580000050948,
+      "first_ten_mean_loss": 0.2808345103636384,
+      "last_ten_mean_loss": -0.34656457901000975,
+      "peak_allocated_bytes": 610727424,
+      "peak_reserved_bytes": 880803840
+    }
+  },
+  "ranking": {
+    "MostPop": {
+      "users": 492,
+      "Recall@10": 0.007327209512825966,
+      "NDCG@10": 0.018224168022622066
+    },
+    "PersonalFrequency128": {
+      "users": 492,
+      "Recall@10": 0.10581139601895478,
+      "NDCG@10": 0.18052256259971922
+    },
+    "GPT2_SFT_pilot": {
+      "users": 492,
+      "Recall@10": 0.006035160426713323,
+      "NDCG@10": 0.01118987627829677
+    },
+    "GPT2_continued_SFT_pilot": {
+      "users": 492,
+      "Recall@10": 0.004298192432977706,
+      "NDCG@10": 0.013631456862060054
+    },
+    "GPT2_RL_pilot": {
+      "users": 492,
+      "Recall@10": 0.0032124196685755376,
+      "NDCG@10": 0.008111964319075954
+    }
+  },
+  "reward_validation": {
+    "scope": "Selection observed in-catalog sampled events; user/group-balanced with replacement; not all heldout events",
+    "sampled_records": 2048,
+    "unique_user_event_records": 1713,
+    "constant_train_mean": {
+      "MAE_sample_weighted": 0.39294586533204146,
+      "RMSE_sample_weighted": 0.4193921515653074,
+      "mean_prediction_bias": -0.044340043447636646,
+      "MAE_macro_sampled_users": 0.392403467332919
+    },
+    "item_train_mean": {
+      "MAE_sample_weighted": 0.36804941296577454,
+      "RMSE_sample_weighted": 0.41187214851379395,
+      "mean_prediction_bias": -0.03914467990398407,
+      "MAE_macro_sampled_users": 0.36515549034413924
+    },
+    "history_RM": {
+      "MAE_sample_weighted": 0.3268355131149292,
+      "RMSE_sample_weighted": 0.40195637941360474,
+      "mean_prediction_bias": 0.018595971167087555,
+      "MAE_macro_sampled_users": 0.33054634736688776
+    },
+    "history_RM_with_shuffled_histories": {
+      "MAE_sample_weighted": 0.37947696447372437,
+      "RMSE_sample_weighted": 0.4586348235607147,
+      "mean_prediction_bias": 0.01841970533132553,
+      "MAE_macro_sampled_users": 0.38143436823589577
+    }
+  },
+  "reward_policy_comparison": {
+    "SFT": {
+      "expected_predicted_reward": 0.7455140352249146,
+      "top10_predicted_reward": 0.7469481825828552,
+      "exact_kl_to_SFT": 0.0,
+      "regularized_objective": 0.7455140352249146
+    },
+    "continued_SFT": {
+      "expected_predicted_reward": 0.7460299730300903,
+      "top10_predicted_reward": 0.7493738532066345,
+      "exact_kl_to_SFT": 0.10015147924423218,
+      "regularized_objective": 0.7430254220962524
+    },
+    "RL": {
+      "expected_predicted_reward": 0.7456382513046265,
+      "top10_predicted_reward": 0.7484784722328186,
+      "exact_kl_to_SFT": 0.048472631722688675,
+      "regularized_objective": 0.744184136390686
+    },
+    "analytic_reweighting": {
+      "expected_predicted_reward": 0.8204834461212158,
+      "top10_predicted_reward": 0.8594318628311157,
+      "exact_kl_to_SFT": 1.2297602891921997,
+      "regularized_objective": 0.7835906147956848
+    }
+  },
+  "frozen_components_check": "PASS: hashes identical and gradients absent",
+  "checkpoint_reload": "PASS: predictions and optimizer state restored",
+  "batch_benchmark": {
+    "kind": "resource_benchmark_only",
+    "gpu": "NVIDIA GeForce RTX 3060",
+    "precision": "fp16 autocast, fp32 parameters and last-position loss",
+    "model": {
+      "layers": 4,
+      "width": 256,
+      "heads": 4,
+      "context": 128,
+      "catalog": 50000
+    },
+    "note": "Short in-process allocator peaks; not total card usage or a full-training completion guarantee. Warm caches and one device session limit timing generalization.",
+    "results": [
+      {
+        "batch_size": 16,
+        "warmup_steps": 5,
+        "measured_steps": 10,
+        "median_step_seconds": 0.021257199999581644,
+        "contexts_per_second": 752.686148707962,
+        "peak_allocated_bytes": 501556224,
+        "peak_reserved_bytes": 601882624,
+        "optimizer_steps_skipped": 0,
+        "status": "completed"
+      },
+      {
+        "batch_size": 64,
+        "warmup_steps": 5,
+        "measured_steps": 10,
+        "median_step_seconds": 0.0478120000002491,
+        "contexts_per_second": 1338.576089677624,
+        "peak_allocated_bytes": 1092283392,
+        "peak_reserved_bytes": 1199570944,
+        "optimizer_steps_skipped": 0,
+        "status": "completed"
+      },
+      {
+        "batch_size": 128,
+        "warmup_steps": 5,
+        "measured_steps": 10,
+        "median_step_seconds": 0.08384234999948603,
+        "contexts_per_second": 1526.674765208569,
+        "peak_allocated_bytes": 1914629632,
+        "peak_reserved_bytes": 1994391552,
+        "optimizer_steps_skipped": 0,
+        "status": "completed"
+      },
+      {
+        "batch_size": 256,
+        "warmup_steps": 5,
+        "measured_steps": 10,
+        "median_step_seconds": 0.15533170000026075,
+        "contexts_per_second": 1648.0859991847785,
+        "peak_allocated_bytes": 3560108544,
+        "peak_reserved_bytes": 3808428032,
+        "optimizer_steps_skipped": 0,
+        "status": "completed"
+      }
+    ]
+  },
+  "cautions": [
+    "Short training only: these are pilot diagnostics, not final model-quality conclusions.",
+    "Only completion reward and beta=0.03 trained; the full planned matrix and item-only neural RM ablation remain.",
+    "Reward expectation uses a predefined subset, unlike the main protocol's all-warm-user estimate.",
+    "No confirmation or final-test model scores computed; no confidence intervals or replicated seeds yet.",
+    "H5 recommendations are not observed user actions."
+  ],
+  "artifact_location_windows": "E:\\Projects\\Debug\\artifacts\\calibration-20261021-01",
+  "local_artifact_location": "artifacts/calibration-20261021-01",
+  "next_priority": "Establish SFT convergence and personalization before interpreting RL effects. Use measured batch-size candidates, not the toy-pilot budget."
+}

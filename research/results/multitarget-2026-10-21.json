@@ -1,0 +1,544 @@
+{
+  "plan": {
+    "created_utc": "2026-10-21T17:50:39.274139+00:00",
+    "protocol_sha256": "c93e7f55c8d32cdedceb350a73407e127406d53cf8878e0f22f8a28111bc8cea",
+    "checkpoint": "artifacts\\sft-20261021-01\\best.pt",
+    "arms_in_order": [
+      "single_target",
+      "multiple_targets"
+    ],
+    "seconds_training_per_arm": 120,
+    "training_timer": "sampling/target construction/forward/backward/update/CUDA sync only; evaluation/save excluded; last step may exceed budget",
+    "batch": 64,
+    "maximum_targets_per_context": 8,
+    "lr": 3e-05,
+    "weight_decay": 0.01,
+    "optimizer": "AdamW restored separately from same checkpoint; clip1; AMP fp16, fp32 CE; GradScaler restored",
+    "sampling_seed": 20261025,
+    "additional_target_seed": 20261026,
+    "objective": "original anchor plus up to7 earlier distinct timestamp groups; one known random event per group; mean group CE per context then mean contexts",
+    "mask": "causal prefix ends before entire target group; no invented within-tie next item; past OOV retained",
+    "evaluation": "initial, half and full time budgets; best day NDCG per arm earliest on ties. Auxiliary next-group Recall not selection.",
+    "interpretation": "equal-time practical warm-start recipe comparison, not equal target count/update count; earlier prefixes shorter and target sampling changes",
+    "scope": "selection only; no confirmation/final, no RM/RL training, no feature bias"
+  },
+  "data_support": {
+    "users": 1000,
+    "eligible_training_users": 999,
+    "train_events": 4787599,
+    "catalog_size": 50000,
+    "in_catalog_train_events": 4109827,
+    "eligible_target_groups": 3305526,
+    "items_with_varying_recorded_length": 0,
+    "target_sampling": "uniform eligible user, then group, then in-catalog event",
+    "context_size": 128
+  },
+  "arms": {
+    "single_target": {
+      "evaluations": [
+        {
+          "step": 0,
+          "training_seconds": 0.0,
+          "sampled_anchor_contexts": 0,
+          "target_losses": 0,
+          "optimizer_updates_skipped": 0,
+          "ranking": {
+            "users": 492,
+            "Recall@10": 0.029467760909896987,
+            "NDCG@10": 0.05960147405300625
+          },
+          "next_group": {
+            "users": 512,
+            "Recall@10": 0.05159737723214286,
+            "NDCG@10": 0.03797218067375081
+          },
+          "slices": {
+            "seen_recent128": {
+              "users_with_targets": 298,
+              "target_pairs": 2162,
+              "catalog_target_pairs": 1906,
+              "hits": 145,
+              "macro_recall_when_nonempty": 0.06760410461039558,
+              "ndcg_contribution_all_active_users": 0.040188763565311335,
+              "pooled_recall": 0.06706753006475485
+            },
+            "seen_older_only": {
+              "users_with_targets": 390,
+              "target_pairs": 6735,
+              "catalog_target_pairs": 5795,
+              "hits": 88,
+              "macro_recall_when_nonempty": 0.01650197520630834,
+              "ndcg_contribution_all_active_users": 0.017325262510837762,
+              "pooled_recall": 0.013066072754268746
+            },
+            "never_seen": {
+              "users_with_targets": 355,
+              "target_pairs": 4242,
+              "catalog_target_pairs": 2695,
+              "hits": 9,
+              "macro_recall_when_nonempty": 0.002764528993503387,
+              "ndcg_contribution_all_active_users": 0.0020874479768571343,
+              "pooled_recall": 0.0021216407355021216
+            }
+          },
+          "recommendation_fraction_on_active_users": {
+            "seen_recent128": 0.17540650406504066,
+            "seen_older_only": 0.44390243902439025,
+            "never_seen": 0.3806910569105691
+          },
+          "unique_recommended_items": 1821,
+          "top_item_slot_fraction": 0.013414634146341463
+        },
+        {
+          "step": 1258,
+          "training_seconds": 60.06930040003863,
+          "sampled_anchor_contexts": 80512,
+          "target_losses": 80512,
+          "optimizer_updates_skipped": 0,
+          "ranking": {
+            "users": 492,
+            "Recall@10": 0.03189819003235573,
+            "NDCG@10": 0.062074706194963525
+          },
+          "next_group": {
+            "users": 512,
+            "Recall@10": 0.056573195684523805,
+            "NDCG@10": 0.03683270694121916
+          },
+          "slices": {
+            "seen_recent128": {
+              "users_with_targets": 298,
+              "target_pairs": 2162,
+              "catalog_target_pairs": 1906,
+              "hits": 152,
+              "macro_recall_when_nonempty": 0.074727951121826,
+              "ndcg_contribution_all_active_users": 0.04141015819407899,
+              "pooled_recall": 0.07030527289546716
+            },
+            "seen_older_only": {
+              "users_with_targets": 390,
+              "target_pairs": 6735,
+              "catalog_target_pairs": 5795,
+              "hits": 88,
+              "macro_recall_when_nonempty": 0.01952258860579361,
+              "ndcg_contribution_all_active_users": 0.01873354770512313,
+              "pooled_recall": 0.013066072754268746
+            },
+            "never_seen": {
+              "users_with_targets": 355,
+              "target_pairs": 4242,
+              "catalog_target_pairs": 2695,
+              "hits": 8,
+              "macro_recall_when_nonempty": 0.0026348907652736096,
+              "ndcg_contribution_all_active_users": 0.0019310002957613978,
+              "pooled_recall": 0.001885902876001886
+            }
+          },
+          "recommendation_fraction_on_active_users": {
+            "seen_recent128": 0.183130081300813,
+            "seen_older_only": 0.4449186991869919,
+            "never_seen": 0.3719512195121951
+          },
+          "unique_recommended_items": 1841,
+          "top_item_slot_fraction": 0.013211382113821139
+        },
+        {
+          "step": 2515,
+          "training_seconds": 120.02437870002905,
+          "sampled_anchor_contexts": 160960,
+          "target_losses": 160960,
+          "optimizer_updates_skipped": 0,
+          "ranking": {
+            "users": 492,
+            "Recall@10": 0.0305975849192953,
+            "NDCG@10": 0.06121665080614448
+          },
+          "next_group": {
+            "users": 512,
+            "Recall@10": 0.058526320684523805,
+            "NDCG@10": 0.03765077755706038
+          },
+          "slices": {
+            "seen_recent128": {
+              "users_with_targets": 298,
+              "target_pairs": 2162,
+              "catalog_target_pairs": 1906,
+              "hits": 147,
+              "macro_recall_when_nonempty": 0.07281902547128961,
+              "ndcg_contribution_all_active_users": 0.04030969678267025,
+              "pooled_recall": 0.06799259944495838
+            },
+            "seen_older_only": {
+              "users_with_targets": 390,
+              "target_pairs": 6735,
+              "catalog_target_pairs": 5795,
+              "hits": 92,
+              "macro_recall_when_nonempty": 0.020995393565606837,
+              "ndcg_contribution_all_active_users": 0.01941000217375007,
+              "pooled_recall": 0.013659985152190052
+            },
+            "never_seen": {
+              "users_with_targets": 355,
+              "target_pairs": 4242,
+              "catalog_target_pairs": 2695,
+              "hits": 8,
+              "macro_recall_when_nonempty": 0.002566675204100302,
+              "ndcg_contribution_all_active_users": 0.001496951849724153,
+              "pooled_recall": 0.001885902876001886
+            }
+          },
+          "recommendation_fraction_on_active_users": {
+            "seen_recent128": 0.18170731707317073,
+            "seen_older_only": 0.44613821138211385,
+            "never_seen": 0.3721544715447154
+          },
+          "unique_recommended_items": 1814,
+          "top_item_slot_fraction": 0.013414634146341463
+        }
+      ],
+      "best": {
+        "step": 1258,
+        "training_seconds": 60.06930040003863,
+        "sampled_anchor_contexts": 80512,
+        "target_losses": 80512,
+        "optimizer_updates_skipped": 0,
+        "ranking": {
+          "users": 492,
+          "Recall@10": 0.03189819003235573,
+          "NDCG@10": 0.062074706194963525
+        },
+        "next_group": {
+          "users": 512,
+          "Recall@10": 0.056573195684523805,
+          "NDCG@10": 0.03683270694121916
+        },
+        "slices": {
+          "seen_recent128": {
+            "users_with_targets": 298,
+            "target_pairs": 2162,
+            "catalog_target_pairs": 1906,
+            "hits": 152,
+            "macro_recall_when_nonempty": 0.074727951121826,
+            "ndcg_contribution_all_active_users": 0.04141015819407899,
+            "pooled_recall": 0.07030527289546716
+          },
+          "seen_older_only": {
+            "users_with_targets": 390,
+            "target_pairs": 6735,
+            "catalog_target_pairs": 5795,
+            "hits": 88,
+            "macro_recall_when_nonempty": 0.01952258860579361,
+            "ndcg_contribution_all_active_users": 0.01873354770512313,
+            "pooled_recall": 0.013066072754268746
+          },
+          "never_seen": {
+            "users_with_targets": 355,
+            "target_pairs": 4242,
+            "catalog_target_pairs": 2695,
+            "hits": 8,
+            "macro_recall_when_nonempty": 0.0026348907652736096,
+            "ndcg_contribution_all_active_users": 0.0019310002957613978,
+            "pooled_recall": 0.001885902876001886
+          }
+        },
+        "recommendation_fraction_on_active_users": {
+          "seen_recent128": 0.183130081300813,
+          "seen_older_only": 0.4449186991869919,
+          "never_seen": 0.3719512195121951
+        },
+        "unique_recommended_items": 1841,
+        "top_item_slot_fraction": 0.013211382113821139
+      },
+      "steps": 2515,
+      "optimizer_updates_skipped": 0,
+      "training_seconds": 120.02437870002905,
+      "sampled_anchor_contexts": 160960,
+      "target_losses": 160960,
+      "average_prefix_length_per_target": 114.74609219681909,
+      "peak_allocated_bytes": 1090317312,
+      "peak_reserved_bytes": 1239416832
+    },
+    "multiple_targets": {
+      "evaluations": [
+        {
+          "step": 0,
+          "training_seconds": 0.0,
+          "sampled_anchor_contexts": 0,
+          "target_losses": 0,
+          "optimizer_updates_skipped": 0,
+          "ranking": {
+            "users": 492,
+            "Recall@10": 0.029467760909896987,
+            "NDCG@10": 0.05960147405300625
+          },
+          "next_group": {
+            "users": 512,
+            "Recall@10": 0.05159737723214286,
+            "NDCG@10": 0.03797218067375081
+          },
+          "slices": {
+            "seen_recent128": {
+              "users_with_targets": 298,
+              "target_pairs": 2162,
+              "catalog_target_pairs": 1906,
+              "hits": 145,
+              "macro_recall_when_nonempty": 0.06760410461039558,
+              "ndcg_contribution_all_active_users": 0.040188763565311335,
+              "pooled_recall": 0.06706753006475485
+            },
+            "seen_older_only": {
+              "users_with_targets": 390,
+              "target_pairs": 6735,
+              "catalog_target_pairs": 5795,
+              "hits": 88,
+              "macro_recall_when_nonempty": 0.01650197520630834,
+              "ndcg_contribution_all_active_users": 0.017325262510837762,
+              "pooled_recall": 0.013066072754268746
+            },
+            "never_seen": {
+              "users_with_targets": 355,
+              "target_pairs": 4242,
+              "catalog_target_pairs": 2695,
+              "hits": 9,
+              "macro_recall_when_nonempty": 0.002764528993503387,
+              "ndcg_contribution_all_active_users": 0.0020874479768571343,
+              "pooled_recall": 0.0021216407355021216
+            }
+          },
+          "recommendation_fraction_on_active_users": {
+            "seen_recent128": 0.17540650406504066,
+            "seen_older_only": 0.44390243902439025,
+            "never_seen": 0.3806910569105691
+          },
+          "unique_recommended_items": 1821,
+          "top_item_slot_fraction": 0.013414634146341463
+        },
+        {
+          "step": 1089,
+          "training_seconds": 60.01278399999319,
+          "sampled_anchor_contexts": 69696,
+          "target_losses": 545266,
+          "optimizer_updates_skipped": 0,
+          "ranking": {
+            "users": 492,
+            "Recall@10": 0.031052716245468816,
+            "NDCG@10": 0.06294434174185275
+          },
+          "next_group": {
+            "users": 512,
+            "Recall@10": 0.05257393973214285,
+            "NDCG@10": 0.03620986782670752
+          },
+          "slices": {
+            "seen_recent128": {
+              "users_with_targets": 298,
+              "target_pairs": 2162,
+              "catalog_target_pairs": 1906,
+              "hits": 150,
+              "macro_recall_when_nonempty": 0.07177939349625495,
+              "ndcg_contribution_all_active_users": 0.041295214510937144,
+              "pooled_recall": 0.06938020351526364
+            },
+            "seen_older_only": {
+              "users_with_targets": 390,
+              "target_pairs": 6735,
+              "catalog_target_pairs": 5795,
+              "hits": 89,
+              "macro_recall_when_nonempty": 0.018014902164168557,
+              "ndcg_contribution_all_active_users": 0.0195323712039729,
+              "pooled_recall": 0.013214550853749072
+            },
+            "never_seen": {
+              "users_with_targets": 355,
+              "target_pairs": 4242,
+              "catalog_target_pairs": 2695,
+              "hits": 10,
+              "macro_recall_when_nonempty": 0.0028515238973996996,
+              "ndcg_contribution_all_active_users": 0.0021167560269426846,
+              "pooled_recall": 0.0023573785950023575
+            }
+          },
+          "recommendation_fraction_on_active_users": {
+            "seen_recent128": 0.18678861788617887,
+            "seen_older_only": 0.4719512195121951,
+            "never_seen": 0.341260162601626
+          },
+          "unique_recommended_items": 1726,
+          "top_item_slot_fraction": 0.016666666666666666
+        },
+        {
+          "step": 2176,
+          "training_seconds": 120.01765849996809,
+          "sampled_anchor_contexts": 139264,
+          "target_losses": 1089525,
+          "optimizer_updates_skipped": 0,
+          "ranking": {
+            "users": 492,
+            "Recall@10": 0.03200441278598561,
+            "NDCG@10": 0.06447723394231143
+          },
+          "next_group": {
+            "users": 512,
+            "Recall@10": 0.05634068080357142,
+            "NDCG@10": 0.03870220476014754
+          },
+          "slices": {
+            "seen_recent128": {
+              "users_with_targets": 298,
+              "target_pairs": 2162,
+              "catalog_target_pairs": 1906,
+              "hits": 156,
+              "macro_recall_when_nonempty": 0.07555491340629913,
+              "ndcg_contribution_all_active_users": 0.04164790253294727,
+              "pooled_recall": 0.07215541165587419
+            },
+            "seen_older_only": {
+              "users_with_targets": 390,
+              "target_pairs": 6735,
+              "catalog_target_pairs": 5795,
+              "hits": 96,
+              "macro_recall_when_nonempty": 0.022214437158521276,
+              "ndcg_contribution_all_active_users": 0.02074575220024215,
+              "pooled_recall": 0.014253897550111359
+            },
+            "never_seen": {
+              "users_with_targets": 355,
+              "target_pairs": 4242,
+              "catalog_target_pairs": 2695,
+              "hits": 9,
+              "macro_recall_when_nonempty": 0.003274626616277066,
+              "ndcg_contribution_all_active_users": 0.0020835792091220065,
+              "pooled_recall": 0.0021216407355021216
+            }
+          },
+          "recommendation_fraction_on_active_users": {
+            "seen_recent128": 0.18943089430894308,
+            "seen_older_only": 0.4713414634146341,
+            "never_seen": 0.33922764227642277
+          },
+          "unique_recommended_items": 1830,
+          "top_item_slot_fraction": 0.01707317073170732
+        }
+      ],
+      "best": {
+        "step": 2176,
+        "training_seconds": 120.01765849996809,
+        "sampled_anchor_contexts": 139264,
+        "target_losses": 1089525,
+        "optimizer_updates_skipped": 0,
+        "ranking": {
+          "users": 492,
+          "Recall@10": 0.03200441278598561,
+          "NDCG@10": 0.06447723394231143
+        },
+        "next_group": {
+          "users": 512,
+          "Recall@10": 0.05634068080357142,
+          "NDCG@10": 0.03870220476014754
+        },
+        "slices": {
+          "seen_recent128": {
+            "users_with_targets": 298,
+            "target_pairs": 2162,
+            "catalog_target_pairs": 1906,
+            "hits": 156,
+            "macro_recall_when_nonempty": 0.07555491340629913,
+            "ndcg_contribution_all_active_users": 0.04164790253294727,
+            "pooled_recall": 0.07215541165587419
+          },
+          "seen_older_only": {
+            "users_with_targets": 390,
+            "target_pairs": 6735,
+            "catalog_target_pairs": 5795,
+            "hits": 96,
+            "macro_recall_when_nonempty": 0.022214437158521276,
+            "ndcg_contribution_all_active_users": 0.02074575220024215,
+            "pooled_recall": 0.014253897550111359
+          },
+          "never_seen": {
+            "users_with_targets": 355,
+            "target_pairs": 4242,
+            "catalog_target_pairs": 2695,
+            "hits": 9,
+            "macro_recall_when_nonempty": 0.003274626616277066,
+            "ndcg_contribution_all_active_users": 0.0020835792091220065,
+            "pooled_recall": 0.0021216407355021216
+          }
+        },
+        "recommendation_fraction_on_active_users": {
+          "seen_recent128": 0.18943089430894308,
+          "seen_older_only": 0.4713414634146341,
+          "never_seen": 0.33922764227642277
+        },
+        "unique_recommended_items": 1830,
+        "top_item_slot_fraction": 0.01707317073170732
+      },
+      "steps": 2176,
+      "optimizer_updates_skipped": 0,
+      "training_seconds": 120.01765849996809,
+      "sampled_anchor_contexts": 139264,
+      "target_losses": 1089525,
+      "average_prefix_length_per_target": 66.47200293705973,
+      "peak_allocated_bytes": 1375873536,
+      "peak_reserved_bytes": 1616904192
+    }
+  },
+  "confirmation_scored": false,
+  "final_test_scored": false,
+  "comparisons": {
+    "selected_multiple_minus_selected_single": {
+      "mean_ndcg_difference": 0.0024025277473478965,
+      "paired_user_bootstrap_95_percentile_interval": [
+        -0.0016293715935808137,
+        0.006330575624126709
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    },
+    "selected_single_minus_initial": {
+      "mean_ndcg_difference": 0.002473232141957282,
+      "paired_user_bootstrap_95_percentile_interval": [
+        -0.0008030044721645327,
+        0.005769305642200138
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    },
+    "selected_multiple_minus_initial": {
+      "mean_ndcg_difference": 0.0048757598893051785,
+      "paired_user_bootstrap_95_percentile_interval": [
+        0.00025897933117478026,
+        0.009269298931102279
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    }
+  },
+  "controls": {
+    "PersonalFrequency128_original": {
+      "users": 492,
+      "Recall@10": 0.10581139601895478,
+      "NDCG@10": 0.18052256259971922
+    },
+    "PersonalFrequency128_recency_tiebreak": {
+      "users": 492,
+      "Recall@10": 0.11303858487542423,
+      "NDCG@10": 0.18741612761510879
+    },
+    "Memory_full_weight_0.5": {
+      "users": 492,
+      "Recall@10": 0.11166510760207617,
+      "NDCG@10": 0.1957938389605741
+    }
+  },
+  "elapsed_wall_seconds": 292.21624879999945,
+  "checkpoint_sha256": "cf97b01b94c269d246dad794f5b25a370bc3eb323315d4554d935d2c2522813e",
+  "cautions": [
+    "Equal training time, different updates/targets/prefix lengths; earlier target distribution reweighted.",
+    "Selection checkpoint/one sampling seed, bootstrap uncorrected for selection and repeated exploration.",
+    "No claim of final winner, causal engagement or retention."
+  ]
+}

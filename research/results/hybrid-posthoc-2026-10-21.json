@@ -1,0 +1,12 @@
+{
+  "comparison": "selected_memory_minus_recency_tiebreak",
+  "mean_difference": 0.0083777113454654,
+  "paired_percentile95": [
+    -0.0006973491714293452,
+    0.017638713985431848
+  ],
+  "draws": 2000,
+  "seed": 42,
+  "rng": "Python random",
+  "status": "posthoc exploratory, no multiplicity/selection correction"
+}

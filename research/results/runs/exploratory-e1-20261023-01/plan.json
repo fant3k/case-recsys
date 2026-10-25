@@ -1,0 +1,42 @@
+{
+  "created_utc": "2026-10-23T15:44:00.556807+00:00",
+  "plan_document": "docs/EXPLORATORY-PLAN.md",
+  "experiment": "E1",
+  "arguments": {
+    "out": "artifacts/exploratory-e1-20261023-01",
+    "pool": 65536,
+    "steps": 3000,
+    "batch": 64,
+    "lr": 0.001,
+    "eval_every": 500
+  },
+  "top_k": 50,
+  "beta": 0.03,
+  "features": [
+    "log_count",
+    "recency",
+    "seen",
+    "user_track_completion",
+    "length",
+    "popularity",
+    "user_mean_completion",
+    "organic_share",
+    "context_length",
+    "track_train_mean",
+    "ref_logp",
+    "rank"
+  ],
+  "pairwise_features": [
+    "log_count",
+    "recency",
+    "seen",
+    "user_track_completion"
+  ],
+  "seeds": {
+    "pool": 20261301,
+    "batches": 20261302,
+    "init": 20261303
+  },
+  "code_sha256": "83e7e4f6f858c2a064d6f6f1fdfb31d696e630cf301c605f90e1303a1e7b9031",
+  "scope": "exploratory, selection window already used; final test untouched; fixed last step reported"
+}

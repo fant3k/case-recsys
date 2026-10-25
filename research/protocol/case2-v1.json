@@ -1,0 +1,85 @@
+{
+  "protocol_id": "case2-v1-2026-10-21",
+  "status": "Pre-training research decision. Time, target and comparison rules fixed before model scoring. GPU-dependent batch/width/step budget will be recorded after a bounded pilot, before the comparison sweep.",
+  "data": {
+    "sample_path": "data/processed/yambda-1000-users-full-histories.parquet",
+    "sample_users": 1000,
+    "sample_seed": 42,
+    "scope": "Released Yambda listen-user cohort; not a representative sample of all production users.",
+    "history": "All released events retained. Each prediction sees only strictly earlier timestamp groups. Policy and RM consume the last 128 past item events; the main personal-frequency control uses the same context. A full-history personal-frequency control, if included, is separately labeled as using more context.",
+    "ties": "Group by uid,timestamp; deterministic item-ID ordering within past groups is representational, not claimed ground-truth order. Never use members of the target group in its input. Repeat multiplicity is retained.",
+    "sft_target": "For a sampled user and target-time group in train, predict a uniformly sampled in-catalog event of that group from the strictly earlier history. Group eligibility and conditional in-catalog loss are reported.",
+    "training_sampling": "Uniform over eligible users, then uniform over their eligible target-time groups. Fix seeds and sample budget. RM uses the same history convention and only observed event labels."
+  },
+  "time": {
+    "unit": "Native seconds since undisclosed origin; already rounded down to multiples of five.",
+    "train_end_exclusive": 25723600,
+    "gap_seconds": 1800,
+    "horizon_seconds": 86400,
+    "query_cutoffs": {
+      "selection_validation": 25723600,
+      "confirmation_validation": 25811800,
+      "final_test": 25900000
+    },
+    "weights_and_catalog": "Fit only before train_end_exclusive and freeze thereafter. No final-test refit under this version.",
+    "evaluation_history": "At each cutoff, use observed history strictly before that cutoff, then freeze it for the day's ranking queries. Earlier validation events can enter later query histories but not fitted weights/statistics."
+  },
+  "catalog": {
+    "size": 50000,
+    "selection": "Most frequent train items; ties broken by item_id ascending.",
+    "repeat_policy": "Allow previously listened tracks. No duplicate item within one ranked top-K list.",
+    "special_tokens": "PAD, BOS and UNK are input representation tokens only, excluded from policy action support and ranking.",
+    "oov": "Retain history event positions as UNK. Exclude unknown SFT target actions with coverage disclosure. Future ranking targets outside catalog remain in denominators as misses."
+  },
+  "evaluation": {
+    "k": 10,
+    "ranking_target": "Unique user-item pairs with played_ratio_pct>50 in the future label window.",
+    "auxiliary_next_group": "For each warm user with a recorded event in the label window, use their first timestamp group in that window as the target set (all observed items, without >50% filtering); context is the strictly earlier real history, capped at 128 events. Report NextGroup Recall@10 separately from the primary frozen-day protocol. OOV targets remain misses. Do not select models on this auxiliary metric.",
+    "primary": "Macro NDCG@10 among warm users with at least one future positive; this is conditional on activity, not a retention estimate.",
+    "secondary": ["Macro Recall@10", "Catalog coverage", "Top-item concentration", "Previously seen recommendation fraction", "Within-rollout repetition", "Track-length distribution", "Exact action-space KL where feasible"],
+    "reward_queries": "All warm users at a cutoff, regardless of future activity. Report the active ranking subset separately if used.",
+    "reward_reporting": "Distinguish policy-expected predicted reward from predicted reward of delivered top-K. Neither is observed counterfactual user utility.",
+    "uncertainty": "Paired user bootstrap for within-window comparisons. Repeat key RL run with a new sampling seed if budget permits; report that this does not measure all initialization/data uncertainty.",
+    "relevance_margin_relative": 0.05,
+    "margin_interpretation": "Predeclared practical tolerance, not a property of the dataset. Claim preserved relevance only if the paired interval supports it; otherwise say inconclusive."
+  },
+  "reward_model": {
+    "target": "min(played_ratio_pct,100)/100 on observed listens only.",
+    "inputs": "Strictly earlier item history, candidate ID and train-derived candidate length/popularity if used. No candidate played_ratio_pct or current-event is_organic input.",
+    "independence": "Separate frozen parameters and embeddings from the changing RL policy.",
+    "validation": "Constant, item-mean and item-only baselines; history removal/shuffle diagnostics; macro and event-weighted error; duration/popularity/origin slices. Confirmation and test remain out of parameter fitting.",
+    "interpretation": "Predicts conditional response on logged listens, not click probability, unconditional utility or causal reward for arbitrary recommendations."
+  },
+  "rewards": {
+    "completion": "Frozen RM prediction in [0,1].",
+    "capped_seconds": "RM prediction * min(train-median track_length_seconds,600)/600. Capped equivalent-seconds proxy; not total listening time including replays.",
+    "scale": "No per-batch advantage standardization that silently changes reward/KL balance. Report empirical reward spread and achieved KL."
+  },
+  "rl": {
+    "primary": "On-policy H=1 REINFORCE with action-independent moving baseline plus exact KL to the frozen SFT policy over valid item actions.",
+    "objective": "E_pi[r(h,a)] - beta*KL(pi||pi_ref)",
+    "initial_grid": [
+      {"reward": "completion", "beta": 0.03},
+      {"reward": "completion", "beta": 0.3},
+      {"reward": "capped_seconds", "beta": 0.03},
+      {"reward": "capped_seconds", "beta": 0.3}
+    ],
+    "optional_diagnostic": {"reward": "completion", "beta": 0.0},
+    "controls": ["Original SFT", "Continued SFT matched by update/context count with actual compute reported", "Frozen SFT with reward-based exponential reweighting for H=1"],
+    "policy_selection": "On selection validation, prefer candidates within the predeclared relevance tolerance, then maximize predicted reward on all warm query users. If none qualify, report the frontier without declaring a winner. Confirmation is a one-time check; failure does not trigger tuning on it.",
+    "h5": "Required diagnostic on generated histories, not simulated user acceptance. Use item-only context for both RM and policy; do not fabricate future listening labels. H=5 RL training is optional after the core experiment."
+  },
+  "resource_pilot": {
+    "device": "RTX3060 12GiB, Windows, Python3.11.9, torch2.14.1+cu126; CUDA smoke passed.",
+    "starting_model": {"layers": 4, "width": 256, "heads": 4, "context": 128, "tied_embeddings": true},
+    "last_position_only_logits": true,
+    "decision": "Measure data-loading time, optimizer-step time, peak VRAM and checkpoint reload. Set fixed run budgets before the sweep; no promised completion time from parameter count alone."
+  },
+  "prohibitions_on_claims": [
+    "Do not treat generated recommendation as observed user interaction.",
+    "Do not label unobserved items as known dislikes.",
+    "Do not call a relevance/reward mismatch proven reward-model exploitation without additional evidence.",
+    "Do not claim retention uplift or real user satisfaction improvement from these offline logs.",
+    "Do not compare old development-window scores directly with the new protocol."
+  ]
+}

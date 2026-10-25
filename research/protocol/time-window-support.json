@@ -1,0 +1,55 @@
+{
+  "purpose": "Support audit only; no predictions, reward scores or model comparisons.",
+  "protocol": "case2-v1-2026-10-21",
+  "protocol_sha256": "c93e7f55c8d32cdedceb350a73407e127406d53cf8878e0f22f8a28111bc8cea",
+  "source_sha256": "df1da9fa9596d11ee04464fd898008ab8cea9d235e48357c369a2c576011ab2b",
+  "sample_users": 1000,
+  "train_end_exclusive": 25723600,
+  "train_events": 4787599,
+  "catalog_size": 50000,
+  "train_catalog_event_coverage": 0.8584317525339946,
+  "windows": [
+    {
+      "window": "selection_validation",
+      "query_cutoff": 25723600,
+      "labels_start": 25725400,
+      "labels_end_exclusive": 25811800,
+      "eligible_warm_users": 1000,
+      "users_with_future_positive": 492,
+      "positive_pairs": 13139,
+      "positive_pairs_in_catalog": 10396,
+      "catalog_positive_pair_coverage": 0.7912322094527742,
+      "macro_recall_at_k_catalog_ceiling": 0.549937925519703,
+      "macro_ndcg_at_k_catalog_ceiling": 0.9225591448094909,
+      "note": "Catalog-only feasibility bounds, not scores of any recommender."
+    },
+    {
+      "window": "confirmation_validation",
+      "query_cutoff": 25811800,
+      "labels_start": 25813600,
+      "labels_end_exclusive": 25900000,
+      "eligible_warm_users": 1000,
+      "users_with_future_positive": 498,
+      "positive_pairs": 13194,
+      "positive_pairs_in_catalog": 10523,
+      "catalog_positive_pair_coverage": 0.7975594967409428,
+      "macro_recall_at_k_catalog_ceiling": 0.523325195025977,
+      "macro_ndcg_at_k_catalog_ceiling": 0.9217480206557942,
+      "note": "Catalog-only feasibility bounds, not scores of any recommender."
+    },
+    {
+      "window": "final_test",
+      "query_cutoff": 25900000,
+      "labels_start": 25901800,
+      "labels_end_exclusive": 25988200,
+      "eligible_warm_users": 1000,
+      "users_with_future_positive": 518,
+      "positive_pairs": 13957,
+      "positive_pairs_in_catalog": 10764,
+      "catalog_positive_pair_coverage": 0.7712259081464498,
+      "macro_recall_at_k_catalog_ceiling": 0.5190600698099711,
+      "macro_ndcg_at_k_catalog_ceiling": 0.9130993481956005,
+      "note": "Catalog-only feasibility bounds, not scores of any recommender."
+    }
+  ]
+}

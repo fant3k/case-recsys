@@ -1,0 +1,2525 @@
+{
+  "scope": "Displayed final ranking metrics and oracle; RLv2 quality, relative reward/NDCG changes and behaviour; E1 and RM tables; RLv1 raw metrics/rewards; quantile optimum; cutoff/event-context PairAccuracy; E2; six saved bootstrap estimates. No new raw-data/model evaluation.",
+  "head_before_edit": "a6cbc4d",
+  "numeric_checks": [
+    {
+      "claim": "final/Reranker_LightGBM/NDCG@10",
+      "reported": 0.2099,
+      "source": 0.2099208211284036,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "final/Reranker_LightGBM/Recall@10",
+      "reported": 0.1134,
+      "source": 0.11342527132493119,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "final/Reranker_LightGBM/HitRate@10",
+      "reported": 0.525,
+      "source": 0.525096525096525,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "final/Memory_recent_full_0.5/NDCG@10",
+      "reported": 0.1773,
+      "source": 0.17731030350250315,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "final/Memory_recent_full_0.5/Recall@10",
+      "reported": 0.1004,
+      "source": 0.10039519429719666,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "final/Memory_recent_full_0.5/HitRate@10",
+      "reported": 0.411,
+      "source": 0.4111969111969112,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "final/Frequency128_recency_tiebreak/NDCG@10",
+      "reported": 0.1706,
+      "source": 0.17058882741917888,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "final/Frequency128_recency_tiebreak/Recall@10",
+      "reported": 0.0962,
+      "source": 0.09622007596042714,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "final/Frequency128_recency_tiebreak/HitRate@10",
+      "reported": 0.394,
+      "source": 0.3938223938223938,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "final/PersonalFrequency128/NDCG@10",
+      "reported": 0.1693,
+      "source": 0.16931681216689268,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "final/PersonalFrequency128/Recall@10",
+      "reported": 0.0953,
+      "source": 0.09526724389901907,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "final/PersonalFrequency128/HitRate@10",
+      "reported": 0.396,
+      "source": 0.39575289575289574,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "final/A_rm_rerank_top50/NDCG@10",
+      "reported": 0.1505,
+      "source": 0.15052589181332432,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "final/A_rm_rerank_top50/Recall@10",
+      "reported": 0.0914,
+      "source": 0.09142308006813217,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "final/A_rm_rerank_top50/HitRate@10",
+      "reported": 0.394,
+      "source": 0.3938223938223938,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "final/B_rl_seconds_beta0.3/NDCG@10",
+      "reported": 0.1408,
+      "source": 0.1407943369981172,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "final/B_rl_seconds_beta0.3/Recall@10",
+      "reported": 0.0859,
+      "source": 0.08585522233445647,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "final/B_rl_seconds_beta0.3/HitRate@10",
+      "reported": 0.371,
+      "source": 0.37065637065637064,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "final/reference/NDCG@10",
+      "reported": 0.1399,
+      "source": 0.13994016980832244,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "final/reference/Recall@10",
+      "reported": 0.0849,
+      "source": 0.08488709767620384,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "final/reference/HitRate@10",
+      "reported": 0.373,
+      "source": 0.37258687258687256,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "final/GPT2_original_next_item_day/NDCG@10",
+      "reported": 0.0539,
+      "source": 0.053867918959821195,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "final/GPT2_original_next_item_day/Recall@10",
+      "reported": 0.0325,
+      "source": 0.03253014285102617,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "final/GPT2_original_next_item_day/HitRate@10",
+      "reported": 0.255,
+      "source": 0.2548262548262548,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/reference/NDCG@10",
+      "reported": 0.1473,
+      "source": 0.14727090259847372,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/reference/Recall@10",
+      "reported": 0.0871,
+      "source": 0.08709126664702464,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/reference/KL",
+      "reported": 0.0,
+      "source": 0.0,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/completion/beta0.03/NDCG@10",
+      "reported": 0.1584,
+      "source": 0.15844685999087166,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/completion/beta0.03/Recall@10",
+      "reported": 0.0963,
+      "source": 0.0962942733069044,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/completion/beta0.03/KL",
+      "reported": 0.356,
+      "source": 0.3563190698623657,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/completion/beta0.03/5pct",
+      "reported": 1.0,
+      "source": 1.0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/completion/beta0.01/NDCG@10",
+      "reported": 0.1541,
+      "source": 0.1541340581311971,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/completion/beta0.01/Recall@10",
+      "reported": 0.0949,
+      "source": 0.09488254446846528,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/completion/beta0.01/KL",
+      "reported": 1.162,
+      "source": 1.162462830543518,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/completion/beta0.01/5pct",
+      "reported": 1.0,
+      "source": 1.0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.01/NDCG@10",
+      "reported": 0.1338,
+      "source": 0.13377599512871594,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.01/Recall@10",
+      "reported": 0.0786,
+      "source": 0.07860513721842158,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.01/KL",
+      "reported": 0.931,
+      "source": 0.9309111833572388,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.01/5pct",
+      "reported": 0.0,
+      "source": 0.0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.03/NDCG@10",
+      "reported": 0.1455,
+      "source": 0.14553930678617566,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.03/Recall@10",
+      "reported": 0.0837,
+      "source": 0.08374198230228157,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.03/KL",
+      "reported": 0.251,
+      "source": 0.25141260027885437,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.03/5pct",
+      "reported": 0.0,
+      "source": 0.0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.1/NDCG@10",
+      "reported": 0.1476,
+      "source": 0.1475840523230911,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.1/Recall@10",
+      "reported": 0.0876,
+      "source": 0.08762527181578965,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.1/KL",
+      "reported": 0.044,
+      "source": 0.044416218996047974,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.1/5pct",
+      "reported": 1.0,
+      "source": 1.0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion_lcb/beta1/NDCG@10",
+      "reported": 0.1489,
+      "source": 0.1489378012534315,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion_lcb/beta1/Recall@10",
+      "reported": 0.0898,
+      "source": 0.08981998071964035,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion_lcb/beta1/KL",
+      "reported": 0.01,
+      "source": 0.010400085709989071,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion_lcb/beta1/5pct",
+      "reported": 1.0,
+      "source": 1.0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/seconds/beta0.3/NDCG@10",
+      "reported": 0.1465,
+      "source": 0.1464702927181472,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/seconds/beta0.3/Recall@10",
+      "reported": 0.0866,
+      "source": 0.08656027493735174,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/seconds/beta0.3/KL",
+      "reported": 0.033,
+      "source": 0.0327618271112442,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/seconds/beta0.3/5pct",
+      "reported": 1.0,
+      "source": 1.0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.3/NDCG@10",
+      "reported": 0.1464,
+      "source": 0.1463647779687941,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.3/Recall@10",
+      "reported": 0.0871,
+      "source": 0.08714883171645586,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.3/KL",
+      "reported": 0.038,
+      "source": 0.038362741470336914,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.3/5pct",
+      "reported": 1.0,
+      "source": 1.0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.1/NDCG@10",
+      "reported": 0.1344,
+      "source": 0.13438648866178846,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.1/Recall@10",
+      "reported": 0.0828,
+      "source": 0.082844890755702,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.1/KL",
+      "reported": 0.6,
+      "source": 0.5996531248092651,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.1/5pct",
+      "reported": 0.0,
+      "source": 0.0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.03/NDCG@10",
+      "reported": 0.0229,
+      "source": 0.02290439412341261,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.03/Recall@10",
+      "reported": 0.0153,
+      "source": 0.015310906261883821,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.03/KL",
+      "reported": 6.136,
+      "source": 6.135847568511963,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.03/5pct",
+      "reported": 0.0,
+      "source": 0.0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.01/NDCG@10",
+      "reported": 0.0021,
+      "source": 0.0021120148944546273,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.01/Recall@10",
+      "reported": 0.0013,
+      "source": 0.0013140134290402998,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.01/KL",
+      "reported": 8.753,
+      "source": 8.753414154052734,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.01/5pct",
+      "reported": 0.0,
+      "source": 0.0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/sft/NDCG@10",
+      "reported": 0.1382,
+      "source": 0.13824148457793992,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/sft/Recall@10",
+      "reported": 0.0845,
+      "source": 0.08447810793921512,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/sft/KL",
+      "reported": 0.115,
+      "source": 0.11545770615339279,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/sft/5pct",
+      "reported": 0.0,
+      "source": 0.0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/exp/completion/lambda0.1/NDCG@10",
+      "reported": 0.1426,
+      "source": 0.14255458984554306,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/exp/completion/lambda0.1/Recall@10",
+      "reported": 0.0859,
+      "source": 0.08585326258297866,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/exp/completion/lambda0.1/KL",
+      "reported": 0.14,
+      "source": 0.14008840918540955,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/exp/completion/lambda0.1/5pct",
+      "reported": 0.0,
+      "source": 0.0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/exp/seconds/lambda0.3/NDCG@10",
+      "reported": 0.1388,
+      "source": 0.13883327619360109,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/exp/seconds/lambda0.3/Recall@10",
+      "reported": 0.0848,
+      "source": 0.08476564043807604,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/exp/seconds/lambda0.3/KL",
+      "reported": 0.145,
+      "source": 0.14506375789642334,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/exp/seconds/lambda0.3/5pct",
+      "reported": 0.0,
+      "source": 0.0,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/reference/PairAcc",
+      "reported": 0.531,
+      "source": 0.5308014576573749,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/reference/length",
+      "reported": 202.0,
+      "source": 201.72499084472656,
+      "tolerance": 0.500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/reference/unique",
+      "reported": 6658.0,
+      "source": 6658,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/reference/newpct",
+      "reported": 1.0,
+      "source": 0.8333333333333334,
+      "tolerance": 0.500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/completion/beta0.03/PairAcc",
+      "reported": 0.54,
+      "source": 0.5397997818080219,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/completion/beta0.03/length",
+      "reported": 196.0,
+      "source": 195.82150268554688,
+      "tolerance": 0.500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/completion/beta0.03/unique",
+      "reported": 6212.0,
+      "source": 6212,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/completion/beta0.03/newpct",
+      "reported": 1.0,
+      "source": 0.6910569105691057,
+      "tolerance": 0.500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/completion/beta0.01/PairAcc",
+      "reported": 0.545,
+      "source": 0.5451999251464927,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/completion/beta0.01/length",
+      "reported": 190.0,
+      "source": 190.28199768066406,
+      "tolerance": 0.500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/completion/beta0.01/unique",
+      "reported": 5789.0,
+      "source": 5789,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/completion/beta0.01/newpct",
+      "reported": 1.0,
+      "source": 0.975609756097561,
+      "tolerance": 0.500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.01/PairAcc",
+      "reported": 0.529,
+      "source": 0.5289454103350624,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.01/length",
+      "reported": 189.0,
+      "source": 189.3669891357422,
+      "tolerance": 0.500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.01/unique",
+      "reported": 5302.0,
+      "source": 5302,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.01/newpct",
+      "reported": 2.0,
+      "source": 1.6056910569105691,
+      "tolerance": 0.500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.03/PairAcc",
+      "reported": 0.528,
+      "source": 0.5277400140687082,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.03/length",
+      "reported": 195.0,
+      "source": 195.22549438476562,
+      "tolerance": 0.500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.03/unique",
+      "reported": 5992.0,
+      "source": 5992,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.03/newpct",
+      "reported": 1.0,
+      "source": 0.7317073170731708,
+      "tolerance": 0.500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.1/PairAcc",
+      "reported": 0.529,
+      "source": 0.5292252600106754,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.1/length",
+      "reported": 199.0,
+      "source": 199.1685028076172,
+      "tolerance": 0.500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.1/unique",
+      "reported": 6372.0,
+      "source": 6372,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.1/newpct",
+      "reported": 1.0,
+      "source": 0.6910569105691057,
+      "tolerance": 0.500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion_lcb/beta1/PairAcc",
+      "reported": 0.531,
+      "source": 0.5313670400712982,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion_lcb/beta1/length",
+      "reported": 201.0,
+      "source": 201.4384765625,
+      "tolerance": 0.500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion_lcb/beta1/unique",
+      "reported": 6582.0,
+      "source": 6582,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion_lcb/beta1/newpct",
+      "reported": 1.0,
+      "source": 0.7520325203252033,
+      "tolerance": 0.500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/seconds/beta0.3/PairAcc",
+      "reported": 0.524,
+      "source": 0.5243507237567449,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/seconds/beta0.3/length",
+      "reported": 217.0,
+      "source": 217.1134796142578,
+      "tolerance": 0.500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/seconds/beta0.3/unique",
+      "reported": 6613.0,
+      "source": 6613,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/seconds/beta0.3/newpct",
+      "reported": 1.0,
+      "source": 0.7723577235772358,
+      "tolerance": 0.500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.3/PairAcc",
+      "reported": 0.525,
+      "source": 0.5254513099707842,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.3/length",
+      "reported": 216.0,
+      "source": 216.13748168945312,
+      "tolerance": 0.500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.3/unique",
+      "reported": 6624.0,
+      "source": 6624,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.3/newpct",
+      "reported": 1.0,
+      "source": 0.7113821138211381,
+      "tolerance": 0.500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.1/PairAcc",
+      "reported": 0.513,
+      "source": 0.5128553650956269,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.1/length",
+      "reported": 269.0,
+      "source": 268.635986328125,
+      "tolerance": 0.500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.1/unique",
+      "reported": 5967.0,
+      "source": 5967,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.1/newpct",
+      "reported": 6.0,
+      "source": 6.361788617886178,
+      "tolerance": 0.500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.03/PairAcc",
+      "reported": 0.481,
+      "source": 0.4812337188007114,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.03/length",
+      "reported": 536.0,
+      "source": 536.3564453125,
+      "tolerance": 0.500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.03/unique",
+      "reported": 1525.0,
+      "source": 1525,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.03/newpct",
+      "reported": 80.0,
+      "source": 80.32520325203252,
+      "tolerance": 0.500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.01/PairAcc",
+      "reported": 0.481,
+      "source": 0.4811818641757751,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.01/length",
+      "reported": 584.0,
+      "source": 584.4244995117188,
+      "tolerance": 0.500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.01/unique",
+      "reported": 427.0,
+      "source": 427,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.01/newpct",
+      "reported": 94.0,
+      "source": 94.2479674796748,
+      "tolerance": 0.500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/sft/PairAcc",
+      "reported": 0.524,
+      "source": 0.5240100293561425,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/sft/length",
+      "reported": 202.0,
+      "source": 202.04100036621094,
+      "tolerance": 0.500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/sft/unique",
+      "reported": 6911.0,
+      "source": 6911,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/sft/newpct",
+      "reported": 1.0,
+      "source": 1.2804878048780488,
+      "tolerance": 0.500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/exp/completion/lambda0.1/PairAcc",
+      "reported": 0.533,
+      "source": 0.532747399630789,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/exp/completion/lambda0.1/length",
+      "reported": 199.0,
+      "source": 198.86398315429688,
+      "tolerance": 0.500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/exp/completion/lambda0.1/unique",
+      "reported": 6831.0,
+      "source": 6831,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/exp/completion/lambda0.1/newpct",
+      "reported": 1.0,
+      "source": 1.1788617886178863,
+      "tolerance": 0.500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/exp/seconds/lambda0.3/PairAcc",
+      "reported": 0.527,
+      "source": 0.5270369108547456,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/exp/seconds/lambda0.3/length",
+      "reported": 214.0,
+      "source": 213.6064910888672,
+      "tolerance": 0.500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/exp/seconds/lambda0.3/unique",
+      "reported": 6962.0,
+      "source": 6962,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/exp/seconds/lambda0.3/newpct",
+      "reported": 1.0,
+      "source": 1.2398373983739837,
+      "tolerance": 0.500001,
+      "pass": true
+    },
+    {
+      "claim": "E1/A_optimum_top50/NDCG",
+      "reported": 0.1583,
+      "source": 0.1582555761844212,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "E1/A_optimum_top50/Jshare",
+      "reported": 1.0,
+      "source": 1.0,
+      "tolerance": 0.005001,
+      "pass": true
+    },
+    {
+      "claim": "E1/A_optimum_top50/KL",
+      "reported": 0.212,
+      "source": 0.2117975503206253,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "E1/head_all_features/NDCG",
+      "reported": 0.1612,
+      "source": 0.16123726520994613,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "E1/head_all_features/Jshare",
+      "reported": 0.6,
+      "source": 0.5963344613863645,
+      "tolerance": 0.005001,
+      "pass": true
+    },
+    {
+      "claim": "E1/head_all_features/KL",
+      "reported": 0.144,
+      "source": 0.1437510997056961,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "E1/head_no_pairwise/NDCG",
+      "reported": 0.146,
+      "source": 0.1460117639919022,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "E1/head_no_pairwise/Jshare",
+      "reported": 0.19,
+      "source": 0.18972204266321913,
+      "tolerance": 0.005001,
+      "pass": true
+    },
+    {
+      "claim": "E1/head_no_pairwise/KL",
+      "reported": 0.037,
+      "source": 0.03727496415376663,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RM/constant_train_mean/1",
+      "reported": 0.406,
+      "source": 0.40577600842011086,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RM/constant_train_mean/2",
+      "reported": 0.433,
+      "source": 0.4326828434569465,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RM/constant_train_mean/3",
+      "reported": 0.5,
+      "source": 0.5,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RM/constant_train_mean/4",
+      "reported": 0.5,
+      "source": 0.5,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RM/item_train_mean/1",
+      "reported": 0.372,
+      "source": 0.37165833329221587,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RM/item_train_mean/2",
+      "reported": 0.418,
+      "source": 0.4182656110348686,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RM/item_train_mean/3",
+      "reported": 0.555,
+      "source": 0.5546932238860867,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RM/item_train_mean/4",
+      "reported": 0.528,
+      "source": 0.527690756729979,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RM/v1_history_RM/1",
+      "reported": 0.345,
+      "source": 0.3453284085050543,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RM/v1_history_RM/2",
+      "reported": 0.409,
+      "source": 0.40915399371970507,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RM/v1_history_RM/3",
+      "reported": 0.506,
+      "source": 0.506156482009998,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RM/v1_history_RM/4",
+      "reported": 0.478,
+      "source": 0.4782431216137842,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RM/v2_ensemble_mean/1",
+      "reported": 0.245,
+      "source": 0.2447417882583555,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RM/v2_ensemble_mean/2",
+      "reported": 0.334,
+      "source": 0.33400845428885173,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RM/v2_ensemble_mean/3",
+      "reported": 0.554,
+      "source": 0.5544754839644629,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RM/v2_ensemble_mean/4",
+      "reported": 0.518,
+      "source": 0.5177798360781168,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "final/oracle/NDCG@10",
+      "reported": 0.913,
+      "source": 0.9130993481956005,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "final/oracle/Recall@10",
+      "reported": 0.519,
+      "source": 0.5190600698099711,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "final/oracle/HitRate@10",
+      "reported": 0.969,
+      "source": 0.9691119691119691,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/completion/beta0.03/relative3",
+      "reported": 7.6,
+      "source": 7.588707066506273,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/completion/beta0.03/relative5",
+      "reported": 3.6,
+      "source": 3.5519768407126007,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/completion/beta0.03/relative5",
+      "reported": 3.0,
+      "source": 3.031054951523582,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/completion/beta0.03/relative6",
+      "reported": 0.6,
+      "source": 0.55894182448053,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/completion/beta0.03/relative6",
+      "reported": 0.1,
+      "source": 0.10187943491668516,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/completion/beta0.01/relative3",
+      "reported": 4.7,
+      "source": 4.6602250761207165,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/completion/beta0.01/relative5",
+      "reported": 5.5,
+      "source": 5.526437988193278,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/completion/beta0.01/relative5",
+      "reported": 4.8,
+      "source": 4.789376947500301,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/completion/beta0.01/relative6",
+      "reported": -1.4,
+      "source": -1.3555886422798258,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/completion/beta0.01/relative6",
+      "reported": -1.9,
+      "source": -1.9302353572361874,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.01/relative3",
+      "reported": -9.2,
+      "source": -9.163322307157262,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.01/relative5",
+      "reported": 3.1,
+      "source": 3.055735533773851,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.01/relative5",
+      "reported": 2.6,
+      "source": 2.6065617465577784,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.01/relative6",
+      "reported": -3.5,
+      "source": -3.4590808330633327,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.01/relative6",
+      "reported": -3.8,
+      "source": -3.7854360928255337,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.03/relative3",
+      "reported": -1.2,
+      "source": -1.1757895020302556,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.03/relative5",
+      "reported": 1.7,
+      "source": 1.748852879647722,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.03/relative5",
+      "reported": 1.5,
+      "source": 1.4812245560632542,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.03/relative6",
+      "reported": -1.1,
+      "source": -1.1391609253176505,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.03/relative6",
+      "reported": -1.4,
+      "source": -1.386064302915213,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.1/relative3",
+      "reported": 0.2,
+      "source": 0.21263516356055945,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.1/relative5",
+      "reported": 0.7,
+      "source": 0.6893090218831555,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.1/relative5",
+      "reported": 0.6,
+      "source": 0.5888537650297732,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.1/relative6",
+      "reported": -0.4,
+      "source": -0.3531115720448619,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion/beta0.1/relative6",
+      "reported": -0.5,
+      "source": -0.45872629393749476,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion_lcb/beta1/relative3",
+      "reported": 1.1,
+      "source": 1.1318587891747223,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion_lcb/beta1/relative5",
+      "reported": 0.1,
+      "source": 0.11927570117284958,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion_lcb/beta1/relative5",
+      "reported": 0.1,
+      "source": 0.09707439765862524,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion_lcb/beta1/relative6",
+      "reported": 0.0,
+      "source": 0.03597943724487074,
+      "tolerance": 0.50000001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/completion_lcb/beta1/relative6",
+      "reported": 0.0,
+      "source": 0.007747682594283489,
+      "tolerance": 0.50000001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/seconds/beta0.3/relative3",
+      "reported": -0.5,
+      "source": -0.5436307282704278,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/seconds/beta0.3/relative5",
+      "reported": 0.0,
+      "source": 0.04681794355263502,
+      "tolerance": 0.50000001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/seconds/beta0.3/relative5",
+      "reported": 0.0,
+      "source": 0.007727056069772864,
+      "tolerance": 0.50000001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/seconds/beta0.3/relative6",
+      "reported": 7.8,
+      "source": 7.816108336112548,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/analytic/seconds/beta0.3/relative6",
+      "reported": 7.8,
+      "source": 7.844424978787812,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.3/relative3",
+      "reported": -0.6,
+      "source": -0.6152774334181377,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.3/relative5",
+      "reported": 0.0,
+      "source": -0.01152389389315056,
+      "tolerance": 0.50000001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.3/relative5",
+      "reported": 0.0,
+      "source": -0.03289642185211328,
+      "tolerance": 0.50000001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.3/relative6",
+      "reported": 6.7,
+      "source": 6.679348151413889,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.3/relative6",
+      "reported": 6.7,
+      "source": 6.692624426422089,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.1/relative3",
+      "reported": -8.7,
+      "source": -8.748784525218767,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.1/relative5",
+      "reported": -0.3,
+      "source": -0.3136861707154437,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.1/relative5",
+      "reported": -0.4,
+      "source": -0.3977697458840357,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.1/relative6",
+      "reported": 38.0,
+      "source": 38.42650138929402,
+      "tolerance": 0.50000001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.1/relative6",
+      "reported": 39.0,
+      "source": 38.95102078309378,
+      "tolerance": 0.50000001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.03/relative3",
+      "reported": -84.0,
+      "source": -84.44744092737706,
+      "tolerance": 0.50000001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.03/relative5",
+      "reported": -3.2,
+      "source": -3.2347638145652446,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.03/relative5",
+      "reported": -3.2,
+      "source": -3.241144055766776,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.03/relative6",
+      "reported": 168.0,
+      "source": 167.78210523415297,
+      "tolerance": 0.50000001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.03/relative6",
+      "reported": 170.0,
+      "source": 170.3113078463943,
+      "tolerance": 0.50000001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.01/relative3",
+      "reported": -99.0,
+      "source": -98.56589804422336,
+      "tolerance": 0.50000001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.01/relative5",
+      "reported": -4.8,
+      "source": -4.774520908558754,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.01/relative5",
+      "reported": -4.6,
+      "source": -4.5768308130686215,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.01/relative6",
+      "reported": 181.0,
+      "source": 180.89255608880714,
+      "tolerance": 0.50000001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/rl/seconds/beta0.01/relative6",
+      "reported": 183.0,
+      "source": 182.64305325028886,
+      "tolerance": 0.50000001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/sft/relative3",
+      "reported": -6.1,
+      "source": -6.131162273889257,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/sft/relative5",
+      "reported": 0.0,
+      "source": 0.041455423606784336,
+      "tolerance": 0.50000001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/sft/relative5",
+      "reported": 0.1,
+      "source": 0.061035060865766155,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/sft/relative6",
+      "reported": 0.1,
+      "source": 0.07218691317649739,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/sft/relative6",
+      "reported": 0.1,
+      "source": 0.08163569904113821,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/exp/completion/lambda0.1/relative3",
+      "reported": -3.2,
+      "source": -3.202474263221866,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/exp/completion/lambda0.1/relative5",
+      "reported": 0.3,
+      "source": 0.2999951728821948,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/exp/completion/lambda0.1/relative5",
+      "reported": 0.3,
+      "source": 0.292586280394902,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/exp/completion/lambda0.1/relative6",
+      "reported": -0.8,
+      "source": -0.7831798664643452,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/exp/completion/lambda0.1/relative6",
+      "reported": -0.8,
+      "source": -0.7895121771415603,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/exp/seconds/lambda0.3/relative3",
+      "reported": -5.7,
+      "source": -5.729323482098414,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/exp/seconds/lambda0.3/relative5",
+      "reported": 0.0,
+      "source": 0.00686674503367346,
+      "tolerance": 0.50000001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/exp/seconds/lambda0.3/relative5",
+      "reported": 0.0,
+      "source": 0.0098628490958097,
+      "tolerance": 0.50000001,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/exp/seconds/lambda0.3/relative6",
+      "reported": 5.7,
+      "source": 5.718963222110629,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv2/offline/exp/seconds/lambda0.3/relative6",
+      "reported": 5.7,
+      "source": 5.70770351562111,
+      "tolerance": 0.050000010000000004,
+      "pass": true
+    },
+    {
+      "claim": "RLv1/reference/NDCG",
+      "reported": 0.0654,
+      "source": 0.0653778311475042,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv1/reference/KL",
+      "reported": 0.0,
+      "source": 1.7490445713974623e-07,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv1/reference/reward",
+      "reported": 0.6623,
+      "source": 0.6623278856277466,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv1/continued_SFT/NDCG",
+      "reported": 0.0651,
+      "source": 0.06505178603411534,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv1/continued_SFT/KL",
+      "reported": 0.006,
+      "source": 0.006408692803233862,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv1/continued_SFT/reward",
+      "reported": 0.6623,
+      "source": 0.6622969508171082,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv1/RL_completion_beta0.03/NDCG",
+      "reported": 0.0643,
+      "source": 0.06430308238082062,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv1/RL_completion_beta0.03/KL",
+      "reported": 0.011,
+      "source": 0.011445090174674988,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv1/RL_completion_beta0.03/reward",
+      "reported": 0.6627,
+      "source": 0.6626647710800171,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv1/RL_completion_beta0.3/NDCG",
+      "reported": 0.0649,
+      "source": 0.064914892863584,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv1/RL_completion_beta0.3/KL",
+      "reported": 0.003,
+      "source": 0.0026521943509578705,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv1/RL_completion_beta0.3/reward",
+      "reported": 0.6626,
+      "source": 0.6625657081604004,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv1/RL_capped_seconds_beta0.03/NDCG",
+      "reported": 0.059,
+      "source": 0.05896612581047595,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv1/RL_capped_seconds_beta0.03/KL",
+      "reported": 0.128,
+      "source": 0.12776438891887665,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv1/RL_capped_seconds_beta0.03/reward",
+      "reported": 138.6,
+      "source": 138.57615661621094,
+      "tolerance": 0.050001,
+      "pass": true
+    },
+    {
+      "claim": "RLv1/RL_capped_seconds_beta0.3/NDCG",
+      "reported": 0.064,
+      "source": 0.06401880182437598,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv1/RL_capped_seconds_beta0.3/KL",
+      "reported": 0.004,
+      "source": 0.0037138897459954023,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv1/RL_capped_seconds_beta0.3/reward",
+      "reported": 133.9,
+      "source": 133.9198760986328,
+      "tolerance": 0.050001,
+      "pass": true
+    },
+    {
+      "claim": "RLv1/analytic_completion_beta0.03/NDCG",
+      "reported": 0.046,
+      "source": 0.04598644851488548,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv1/analytic_completion_beta0.03/KL",
+      "reported": 1.047,
+      "source": 1.0473345518112183,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv1/analytic_completion_beta0.03/reward",
+      "reported": 0.7296,
+      "source": 0.7295849323272705,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv1/analytic_capped_seconds_beta0.03/NDCG",
+      "reported": 0.004,
+      "source": 0.004022037361718268,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "RLv1/analytic_capped_seconds_beta0.03/KL",
+      "reported": 6.245,
+      "source": 6.245150566101074,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "RLv1/analytic_capped_seconds_beta0.03/reward",
+      "reported": 378.6,
+      "source": 378.58038330078125,
+      "tolerance": 0.050001,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta1/1",
+      "reported": 0.1487,
+      "source": 0.14870226749776308,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta1/2",
+      "reported": 0.0014,
+      "source": 0.001431364899289243,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta1/4",
+      "reported": 0.02,
+      "source": 0.01921345514876993,
+      "tolerance": 0.005001,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta1/5",
+      "reported": 205.0,
+      "source": 205.26651000976562,
+      "tolerance": 0.500001,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta1/6",
+      "reported": 6652.0,
+      "source": 6652,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta1/7",
+      "reported": 0.007,
+      "source": 0.0066506704315543175,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta1/quantile_proxy_gain",
+      "reported": 2.5,
+      "source": 2.547833478278072,
+      "tolerance": 0.050001,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta1/quantile_judge_gain",
+      "reported": 2.3,
+      "source": 2.2551707435877644,
+      "tolerance": 0.050001,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta0.3/1",
+      "reported": 0.1482,
+      "source": 0.1482168290831433,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta0.3/2",
+      "reported": 0.0009,
+      "source": 0.0009459264846694692,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta0.3/4",
+      "reported": 0.07,
+      "source": 0.06917885703816573,
+      "tolerance": 0.005001,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta0.3/5",
+      "reported": 213.0,
+      "source": 213.23348999023438,
+      "tolerance": 0.500001,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta0.3/6",
+      "reported": 6441.0,
+      "source": 6441,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta0.3/7",
+      "reported": 0.073,
+      "source": 0.07264582067728043,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta0.3/quantile_proxy_gain",
+      "reported": 8.4,
+      "source": 8.416185848804837,
+      "tolerance": 0.050001,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta0.3/quantile_judge_gain",
+      "reported": 7.4,
+      "source": 7.405919092782254,
+      "tolerance": 0.050001,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta0.1/1",
+      "reported": 0.1391,
+      "source": 0.139055029206983,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta0.1/2",
+      "reported": -0.0082,
+      "source": -0.008215873391490859,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta0.1/4",
+      "reported": 0.25,
+      "source": 0.24577247553170256,
+      "tolerance": 0.005001,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta0.1/5",
+      "reported": 226.0,
+      "source": 226.24749755859375,
+      "tolerance": 0.500001,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta0.1/6",
+      "reported": 5685.0,
+      "source": 5685,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta0.1/7",
+      "reported": 0.514,
+      "source": 0.5142650604248047,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta0.1/quantile_proxy_gain",
+      "reported": 21.7,
+      "source": 21.654080524023822,
+      "tolerance": 0.050001,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta0.1/quantile_judge_gain",
+      "reported": 18.8,
+      "source": 18.810794598455203,
+      "tolerance": 0.050001,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta0.03/1",
+      "reported": 0.0988,
+      "source": 0.09882364037998058,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta0.03/2",
+      "reported": -0.0484,
+      "source": -0.048447262218493235,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta0.03/4",
+      "reported": 0.72,
+      "source": 0.7191197754465417,
+      "tolerance": 0.005001,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta0.03/5",
+      "reported": 249.0,
+      "source": 249.49847412109375,
+      "tolerance": 0.500001,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta0.03/6",
+      "reported": 3632.0,
+      "source": 3632,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta0.03/7",
+      "reported": 2.226,
+      "source": 2.2262754440307617,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta0.03/quantile_proxy_gain",
+      "reported": 39.0,
+      "source": 38.96164837725544,
+      "tolerance": 0.050001,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta0.03/quantile_judge_gain",
+      "reported": 33.6,
+      "source": 33.604007082331755,
+      "tolerance": 0.050001,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta0.01/1",
+      "reported": 0.0328,
+      "source": 0.03276792137162804,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta0.01/2",
+      "reported": -0.1145,
+      "source": -0.11450298122684578,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta0.01/4",
+      "reported": 0.07,
+      "source": 0.06528060066139929,
+      "tolerance": 0.005001,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta0.01/5",
+      "reported": 279.0,
+      "source": 279.02899169921875,
+      "tolerance": 0.500001,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta0.01/6",
+      "reported": 1481.0,
+      "source": 1481,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta0.01/7",
+      "reported": 5.78,
+      "source": 5.780070781707764,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta0.01/quantile_proxy_gain",
+      "reported": 50.7,
+      "source": 50.65685920953247,
+      "tolerance": 0.050001,
+      "pass": true
+    },
+    {
+      "claim": "quantile/beta0.01/quantile_judge_gain",
+      "reported": 44.2,
+      "source": 44.199166728105624,
+      "tolerance": 0.050001,
+      "pass": true
+    },
+    {
+      "claim": "PairAcc/event_context/actual_flag/seeds01/1",
+      "reported": 0.553,
+      "source": 0.5529651155218138,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "PairAcc/event_context/actual_flag/seeds01/2",
+      "reported": 0.525,
+      "source": 0.524513756842531,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "PairAcc/event_context/actual_flag/seeds01/3",
+      "reported": 0.548,
+      "source": 0.5477918797284427,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "PairAcc/cutoff_context/flag0/seeds01/1",
+      "reported": 0.569,
+      "source": 0.5688496719337587,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "PairAcc/cutoff_context/flag0/seeds01/2",
+      "reported": 0.62,
+      "source": 0.6196703138203653,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "PairAcc/cutoff_context/flag0/seeds01/3",
+      "reported": 0.631,
+      "source": 0.631298476683242,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "PairAcc/track_train_mean/1",
+      "reported": 0.555,
+      "source": 0.5547088953132001,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "PairAcc/track_train_mean/2",
+      "reported": 0.556,
+      "source": 0.5563104148968936,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "PairAcc/track_train_mean/3",
+      "reported": 0.567,
+      "source": 0.5667219185011728,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "PairAcc/cutoff_context/user_past_completion/1",
+      "reported": 0.551,
+      "source": 0.5509199110864154,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "PairAcc/cutoff_context/user_past_completion/2",
+      "reported": 0.608,
+      "source": 0.6083972511321352,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "PairAcc/cutoff_context/user_past_completion/3",
+      "reported": 0.621,
+      "source": 0.621255891566338,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "E2/0/1",
+      "reported": 3.515,
+      "source": 3.5148732662200928,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "E2/0/2",
+      "reported": 3.537,
+      "source": 3.5373916625976562,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "E2/1/1",
+      "reported": 3.392,
+      "source": 3.391908884048462,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "E2/1/2",
+      "reported": 3.409,
+      "source": 3.408616304397583,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "E2/2/1",
+      "reported": 3.489,
+      "source": 3.489253044128418,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "E2/2/2",
+      "reported": 3.501,
+      "source": 3.501372814178467,
+      "tolerance": 0.000500001,
+      "pass": true
+    },
+    {
+      "claim": "E2/3/1",
+      "reported": 0.147,
+      "source": 0.14699929530690056,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "E2/3/2",
+      "reported": 0.1464,
+      "source": 0.14638745855817828,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "E2/4/1",
+      "reported": 0.1473,
+      "source": 0.14727090259847372,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "E2/4/2",
+      "reported": 0.1452,
+      "source": 0.14522056981414982,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    },
+    {
+      "claim": "final-test-20261023-01/H1_ndcg_delta_A_minus_reference",
+      "reported": 0.0,
+      "source": 0,
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "claim": "final-test-20261023-01/H2_margin_B_minus_0.95_reference",
+      "reported": 0.0,
+      "source": 0,
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "claim": "final-test-20261023-01/H2_ndcg_delta_B_minus_reference",
+      "reported": 0.0,
+      "source": 0,
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "claim": "final-test-20261023-01/H2_judge_equivalent_seconds_delta",
+      "reported": 0.0,
+      "source": 0,
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "claim": "new-cohort-20261024-01/N1_A_minus_reference",
+      "reported": 0.0,
+      "source": 0,
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "claim": "new-cohort-20261024-01/N2_E1_head_minus_reference",
+      "reported": 0.0,
+      "source": 0,
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "claim": "ExpRSFT-minus-SFT-prose",
+      "reported": 0.0043,
+      "source": 0.004313105267603146,
+      "tolerance": 5.0001e-05,
+      "pass": true
+    }
+  ],
+  "bootstrap": {
+    "final-test-20261023-01": {
+      "H1_ndcg_delta_A_minus_reference": {
+        "mean": 0.01058572200500192,
+        "level": 0.975,
+        "interval": [
+          0.0044054501193719975,
+          0.016983164236678366
+        ],
+        "users": 518
+      },
+      "H2_margin_B_minus_0.95_reference": {
+        "mean": 0.007851175680210853,
+        "level": 0.975,
+        "interval": [
+          0.004112908295712101,
+          0.01174166530760361
+        ],
+        "users": 518
+      },
+      "H2_ndcg_delta_B_minus_reference": {
+        "mean": 0.0008541671897947245,
+        "level": 0.975,
+        "interval": [
+          -0.002842223554056402,
+          0.004620900518705009
+        ],
+        "users": 518
+      },
+      "H2_judge_equivalent_seconds_delta": {
+        "mean": 9.289348396778106,
+        "level": 0.975,
+        "interval": [
+          8.467565513539315,
+          10.207904553520681
+        ],
+        "users": 1000
+      }
+    },
+    "new-cohort-20261024-01": {
+      "N1_A_minus_reference": {
+        "mean": 0.009091125397345195,
+        "level": 0.975,
+        "interval": [
+          0.0023733796383562165,
+          0.015930760578331232
+        ],
+        "users": 528
+      },
+      "N2_E1_head_minus_reference": {
+        "mean": 0.014721235424247995,
+        "level": 0.975,
+        "interval": [
+          0.007471398515044505,
+          0.02234046295621191
+        ],
+        "users": 528
+      }
+    }
+  },
+  "failed": [],
+  "passed": 334,
+  "total": 334,
+  "result_sha256": {
+    "research/results/multitarget-2026-10-21.json": "0c7f23e40356eb67c5f57a2c323da8fa77ef793d3c3b67e07a2e65203a394e63",
+    "research/results/rl-comparison-2026-10-21.json": "028ce426235e7a948edcba677a8cf732cbb577dc2b80bad1a32385fb4683c3d7",
+    "research/results/diagnostics-2026-10-21.json": "a9c34f1f6566fc77e60cd87ac0cae83a075a2a9fc7eaf0d4afe9819a45f2a285",
+    "research/results/metric-ceiling-2026-10-25.json": "611c9748a074cf069f487ec1ff6c7e78ae1d5e731672e80b204143b6bc247d0f",
+    "research/results/windows-pilot-2026-10-21.json": "b53aae8151feaa70c5ea0d73a3dbc1f8f62891e5186e4eaf139667749fe1cb55",
+    "research/results/reward-audit-2026-10-21.json": "d54209c375ee8c8a2adc1b31585b49337d2380a02aa26c0ca1882769d64032a5",
+    "research/results/actr-2026-10-21.json": "557926816b5d509c6a79e640fc6041c2e4bebf1c01e6c73a1a46f9180903c24a",
+    "research/results/repeat-gate-2026-10-21.json": "b82303f7e1db61223e37b29aec16b9c59ad17e796cbc927573120047b026b100",
+    "research/results/features-2026-10-21.json": "914f82db09f3586f8393e99efe14296d551a6b95bfd734df2789872ce340a68f",
+    "research/results/hybrid-posthoc-2026-10-21.json": "0bd771216d9c04b319b54025ca302753d808874417cf0dfa9816028ae2be4aa1",
+    "research/results/confirmation-2026-10-21.json": "c6080fcbf00a588a2623f723b18bfe5f3ca9a9f12078ee298bb2bc7e8fe98228",
+    "research/results/hybrid-2026-10-21.json": "852a1d12c63018b266a732d6dbb7ad93efc9cd285aebe015e278c1796edb6f3b",
+    "research/results/rl-comparison-analysis-2026-10-21.json": "20ab0978812be0b4324e3fb472684cab7d33ff493a04a062d811b8a0e9432072",
+    "research/results/day-objective-2026-10-21.json": "970c8b16ce5b99ace4097f5330fdc2fb9d8297b23786621c70818a59f62feb98",
+    "research/results/runs/reranker-20261022-02/report.json": "c107f338bc5255136bd85bde91b98a23b45fef366b810781d6a21af9babbe5a4",
+    "research/results/runs/pps-20261022-01/report.json": "0031c97308777eeacb671d76d85305f163058fa8578f1573c9fc49804c9e2b52",
+    "research/results/runs/pairacc-recheck-20261023-01/report.json": "6413c7f3da6b415e9c3026ac31e8e50118998ce1cfa56e069d323b3c3bf24905",
+    "research/results/runs/review-checks-20261023-01/report.json": "f74675bd1573f46c78f520a44d3a2fa251e9db0777a498a06dc2b78005ba9a3b",
+    "research/results/runs/exploratory-e1-seed3-20261025-01/plan.json": "69233bb2855315195a3bdd6c1bc64e038f1a4578de95e240b65ad2659630c59f",
+    "research/results/runs/exploratory-e1-seed3-20261025-01/report.json": "5d6b1d4a1dafcc4edf33143bbe87b8867208cd49893ed873a911af8e3b945501",
+    "research/results/runs/exploratory-e2-20261023-02/plan.json": "56f472d00ecedaf3c840cdfe8c06d69b1327bbfa2638ffb3a15f7781e15f4e60",
+    "research/results/runs/exploratory-e2-20261023-02/report.json": "51a7882f5ebcbc5cdd12963821d8bc162c05cb41d6b448d73eb6b446db8b7f09",
+    "research/results/runs/new-cohort-dryrun-20261024-01/report.json": "5d035e84586a7dc87164429e4767c5a3844d17945cb97463b9a4a108e556bfe8",
+    "research/results/runs/new-cohort-dryrun-20261024-01/locked-manifest.json": "eec0867419c56b180e27cfa61429d6f91a46d70f4cf8b965238c4f5192c15972",
+    "research/results/runs/new-cohort-dryrun-20261024-01/status.json": "7e8526d28470a4e9ef86c0d097ea2dce9eb307c9d92ea5d889a75b80442149a2",
+    "research/results/runs/final-test-20261023-01/report.json": "18aacea0aa5db65d504b824d5c9f0080c10798a4a228b4844e73271148dcf3ba",
+    "research/results/runs/final-test-20261023-01/FINAL-TEST-OPENED.json": "fe3da92d113fc2a66811ca136b40a442ae8352f9a27549de9ccaa5192e1aac26",
+    "research/results/runs/final-test-20261023-01/ranking-per-user.json": "bb7078288dbc68596bd00034823b1b63859219d89eba79f1c0218ce5866d4fe6",
+    "research/results/runs/final-test-20261023-01/locked-manifest.json": "7798efdd4c9f8b9ec43d9a48e5e7fdf784fc8de8713cb54ef8edafaf78076ab4",
+    "research/results/runs/final-test-20261023-01/reward-per-user.json": "fe8626290ed27f41e9d61c237e3bc7a6ab0087b5405e88d47efebbd36e8e3089",
+    "research/results/runs/final-test-20261023-01/status.json": "2e5ef96aaaf7bc85b1b195ad48f43c46b30b48283f49624b91e64ad1cbe10a41",
+    "research/results/runs/rl-v3-20261023-01/report.json": "7493cae11edaa9e1793f3de87251fe8105b6266f72b215f1385154e2852c3eb2",
+    "research/results/runs/rl-v3-20261023-01/status.json": "6db578d681d14ad85e8660276eef7a9ebdc290303447380812a6bf6264df1abc",
+    "research/results/runs/a-precision-check-20261023-01/report.json": "6486477382dfafe4beeb043c876d672a35cd4e71c623512f611eb4c055b8e2d3",
+    "research/results/runs/reward-v2-20261022-01/report.json": "806dc48fba8538b950b6f0aa6330b0871d874e53b486011a24c28260d50a8db2",
+    "research/results/runs/exploratory-e2-20261025-01/plan.json": "c6674bf3b9613cacca1041bb0d1c697b44f6dd56509828e09e07a85e7523bdf7",
+    "research/results/runs/exploratory-e2-20261025-01/report.json": "669ea75ea27a068828345ba4ba5f1b287ede08f5708837b833c0ab767c67bb42",
+    "research/results/runs/exploratory-e2-20261025-01/status.json": "a1500b368d07eb490ac6d2f010854b1d423dbbd86486d43bb936a1ce06421694",
+    "research/results/runs/multistep-20261025-01/plan.json": "852b82834017a6d937590cfd13fcb798526c3b391bed4a9bde4816ffec844d19",
+    "research/results/runs/multistep-20261025-01/report.json": "95ff97c43847db27239d04e2b0cef3481eb0067df14ddcf22e1d63e0996beecb",
+    "research/results/runs/gap-diagnostics-20261022-02/report.json": "7b0b5d71f3362860b40a12cd4086035b6e8bb751452aced8c47bd8311169cb78",
+    "research/results/runs/rl-v2-continuation-20261023-01/report.json": "4574701ccd51cad88febe178e6cb2f92125a8728825dd797a8f8fedfcc09b404",
+    "research/results/runs/sft-20261021-01/status.json": "8117d97841785d3d46ffb4a42b474c649187808bcb217dc758efe13b0a2419b5",
+    "research/results/runs/review-checks-20261023-02/report.json": "7164eb54b9f55a88448c2e58662bbe8f6348a79a9364101b4a7f534fe1b76d9d",
+    "research/results/runs/pairacc-recheck-20261023-02/report.json": "134ea8e05a5f62f1d434996f1eb2d6273d85af242fb86d0e60ab277395f11778",
+    "research/results/runs/exploratory-e1-seed2-20261025-01/plan.json": "d6dcebbc9ba20ea389b725a1467814dc3eddf6754a392e1b5053e08a0b55f8a5",
+    "research/results/runs/exploratory-e1-seed2-20261025-01/report.json": "db410403ff0eaa4330fa904b90f5e259f43b10946d57c3db6bd1f1b8f42bc7ce",
+    "research/results/runs/exploratory-e2-20261023-01/plan.json": "8097319de8c4828a3d3c2dcc7a0d592df7267d4ebae800343f7eb6b373cbb7c0",
+    "research/results/runs/exploratory-e2-20261023-01/report.json": "21063ae77ef28ea8d0d9f85631909f30ca8f16b1cabeb586c6c197f03b1975a1",
+    "research/results/runs/exploratory-e1-sft-20261025-01/plan.json": "c991892d6c10503f51463cff43936279766ea69eab9ec14b82c7bb212565f837",
+    "research/results/runs/exploratory-e1-sft-20261025-01/report.json": "835ec26e55362addaa9d4f11e001114e8cea7ca1727dd2b53c4e5a382bd411bc",
+    "research/results/runs/exploratory-e1-sft-20261025-01/status.json": "d5740eba34c319853d6f27d82e858177fec01a8a34e660508a8426da1356ae28",
+    "research/results/runs/fullsft-20261022-01/report.json": "874a3733baa9591b84bacb456cb74bec1a0bfbcf84d78856af39e6db3e0d3a29",
+    "research/results/runs/multistep-20261023-01/plan.json": "be07e659ad2a380fddab49ee21101833c87ff55084275494e79f55f18f7a95de",
+    "research/results/runs/multistep-20261023-01/report.json": "907631219382178477bd2ed9d304c3aa424f474e75449ef1c0f271beb45bc694",
+    "research/results/runs/new-cohort-20261024-01/report.json": "76e24bb0a9e55d03d929d0634c5c038bd292d64a03841dbfe2fe9d45720969a5",
+    "research/results/runs/new-cohort-20261024-01/ranking-per-user.json": "a816e9add95cfaa689c2790ef6f8c2b269475408685006bc6d937b4df540915d",
+    "research/results/runs/new-cohort-20261024-01/NEW-COHORT-OPENED.json": "da09b80d179998d28bcd0f55aa591db40c1750722746853a6763aa28a2e49b6e",
+    "research/results/runs/new-cohort-20261024-01/locked-manifest.json": "a8599548c80c3624e3ea759081046e2b0b94c255c35a587a777910ec04eb6077",
+    "research/results/runs/new-cohort-20261024-01/status.json": "c0ec137285526c4c5fff6dc7d31aedb8df5cdd2226c0977d177deefd155c30f6",
+    "research/results/runs/final-dryrun-selection-20261023-02/report.json": "36e189e1605a9d50e132e8822709c18405cb8369c64bac29ae7fd363662f3cbd",
+    "research/results/runs/pairacc-recheck-20261025-01/report.json": "0159bbffe55ac1e76653400f4655af1467ea4bc1d627cd57a71d4cfca24ef091",
+    "research/results/runs/exploratory-e1-20261023-01/plan.json": "5a34b01dce11ed3f56a65f4e9f44e7be1c168334ada0be477768675f8be96618",
+    "research/results/runs/exploratory-e1-20261023-01/report.json": "4c25710c30a6899d4affd2b3f472871df5e183ccff7a5936072739b85be899e6",
+    "research/results/runs/review-checks-20261025-01/report.json": "681652bc07c097285aa9af51317ea3aab06fdb06e6a2ba981fb16eb0e30144d7",
+    "research/results/runs/exploratory-e1-seed1-20261025-01/plan.json": "ea67d9477590a49612182b14a0f050e41b76e2b713cbab4c771d668629d61f1e",
+    "research/results/runs/exploratory-e1-seed1-20261025-01/report.json": "d1690852b49b4484f48339ba89cc8851b55306131345f1e2f347c16c35fb75cc",
+    "research/results/runs/fullsft-reg-20261022-01/report.json": "c22122d964f6ef5f4c8fa766d7f03a26be12116d0a4730fda018396bc2b2df6f",
+    "research/results/runs/rl-v2-20261023-01/report.json": "5e8d15590a57fa447e3b669eba99dea063c35f059b8bd6b2853dd8487468d52c",
+    "research/results/runs/fullday-20261022-01/report.json": "d266e535d57651e7dc8410c4e7dc3eafd38cbc4b464f3cbea9950bcd8158aa87",
+    "research/results/runs/reward-v2-continuation-20261023-01/report.json": "948515faf9cd1a6ca043c81e67a60c328b50884dd53fbdac5c1394d721b925d0",
+    "research/results/runs/exploratory-e1-seed4-20261025-01/plan.json": "14e95e1bbfc1e8c648b5064db2daf651201579e41fb4493c2a753f28b6057552",
+    "research/results/runs/exploratory-e1-seed4-20261025-01/report.json": "57e3b9963dd51cf09da365f51e9ac418a8cfd3dec252a87fc1a9d613e37bea24",
+    "research/results/runs/reward-v2-quantile-20261023-01/report.json": "56fe2e1fbf07acac5c5d182a42b0762478d8eb2104796644496f32c6bba8caea"
+  },
+  "figure_rebuild": {
+    "returncode": 0,
+    "stdout": "9 PNG built successfully",
+    "stderr": "",
+    "pngs": [
+      "fig1_methods_ndcg.png",
+      "fig2_gpt2_training.png",
+      "fig3_gap_diagnostics.png",
+      "fig4_hit_sources.png",
+      "fig5_reward_models.png",
+      "fig6_rl_v1_tradeoff.png",
+      "fig7_rl_v2_v3.png",
+      "fig8_final_test.png",
+      "fig9_multistep.png"
+    ],
+    "no_artifacts_data_checkpoints": true,
+    "png_count": 9
+  },
+  "source_files_sha256": {
+    "recsys/models.py": "374d90da7cb8d8b4e9ec0d5c9779c3ddd96e8d6bd5b463992d85030f4d924436",
+    "recsys/metrics.py": "4df36b1c52d152deb19019c24f45711668fe94c5d2e5ad8e174f923071ae31c4",
+    "recsys/multistep.py": "38ac06de61ab67cb328688430474bcf2c3a84883efdfeb303a3eb1f0a1489445",
+    "recsys/exploratory.py": "14ddc9eaab3777c13a26b254458711abda46d20b75eb658f00470cf8bea0fcae",
+    "recsys/final_test.py": "9cb847220863e3476682f49847440986363382a524ac2056efe7f67f0f3828a7",
+    "recsys/new_cohort.py": "0db49a41c2438bb3195a2d66cd9562685e736f53da510f519ea022cf4ae3a3e5"
+  },
+  "disclosure": "Checks executed using AI assistance. This record does not assert personal verification by the author. No training or raw-dataset/model evaluation was performed.",
+  "additional_clarification_checks": "docs/WEAK-POINTS-CHECKS.json",
+  "final_document_sha256": {
+    "README.md": "657bd6af01da5952c3d86f770b448d105a4a60ceaa1dce693aeef7b1a5e47ee1",
+    "report/REPORT.md": "c13b14cbefa87b7098d20324c59448eb458bf77a69d4103cb50082f07f93750e",
+    "report/REPRODUCE.md": "e901954bf653e0459d0fccc48ec1922e4d31c17e85e6dc12640229f26ff7449b"
+  },
+  "additional_semantics_checks": [
+    "docs/UNUSUAL-CHECKS.json",
+    "docs/TRAIN-SEMANTICS-CHECKS.json"
+  ],
+  "submission_document_sha256": {
+    "README.md": "657bd6af01da5952c3d86f770b448d105a4a60ceaa1dce693aeef7b1a5e47ee1",
+    "report/REPORT.md": "c13b14cbefa87b7098d20324c59448eb458bf77a69d4103cb50082f07f93750e",
+    "report/REPRODUCE.md": "78d7cbd1eb43cf68ceeb3166353c46804380a74777efa3a05f44f2e508044717"
+  }
+}

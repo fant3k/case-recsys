@@ -1,0 +1,417 @@
+{
+  "plan": {
+    "created_utc": "2026-10-22T16:00:49.013204+00:00",
+    "protocol_sha256": "c93e7f55c8d32cdedceb350a73407e127406d53cf8878e0f22f8a28111bc8cea",
+    "early_gpt": "artifacts/early-gpt-20261022-01/full-d0.1-wd0.01/last.pt",
+    "main_gpt": "artifacts/fullsft-reg-20261022-01/full-d0.1-wd0.01/best.pt",
+    "training_cutoffs": [
+      25032400,
+      25118800,
+      25205200,
+      25291600,
+      25378000,
+      25464400,
+      25550800
+    ],
+    "fit_cutoffs": [
+      25032400,
+      25118800,
+      25205200,
+      25291600,
+      25378000,
+      25464400
+    ],
+    "early_stopping_cutoff": 25550800,
+    "lightgbm": {
+      "objective": "lambdarank",
+      "n_estimators": 1000,
+      "learning_rate": 0.05,
+      "num_leaves": 63,
+      "min_child_samples": 100,
+      "subsample": 0.8,
+      "subsample_freq": 1,
+      "colsample_bytree": 0.8,
+      "reg_lambda": 1.0,
+      "random_state": 20261103,
+      "verbose": -1
+    },
+    "features": [
+      "gpt_logp",
+      "gpt_log_rank",
+      "count_recent128",
+      "log_count_full",
+      "count_1d",
+      "count_7d",
+      "count_30d",
+      "log_seconds_since_last",
+      "never_seen",
+      "recent_position_from_end",
+      "user_item_mean_ratio",
+      "user_item_positive_count",
+      "log_item_popularity",
+      "log_item_popularity_7d",
+      "item_mean_ratio",
+      "item_length_norm",
+      "log_user_history",
+      "user_unique_fraction_recent",
+      "user_mean_ratio",
+      "user_events_1d",
+      "share_of_recent128"
+    ],
+    "candidates": "GPT-2 top50 + all recent128 items + top50 full-history counts",
+    "primary": "reranker with GPT-2 features; selection features from main GPT-2, model fitted on early GPT-2 features",
+    "secondary": [
+      "same reranker with early GPT-2 features at selection",
+      "reranker without GPT-2 features, same candidates"
+    ],
+    "scope": "selection scored once per variant; no tuning on selection; confirmation and final test untouched"
+  },
+  "confirmation_scored": false,
+  "final_test_scored": false,
+  "training": {
+    "25032400": {
+      "users": 1000,
+      "rows": 140696,
+      "truth_pairs": 12411,
+      "candidate_recall_pooled": 0.3048102489726855
+    },
+    "25118800": {
+      "users": 1000,
+      "rows": 140663,
+      "truth_pairs": 13124,
+      "candidate_recall_pooled": 0.27346845473940873
+    },
+    "25205200": {
+      "users": 1000,
+      "rows": 140724,
+      "truth_pairs": 14326,
+      "candidate_recall_pooled": 0.2693703755409744
+    },
+    "25291600": {
+      "users": 1000,
+      "rows": 141461,
+      "truth_pairs": 13170,
+      "candidate_recall_pooled": 0.24616552771450265
+    },
+    "25378000": {
+      "users": 1000,
+      "rows": 141578,
+      "truth_pairs": 13724,
+      "candidate_recall_pooled": 0.2775429903818129
+    },
+    "25464400": {
+      "users": 1000,
+      "rows": 141736,
+      "truth_pairs": 12213,
+      "candidate_recall_pooled": 0.2603782854335544
+    },
+    "25550800": {
+      "users": 1000,
+      "rows": 142044,
+      "truth_pairs": 11256,
+      "candidate_recall_pooled": 0.2545309168443497
+    }
+  },
+  "selection_candidate_recall_pooled": 0.2387548519674252,
+  "selection_candidate_recall_macro": 0.3146736956164244,
+  "rerankers": {
+    "with_gpt": {
+      "best_iteration": 162,
+      "fit_rows": 364523,
+      "fit_positive_rows": 21462,
+      "fit_groups": 2435,
+      "early_stopping_ndcg@10": 0.37081335628702733,
+      "feature_gain_share": {
+        "gpt_logp": 0.044647969671193166,
+        "gpt_log_rank": 0.0335594735061489,
+        "count_recent128": 0.0669437062251687,
+        "log_count_full": 0.018069847195393725,
+        "count_1d": 0.007010266893086732,
+        "count_7d": 0.08012283608827424,
+        "count_30d": 0.04110752133300887,
+        "log_seconds_since_last": 0.064348953385332,
+        "never_seen": 0.0,
+        "recent_position_from_end": 0.040326039394985885,
+        "user_item_mean_ratio": 0.09954182408772692,
+        "user_item_positive_count": 0.022784893098722316,
+        "log_item_popularity": 0.04796593020890955,
+        "log_item_popularity_7d": 0.038267108086394115,
+        "item_mean_ratio": 0.03382822618936053,
+        "item_length_norm": 0.024684522265483854,
+        "log_user_history": 0.04134557522300187,
+        "user_unique_fraction_recent": 0.08856210193308837,
+        "user_mean_ratio": 0.0518552884663055,
+        "user_events_1d": 0.02813983584219091,
+        "share_of_recent128": 0.12688808090622386
+      },
+      "main_gpt_features": {
+        "users": 492,
+        "Recall@10": 0.13117323037924114,
+        "NDCG@10": 0.23486883235926911
+      },
+      "early_gpt_features": {
+        "users": 492,
+        "Recall@10": 0.13035117801109,
+        "NDCG@10": 0.23300020421578393
+      }
+    },
+    "without_gpt": {
+      "best_iteration": 136,
+      "fit_rows": 364523,
+      "fit_positive_rows": 21462,
+      "fit_groups": 2435,
+      "early_stopping_ndcg@10": 0.3720374174494637,
+      "feature_gain_share": {
+        "count_recent128": 0.06389773666699097,
+        "log_count_full": 0.02028121931724634,
+        "count_1d": 0.007773931056786445,
+        "count_7d": 0.08271229093416564,
+        "count_30d": 0.05046829963468739,
+        "log_seconds_since_last": 0.06087395511422347,
+        "never_seen": 0.0,
+        "recent_position_from_end": 0.03765350824316237,
+        "user_item_mean_ratio": 0.11039447717002408,
+        "user_item_positive_count": 0.021981875705116612,
+        "log_item_popularity": 0.052709717200335855,
+        "log_item_popularity_7d": 0.04647516188684145,
+        "item_mean_ratio": 0.036198167748323816,
+        "item_length_norm": 0.023394449251075877,
+        "log_user_history": 0.04604453291014678,
+        "user_unique_fraction_recent": 0.09160802939908137,
+        "user_mean_ratio": 0.053939193409408163,
+        "user_events_1d": 0.0313018026355962,
+        "share_of_recent128": 0.16229165171678717
+      },
+      "main_gpt_features": {
+        "users": 492,
+        "Recall@10": 0.13094518926269236,
+        "NDCG@10": 0.23533488062716343
+      }
+    }
+  },
+  "baselines": {
+    "PersonalFrequency128": {
+      "users": 492,
+      "Recall@10": 0.10581139601895478,
+      "NDCG@10": 0.18052256259971922
+    },
+    "Memory_recent_full_0.5": {
+      "users": 492,
+      "Recall@10": 0.11166510760207617,
+      "NDCG@10": 0.1957938389605741
+    },
+    "GPT2_main": {
+      "users": 492,
+      "Recall@10": 0.08047734485053877,
+      "NDCG@10": 0.13112797841798718
+    }
+  },
+  "comparisons": {
+    "primary_minus_frequency128": {
+      "mean_ndcg_difference": 0.054346269759549794,
+      "paired_user_bootstrap_95_percentile_interval": [
+        0.04125636990934062,
+        0.0680984065405759
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    },
+    "primary_minus_memory": {
+      "mean_ndcg_difference": 0.039074993398695024,
+      "paired_user_bootstrap_95_percentile_interval": [
+        0.02641815973829532,
+        0.05225048017481409
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    },
+    "primary_minus_without_gpt": {
+      "mean_ndcg_difference": -0.0004660482678942739,
+      "paired_user_bootstrap_95_percentile_interval": [
+        -0.006798349309949438,
+        0.0057331995546610155
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    },
+    "without_gpt_minus_memory": {
+      "mean_ndcg_difference": 0.0395410416665893,
+      "paired_user_bootstrap_95_percentile_interval": [
+        0.027495887630990992,
+        0.05248981951933249
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    },
+    "primary_minus_gpt2": {
+      "mean_ndcg_difference": 0.10374085394128192,
+      "paired_user_bootstrap_95_percentile_interval": [
+        0.08390858135920873,
+        0.12536882410109745
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "caution": "Exploratory fixed-window interval; no grid/selection multiplicity correction, no training-seed uncertainty."
+    }
+  },
+  "slices": {
+    "with_gpt/main_gpt_features": {
+      "slices": {
+        "seen_recent128": {
+          "users_with_targets": 298,
+          "target_pairs": 2162,
+          "catalog_target_pairs": 1906,
+          "hits": 703,
+          "macro_recall_when_nonempty": 0.36435193233475893,
+          "ndcg_contribution_all_active_users": 0.1941499338855229,
+          "pooled_recall": 0.3251618871415356
+        },
+        "seen_older_only": {
+          "users_with_targets": 390,
+          "target_pairs": 6735,
+          "catalog_target_pairs": 5795,
+          "hits": 192,
+          "macro_recall_when_nonempty": 0.030232418997917503,
+          "ndcg_contribution_all_active_users": 0.03721207454243991,
+          "pooled_recall": 0.028507795100222718
+        },
+        "never_seen": {
+          "users_with_targets": 355,
+          "target_pairs": 4242,
+          "catalog_target_pairs": 2695,
+          "hits": 16,
+          "macro_recall_when_nonempty": 0.002199337947782101,
+          "ndcg_contribution_all_active_users": 0.0035068239313062457,
+          "pooled_recall": 0.003771805752003772
+        }
+      },
+      "recommendation_fraction_on_active_users": {
+        "seen_recent128": 0.6034552845528456,
+        "seen_older_only": 0.3741869918699187,
+        "never_seen": 0.022357723577235773
+      },
+      "unique_recommended_items": 3672,
+      "top_item_slot_fraction": 0.004878048780487805
+    },
+    "without_gpt/main_gpt_features": {
+      "slices": {
+        "seen_recent128": {
+          "users_with_targets": 298,
+          "target_pairs": 2162,
+          "catalog_target_pairs": 1906,
+          "hits": 723,
+          "macro_recall_when_nonempty": 0.3703447472793559,
+          "ndcg_contribution_all_active_users": 0.19740193861037508,
+          "pooled_recall": 0.3344125809435708
+        },
+        "seen_older_only": {
+          "users_with_targets": 390,
+          "target_pairs": 6735,
+          "catalog_target_pairs": 5795,
+          "hits": 184,
+          "macro_recall_when_nonempty": 0.023822470874839036,
+          "ndcg_contribution_all_active_users": 0.0362927280689167,
+          "pooled_recall": 0.027319970304380103
+        },
+        "never_seen": {
+          "users_with_targets": 355,
+          "target_pairs": 4242,
+          "catalog_target_pairs": 2695,
+          "hits": 6,
+          "macro_recall_when_nonempty": 0.000826755404220193,
+          "ndcg_contribution_all_active_users": 0.0016402139478716724,
+          "pooled_recall": 0.0014144271570014145
+        }
+      },
+      "recommendation_fraction_on_active_users": {
+        "seen_recent128": 0.6142276422764228,
+        "seen_older_only": 0.3672764227642276,
+        "never_seen": 0.018495934959349595
+      },
+      "unique_recommended_items": 3626,
+      "top_item_slot_fraction": 0.007113821138211382
+    },
+    "PersonalFrequency128": {
+      "slices": {
+        "seen_recent128": {
+          "users_with_targets": 298,
+          "target_pairs": 2162,
+          "catalog_target_pairs": 1906,
+          "hits": 669,
+          "macro_recall_when_nonempty": 0.3409863919271288,
+          "ndcg_contribution_all_active_users": 0.18052256259971922,
+          "pooled_recall": 0.3094357076780759
+        },
+        "seen_older_only": {
+          "users_with_targets": 390,
+          "target_pairs": 6735,
+          "catalog_target_pairs": 5795,
+          "hits": 0,
+          "macro_recall_when_nonempty": 0.0,
+          "ndcg_contribution_all_active_users": 0.0,
+          "pooled_recall": 0.0
+        },
+        "never_seen": {
+          "users_with_targets": 355,
+          "target_pairs": 4242,
+          "catalog_target_pairs": 2695,
+          "hits": 0,
+          "macro_recall_when_nonempty": 0.0,
+          "ndcg_contribution_all_active_users": 0.0,
+          "pooled_recall": 0.0
+        }
+      },
+      "recommendation_fraction_on_active_users": {
+        "seen_recent128": 0.9957317073170732,
+        "seen_older_only": 0.0006097560975609756,
+        "never_seen": 0.003658536585365854
+      },
+      "unique_recommended_items": 3801,
+      "top_item_slot_fraction": 0.0032520325203252032
+    },
+    "Memory_recent_full_0.5": {
+      "slices": {
+        "seen_recent128": {
+          "users_with_targets": 298,
+          "target_pairs": 2162,
+          "catalog_target_pairs": 1906,
+          "hits": 723,
+          "macro_recall_when_nonempty": 0.3771662346122065,
+          "ndcg_contribution_all_active_users": 0.1906806394467664,
+          "pooled_recall": 0.3344125809435708
+        },
+        "seen_older_only": {
+          "users_with_targets": 390,
+          "target_pairs": 6735,
+          "catalog_target_pairs": 5795,
+          "hits": 23,
+          "macro_recall_when_nonempty": 0.0041756798082183775,
+          "ndcg_contribution_all_active_users": 0.005113199513807692,
+          "pooled_recall": 0.003414996288047513
+        },
+        "never_seen": {
+          "users_with_targets": 355,
+          "target_pairs": 4242,
+          "catalog_target_pairs": 2695,
+          "hits": 0,
+          "macro_recall_when_nonempty": 0.0,
+          "ndcg_contribution_all_active_users": 0.0,
+          "pooled_recall": 0.0
+        }
+      },
+      "recommendation_fraction_on_active_users": {
+        "seen_recent128": 0.9758130081300813,
+        "seen_older_only": 0.022764227642276424,
+        "never_seen": 0.0014227642276422765
+      },
+      "unique_recommended_items": 4008,
+      "top_item_slot_fraction": 0.0034552845528455283
+    }
+  },
+  "elapsed_seconds": 66.46637170000031
+}
+

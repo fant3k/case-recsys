@@ -1,0 +1,16 @@
+{
+  "status": "completed",
+  "stage": "done",
+  "pid": 4968,
+  "elapsed_seconds": 239.64273859999957,
+  "step": 2000,
+  "last": {
+    "step": 2000,
+    "train_batch_J": 0.24640785157680511,
+    "train_batch_kl": 0.03483863174915314,
+    "eval_J": 0.2395995557308197,
+    "eval_expected": 0.2508572041988373,
+    "eval_kl": 0.03752549737691879,
+    "seconds": 119.22552939999878
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "scope": "Descriptive calculations from already saved per-user and aggregate JSON; no raw-data/model evaluation; not additional confirmatory decisions.",
+  "checks": {
+    "final-test-20261023-01/A_rm_rerank_top50-minus-PersonalFrequency128": {
+      "mean": -0.01879092035356834,
+      "level": 0.95,
+      "interval": [
+        -0.03246449283218627,
+        -0.0052023971030637816
+      ],
+      "users": 518
+    },
+    "new-cohort-20261024-01/A_rm_rerank_top50-minus-PersonalFrequency128": {
+      "mean": -0.03476202984453643,
+      "level": 0.95,
+      "interval": [
+        -0.048221055177113205,
+        -0.021610829398556144
+      ],
+      "users": 528
+    },
+    "new-cohort-20261024-01/E1_head_all_features-minus-PersonalFrequency128": {
+      "mean": -0.029131919817633623,
+      "level": 0.95,
+      "interval": [
+        -0.042072979837479416,
+        -0.016550124919971865
+      ],
+      "users": 528
+    },
+    "reward_scope_final": {
+      "reference": {
+        "expected_single_action": 137.19552612304688,
+        "uniform_mean_top10": 137.93358206748962
+      },
+      "A_rm_rerank_top50": {
+        "expected_single_action": 137.3512420654297,
+        "uniform_mean_top10": 136.8404120206833
+      },
+      "B_rl_seconds_beta0.3": {
+        "expected_single_action": 146.48486328125,
+        "uniform_mean_top10": 148.07340502738953
+      }
+    }
+  }
+}

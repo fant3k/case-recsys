@@ -1,0 +1,25 @@
+{
+  "created_utc": "2026-10-23T14:43:14.426182+00:00",
+  "window": "selection",
+  "steps": 5,
+  "policies": {
+    "reference": "artifacts/pps-20261022-01/full+pps+fb-d0.1-wd0.01/last.pt",
+    "B_rl_seconds_beta0.3": "artifacts/rl-v2-20261023-01/rl_seconds_beta0.3.pt",
+    "rl_seconds_beta0.1": "artifacts/rl-v2-20261023-01/rl_seconds_beta0.1.pt",
+    "A_rm_rerank_top50": "reference reweighted on top-50 by proxy RM, beta 0.03"
+  },
+  "feedback_assumptions": {
+    "listened": "ratio 1",
+    "skipped": "ratio 0",
+    "simulated": "ratio = judge RM prediction for the generated item in the current context"
+  },
+  "gap": "capped length of the previous track (last real one for the first generated event; 200 s if unknown)",
+  "decoding": [
+    "greedy",
+    "sample (seed shared across policies)"
+  ],
+  "seed": 20261024,
+  "code_sha256": "29af907e3edb42a01971305623ed7a56d72cd7a533c5ddbc9de8fc8a7c66d27e",
+  "scope": "descriptive; selection already used; nothing selected; final test untouched",
+  "caution": "generated items are hypothetical recommendations, not observed interactions"
+}

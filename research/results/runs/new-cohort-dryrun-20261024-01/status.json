@@ -1,0 +1,11 @@
+{
+  "status": "completed",
+  "stage": "done",
+  "new_cohort_scored": false,
+  "elapsed_seconds": 16.47804270000006,
+  "decision": {
+    "N1_A_beats_reference_on_new_users": true,
+    "N2_E1_head_beats_reference_on_new_users": true,
+    "meaning": "Offline hypotheses on new users of the same released dataset and day; not causal user benefit"
+  }
+}

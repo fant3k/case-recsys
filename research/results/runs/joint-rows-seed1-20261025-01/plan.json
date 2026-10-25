@@ -1,0 +1,47 @@
+{
+  "created_utc": "2026-10-25T16:50:49.599893+00:00",
+  "plan_document": "docs/EXPLORATORY-PLAN.md",
+  "experiment": "E1",
+  "arguments": {
+    "experiment": "e1",
+    "out": "artifacts/joint-rows-seed1-20261025-01",
+    "pool": 65536,
+    "steps": 3000,
+    "batch": 64,
+    "lr": 0.001,
+    "eval_every": 500,
+    "arms": "all,joint,sft_kl:0.1,sft_kl:1,sft_kl:10",
+    "joint_lr": 5e-05,
+    "precision": "fp16",
+    "seed_offset": 1
+  },
+  "top_k": 50,
+  "beta": 0.03,
+  "features": [
+    "log_count",
+    "recency",
+    "seen",
+    "user_track_completion",
+    "length",
+    "popularity",
+    "user_mean_completion",
+    "organic_share",
+    "context_length",
+    "track_train_mean",
+    "ref_logp",
+    "rank"
+  ],
+  "pairwise_features": [
+    "log_count",
+    "recency",
+    "seen",
+    "user_track_completion"
+  ],
+  "seeds": {
+    "pool": 20262301,
+    "batches": 20262302,
+    "init": 20262303
+  },
+  "code_sha256": "3fcd78e1bfd32d77799688ef18b67f7bfb6d849aa582638bfacea9048156cf5b",
+  "scope": "exploratory, selection window already used; final test untouched; fixed last step reported"
+}

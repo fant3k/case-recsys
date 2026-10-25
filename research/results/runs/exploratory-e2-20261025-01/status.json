@@ -1,0 +1,26 @@
+{
+  "status": "completed",
+  "stage": "done",
+  "elapsed_seconds": 554.9172027000004,
+  "step": 1000,
+  "last": {
+    "step": 1000,
+    "train_return": 3.4030725955963135,
+    "train_kl": 0.2522878646850586,
+    "eval": {
+      "step1_ndcg@10": 0.14522056981414982,
+      "step1_kl_to_reference": 0.045165155082941055,
+      "training_simulator": {
+        "return_by_own_simulator": 3.5373916625976562,
+        "judge_on_real_history_return": 3.501372814178467,
+        "slate_ndcg@5_active": 0.14638745855817828,
+        "mean_capped_length_seconds": 199.32998657226562,
+        "familiar_share": 0.982,
+        "unique_items": 3600
+      },
+      "judge_simulator": {
+        "return_by_own_simulator": 3.408616304397583
+      }
+    }
+  }
+}

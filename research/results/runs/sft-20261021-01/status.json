@@ -1,0 +1,107 @@
+{
+  "status": "completed",
+  "kind": "sft_convergence_run",
+  "pid": 15048,
+  "started_utc": "2026-10-21T16:53:37.626056+00:00",
+  "arguments": {
+    "out": "artifacts/sft-20261021-01",
+    "init": "artifacts/calibration-20261021-01/sft-checkpoint.pt",
+    "steps": 8000,
+    "batch_size": 128,
+    "eval_every": 1000,
+    "max_seconds": 1200,
+    "patience": 3,
+    "min_steps": 4000
+  },
+  "final_test_scored": false,
+  "confirmation_scored": false,
+  "new_steps_completed": 8000,
+  "automatic_sleep_inhibited_while_running": true,
+  "protocol_sha256": "c93e7f55c8d32cdedceb350a73407e127406d53cf8878e0f22f8a28111bc8cea",
+  "gpu": "NVIDIA GeForce RTX 3060",
+  "optimization": {
+    "maximum_lr": 0.0003,
+    "minimum_lr": 3e-05,
+    "warmup_new_steps": 200,
+    "schedule": "linear warmup then cosine",
+    "weight_decay": 0.01,
+    "gradient_clip": 1.0,
+    "mixed_precision": "fp16 with fp32 loss",
+    "min_validation_gain": 0.0001
+  },
+  "last_event": "SFT RUN COMPLETED",
+  "elapsed_seconds": 707.6955889999999,
+  "initial_optimizer_step": 4000,
+  "initial_sampled_target_examples": 64000,
+  "initial_selection": {
+    "new_steps": 0,
+    "total_optimizer_steps": 4000,
+    "sampled_target_examples": 64000,
+    "ranking": {
+      "users": 492,
+      "Recall@10": 0.006035160426713323,
+      "NDCG@10": 0.01118987627829677
+    },
+    "shuffled_history_ranking": {
+      "users": 492,
+      "Recall@10": 0.0007958556640372805,
+      "NDCG@10": 0.003281068447000039
+    },
+    "loss_probes": {
+      "train_fixed_probe_nll": 9.564720511436462,
+      "train_fixed_probe_accuracy": 0.0078125,
+      "validation_fixed_probe_nll": 10.245033144950867,
+      "validation_fixed_probe_accuracy": 0.00048828125
+    },
+    "elapsed_seconds": 5.6942644999999175
+  },
+  "best_selection_ndcg": 0.05965846688606723,
+  "best_new_step": 8000,
+  "total_sampled_target_examples": 1088000,
+  "recent_mean_train_loss": 7.687544598579406,
+  "recent_median_step_seconds": 0.0849800499995581,
+  "peak_allocated_bytes": 1913607680,
+  "last_selection": {
+    "new_steps": 8000,
+    "total_optimizer_steps": 12000,
+    "sampled_target_examples": 1088000,
+    "ranking": {
+      "users": 492,
+      "Recall@10": 0.029467760909896987,
+      "NDCG@10": 0.05965846688606723
+    },
+    "shuffled_history_ranking": {
+      "users": 492,
+      "Recall@10": 0.0018886471096574988,
+      "NDCG@10": 0.007060486605521444
+    },
+    "loss_probes": {
+      "train_fixed_probe_nll": 7.606895565986633,
+      "train_fixed_probe_accuracy": 0.080078125,
+      "validation_fixed_probe_nll": 9.033875226974487,
+      "validation_fixed_probe_accuracy": 0.0126953125
+    },
+    "elapsed_seconds": 706.5475772
+  },
+  "stop_reason": "step_budget",
+  "baselines": {
+    "MostPop": {
+      "users": 492,
+      "Recall@10": 0.007327209512825966,
+      "NDCG@10": 0.018224168022622066
+    },
+    "PersonalFrequency128": {
+      "users": 492,
+      "Recall@10": 0.10581139601895478,
+      "NDCG@10": 0.18052256259971922
+    }
+  },
+  "peak_reserved_bytes": 2118123520,
+  "optimizer_steps_skipped": 0,
+  "finished_utc": "2026-10-21T17:05:25.320665+00:00",
+  "cautions": [
+    "Selection validation only; checkpoint selected on this window.",
+    "Shuffle is an OOD sensitivity diagnostic, not a substitute for all personalization tests.",
+    "Batch and LR schedule differ from the short pilot; this is baseline establishment, not an isolated batch-size ablation."
+  ]
+}

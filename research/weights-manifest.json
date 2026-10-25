@@ -1,0 +1,56 @@
+{
+  "release": "https://github.com/fant3k/case-recsys/releases/tag/weights-v1",
+  "note": "SHA256 of every file equals the checkpoint hash in locked-manifest.json of research/results/runs/final-test-20261023-01 and new-cohort-20261024-01. gpt2_original_next_item_day.pt also contains the optimizer state. Weights only; no data.",
+  "files": {
+    "reference_policy.pt": {
+      "destination": "artifacts/pps-20261022-01/full+pps+fb-d0.1-wd0.01/last.pt",
+      "sha256": "9521989f08bba17803571aaa262cdff9d7d140d6c0203835125e30d3b8d67d43",
+      "bytes": 64419719
+    },
+    "candidate_B_rl_seconds_beta0.3.pt": {
+      "destination": "artifacts/rl-v2-20261023-01/rl_seconds_beta0.3.pt",
+      "sha256": "52995dca0b5746685c998c9464d1a09e04b05890cb1d28194ec13292397bc461",
+      "bytes": 64424029
+    },
+    "gpt2_original_next_item_day.pt": {
+      "destination": "artifacts/day-objective-20261021-01/next_item_plus_day/best.pt",
+      "sha256": "acfec654c0f2e56a20891f8d2062dc7f0bf674b4ad8de16a4ec6c08e8327b061",
+      "bytes": 192376910
+    },
+    "rm_v2_seed0.pt": {
+      "destination": "artifacts/reward-v2-20261022-01/v2_seed0.pt",
+      "sha256": "f1201204fec349cc50353fb179c8ae6b937f92925bcd124f59ba06c73fba8ed3",
+      "bytes": 65624881
+    },
+    "rm_v2_seed1.pt": {
+      "destination": "artifacts/reward-v2-20261022-01/v2_seed1.pt",
+      "sha256": "7c472c8f632ca7be34406c9f9e545490f1a28e54f9cbea72938c12c4aa372a27",
+      "bytes": 65624881
+    },
+    "rm_v2_seed2_judge.pt": {
+      "destination": "artifacts/reward-v2-20261022-01/v2_seed2.pt",
+      "sha256": "777015465bb62b2d9ddbe8be72c3d1e6541af272fbe1aa883e408c722c59c47d",
+      "bytes": 65624881
+    },
+    "reranker_lightgbm.txt": {
+      "destination": "artifacts/reranker-20261022-02/ranker-with_gpt.txt",
+      "sha256": "75a484a2683f405b4f2c028ffd05a8a0ecc85e61fa7a1ccf6d0f2f145a9b0a48",
+      "bytes": 1133135
+    },
+    "reranker_gpt2_features.pt": {
+      "destination": "artifacts/fullsft-reg-20261022-01/full-d0.1-wd0.01/best.pt",
+      "sha256": "e7a9d586bce183404e2ca2cacbd5785595728b18710e1f117e2312f1d5ee4d14",
+      "bytes": 64389395
+    },
+    "e1_head_all_features.pt": {
+      "destination": "artifacts/exploratory-e1-20261023-01/head_all_features.pt",
+      "sha256": "5b71e3e583a9dbe78cb013572444caa0729972cf8c2132912f662e792d65268d",
+      "bytes": 24415
+    },
+    "e1_head_no_pairwise.pt": {
+      "destination": "artifacts/exploratory-e1-20261023-01/head_no_pairwise.pt",
+      "sha256": "66bb829cc1061aeb554c3ec819a00bb35e798584ccf9d9bfc930da8af73ca044",
+      "bytes": 24400
+    }
+  }
+}

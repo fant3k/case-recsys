@@ -1,0 +1,11 @@
+{
+  "complete_lists_align": true,
+  "rows": 4862977,
+  "ratio_above_100": 28675,
+  "ratio_zero": 342506,
+  "length_zero": 0,
+  "length_min": 5,
+  "length_max": 2490,
+  "histories_with_decreasing_time": 0,
+  "equal_time_adjacent_pairs": 951965
+}
