@@ -1,0 +1,247 @@
+{
+  "warm_users": 1000,
+  "active_users": 492,
+  "policies": {
+    "reference": {
+      "static_top5": {
+        "ndcg@5_active": 0.15522008328512132,
+        "hits_in_slate_active": 0.7073170731707317,
+        "users_with_a_hit_active": 0.3150406504065041,
+        "unique_tracks_per_slate": 5.0,
+        "slates_with_duplicate": 0.0,
+        "unique_tracks_across_users": 3847
+      },
+      "seq": {
+        "ndcg@5_active": 0.07776180196207336,
+        "hits_in_slate_active": 0.25609756097560976,
+        "users_with_a_hit_active": 0.17886178861788618,
+        "unique_tracks_per_slate": 1.575,
+        "slates_with_duplicate": 0.966,
+        "unique_tracks_across_users": 1392,
+        "ndcg@5_minus_static_top5_95": {
+          "mean": -0.077458281323048,
+          "level": 0.95,
+          "interval": [
+            -0.0912064372195875,
+            -0.06424341626809126
+          ],
+          "users": 492
+        },
+        "mean_overlap_with_static_top5": 0.2446
+      },
+      "seq_ban": {
+        "ndcg@5_active": 0.14747950875385357,
+        "hits_in_slate_active": 0.6443089430894309,
+        "users_with_a_hit_active": 0.2865853658536585,
+        "unique_tracks_per_slate": 5.0,
+        "slates_with_duplicate": 0.0,
+        "unique_tracks_across_users": 3845,
+        "ndcg@5_minus_static_top5_95": {
+          "mean": -0.007740574531267792,
+          "level": 0.95,
+          "interval": [
+            -0.017227805704826665,
+            0.0015862850718807735
+          ],
+          "users": 492
+        },
+        "mean_overlap_with_static_top5": 0.5334
+      },
+      "nopps": {
+        "ndcg@5_active": 0.08546977410853267,
+        "hits_in_slate_active": 0.3008130081300813,
+        "users_with_a_hit_active": 0.19715447154471544,
+        "unique_tracks_per_slate": 2.17,
+        "slates_with_duplicate": 0.936,
+        "unique_tracks_across_users": 1845,
+        "ndcg@5_minus_static_top5_95": {
+          "mean": -0.06975030917658866,
+          "level": 0.95,
+          "interval": [
+            -0.0830947785509816,
+            -0.05720350483316266
+          ],
+          "users": 492
+        },
+        "mean_overlap_with_static_top5": 0.2982
+      },
+      "nopps_ban": {
+        "ndcg@5_active": 0.14747950875385354,
+        "hits_in_slate_active": 0.6443089430894309,
+        "users_with_a_hit_active": 0.29065040650406504,
+        "unique_tracks_per_slate": 5.0,
+        "slates_with_duplicate": 0.0,
+        "unique_tracks_across_users": 3853,
+        "ndcg@5_minus_static_top5_95": {
+          "mean": -0.007740574531267793,
+          "level": 0.95,
+          "interval": [
+            -0.0171472326072286,
+            0.001565616683508128
+          ],
+          "users": 492
+        },
+        "mean_overlap_with_static_top5": 0.5351999999999999
+      },
+      "paired_ndcg@5_95": {
+        "seq_ban_minus_seq": {
+          "mean": 0.06971770679178019,
+          "level": 0.95,
+          "interval": [
+            0.0563650563028225,
+            0.08365835174778899
+          ],
+          "users": 492
+        },
+        "nopps_minus_seq": {
+          "mean": 0.007707972146459315,
+          "level": 0.95,
+          "interval": [
+            0.004604576107513891,
+            0.011192494939532902
+          ],
+          "users": 492
+        },
+        "nopps_ban_minus_seq_ban": {
+          "mean": -1.692413147294446e-19,
+          "level": 0.95,
+          "interval": [
+            -0.0020529448478977435,
+            0.0021133646541187374
+          ],
+          "users": 492
+        },
+        "nopps_ban_minus_nopps": {
+          "mean": 0.06200973464532088,
+          "level": 0.95,
+          "interval": [
+            0.04952634620866375,
+            0.07508382173493806
+          ],
+          "users": 492
+        }
+      }
+    },
+    "B_rl_seconds_beta0.3": {
+      "static_top5": {
+        "ndcg@5_active": 0.1506870014265095,
+        "hits_in_slate_active": 0.6829268292682927,
+        "users_with_a_hit_active": 0.3130081300813008,
+        "unique_tracks_per_slate": 5.0,
+        "slates_with_duplicate": 0.0,
+        "unique_tracks_across_users": 3843
+      },
+      "seq": {
+        "ndcg@5_active": 0.06993912075245377,
+        "hits_in_slate_active": 0.21747967479674796,
+        "users_with_a_hit_active": 0.17682926829268292,
+        "unique_tracks_per_slate": 1.461,
+        "slates_with_duplicate": 0.975,
+        "unique_tracks_across_users": 1294,
+        "ndcg@5_minus_static_top5_95": {
+          "mean": -0.08074788067405571,
+          "level": 0.95,
+          "interval": [
+            -0.09560488638356648,
+            -0.0664024584470301
+          ],
+          "users": 492
+        },
+        "mean_overlap_with_static_top5": 0.23700000000000004
+      },
+      "seq_ban": {
+        "ndcg@5_active": 0.1485968570001384,
+        "hits_in_slate_active": 0.6707317073170732,
+        "users_with_a_hit_active": 0.31097560975609756,
+        "unique_tracks_per_slate": 5.0,
+        "slates_with_duplicate": 0.0,
+        "unique_tracks_across_users": 3820,
+        "ndcg@5_minus_static_top5_95": {
+          "mean": -0.0020901444263711193,
+          "level": 0.95,
+          "interval": [
+            -0.010971591189413462,
+            0.006800204449834806
+          ],
+          "users": 492
+        },
+        "mean_overlap_with_static_top5": 0.5367999999999999
+      },
+      "nopps": {
+        "ndcg@5_active": 0.08142172541092825,
+        "hits_in_slate_active": 0.2845528455284553,
+        "users_with_a_hit_active": 0.20528455284552846,
+        "unique_tracks_per_slate": 2.015,
+        "slates_with_duplicate": 0.944,
+        "unique_tracks_across_users": 1724,
+        "ndcg@5_minus_static_top5_95": {
+          "mean": -0.06926527601558126,
+          "level": 0.95,
+          "interval": [
+            -0.0830191225141432,
+            -0.05597251992852159
+          ],
+          "users": 492
+        },
+        "mean_overlap_with_static_top5": 0.2844000000000001
+      },
+      "nopps_ban": {
+        "ndcg@5_active": 0.1483093822083266,
+        "hits_in_slate_active": 0.6666666666666666,
+        "users_with_a_hit_active": 0.3150406504065041,
+        "unique_tracks_per_slate": 5.0,
+        "slates_with_duplicate": 0.0,
+        "unique_tracks_across_users": 3812,
+        "ndcg@5_minus_static_top5_95": {
+          "mean": -0.002377619218182921,
+          "level": 0.95,
+          "interval": [
+            -0.011191655040738652,
+            0.006479974736086006
+          ],
+          "users": 492
+        },
+        "mean_overlap_with_static_top5": 0.5372
+      },
+      "paired_ndcg@5_95": {
+        "seq_ban_minus_seq": {
+          "mean": 0.07865773624768459,
+          "level": 0.95,
+          "interval": [
+            0.06489268945653989,
+            0.09324516304868805
+          ],
+          "users": 492
+        },
+        "nopps_minus_seq": {
+          "mean": 0.011482604658474458,
+          "level": 0.95,
+          "interval": [
+            0.007087432779571059,
+            0.016454347537526743
+          ],
+          "users": 492
+        },
+        "nopps_ban_minus_seq_ban": {
+          "mean": -0.00028747479181180093,
+          "level": 0.95,
+          "interval": [
+            -0.0024756890295620174,
+            0.001805092057308839
+          ],
+          "users": 492
+        },
+        "nopps_ban_minus_nopps": {
+          "mean": 0.06688765679739833,
+          "level": 0.95,
+          "interval": [
+            0.05423582697222482,
+            0.08004668020801982
+          ],
+          "users": 492
+        }
+      }
+    }
+  },
+  "elapsed_seconds": 41.96994059999997
+}
